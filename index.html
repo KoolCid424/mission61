@@ -7,13 +7,25 @@
 <title>MISSION 61</title>
 
 <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
+
+    :root {
+        --navy: #07111c;
+        --navy2: #0b1724;
+        --cream: #f2ead8;
+        --muted: #a9a99f;
+        --line: rgba(242, 234, 216, 0.25);
+        --line-soft: rgba(242, 234, 216, 0.09);
+    }
+
     * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
     }
 
-    html, body {
+    html,
+    body {
         width: 100%;
         min-height: 100%;
     }
@@ -21,15 +33,21 @@
     body {
         min-height: 100vh;
         background:
-            radial-gradient(circle at 50% 0%, #252b45 0%, transparent 45%),
-            linear-gradient(145deg, #05070d, #0b0f1a 55%, #030407);
+            radial-gradient(
+                circle at 50% 0%,
+                rgba(39, 64, 86, 0.35),
+                transparent 50%
+            ),
+            linear-gradient(
+                135deg,
+                var(--navy),
+                var(--navy2) 55%,
+                #050b12
+            );
 
-        color: #ffffff;
-        font-family:
-            Inter,
-            Arial,
-            Helvetica,
-            sans-serif;
+        color: var(--cream);
+
+        font-family: "Inter", Arial, sans-serif;
 
         display: flex;
         align-items: center;
@@ -38,129 +56,252 @@
         overflow-x: hidden;
     }
 
-    /* =========================
+    /* ==============================
        BACKGROUND
-    ========================= */
+    ============================== */
 
-    .background-grid {
+    body::before {
+        content: "";
         position: fixed;
         inset: 0;
 
         background-image:
-            linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            linear-gradient(
+                rgba(242,234,216,0.025) 1px,
+                transparent 1px
+            ),
+            linear-gradient(
+                90deg,
+                rgba(242,234,216,0.025) 1px,
+                transparent 1px
+            );
 
         background-size: 45px 45px;
 
-        mask-image: linear-gradient(
-            to bottom,
-            black,
-            transparent
-        );
-
         pointer-events: none;
+        opacity: 0.6;
     }
 
-    .glow {
-        position: fixed;
+    /* ==============================
+       MAIN
+    ============================== */
 
-        width: 500px;
-        height: 500px;
-
-        border-radius: 50%;
-
-        background: rgba(95, 105, 255, 0.12);
-
-        filter: blur(100px);
-
-        pointer-events: none;
-
-        animation: glowMove 10s ease-in-out infinite alternate;
-    }
-
-    .glow.one {
-        top: -250px;
-        left: -200px;
-    }
-
-    .glow.two {
-        bottom: -300px;
-        right: -200px;
-
-        animation-delay: -5s;
-    }
-
-    @keyframes glowMove {
-        from {
-            transform: translate(0, 0);
-        }
-
-        to {
-            transform: translate(80px, 50px);
-        }
-    }
-
-    /* =========================
-       MAIN CARD
-    ========================= */
-
-    .wrapper {
-        width: min(950px, 92%);
+    .page {
+        width: min(920px, 92%);
         padding: 45px 0;
-
         position: relative;
         z-index: 2;
     }
 
-    .card {
-        padding: clamp(30px, 6vw, 70px);
+    .document {
+        position: relative;
 
-        border-radius: 32px;
+        border: 1px solid var(--line);
 
         background:
             linear-gradient(
                 145deg,
-                rgba(255,255,255,0.095),
-                rgba(255,255,255,0.035)
+                rgba(15, 29, 43, 0.97),
+                rgba(5, 13, 21, 0.98)
             );
 
-        border: 1px solid rgba(255,255,255,0.13);
+        padding: clamp(30px, 6vw, 65px);
 
         box-shadow:
-            0 40px 100px rgba(0,0,0,0.5),
-            inset 0 1px 0 rgba(255,255,255,0.08);
-
-        backdrop-filter: blur(25px);
-
-        text-align: center;
+            0 35px 100px rgba(0,0,0,0.45),
+            inset 0 1px rgba(255,255,255,0.04);
     }
 
-    /* =========================
-       CLASSIFIED BADGE
-    ========================= */
+    /* Technical corner marks */
 
-    .classified {
-        display: inline-flex;
+    .document::before,
+    .document::after {
+        content: "";
+        position: absolute;
+
+        width: 35px;
+        height: 35px;
+
+        pointer-events: none;
+    }
+
+    .document::before {
+        top: 15px;
+        left: 15px;
+
+        border-top: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+    }
+
+    .document::after {
+        right: 15px;
+        bottom: 15px;
+
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+    }
+
+    /* ==============================
+       HEADER
+    ============================== */
+
+    .header {
+        display: flex;
+        justify-content: space-between;
         align-items: center;
-        gap: 9px;
 
-        padding: 9px 16px;
+        gap: 20px;
 
-        border-radius: 999px;
+        border-bottom: 1px solid var(--line-soft);
 
-        border: 1px solid rgba(255,255,255,0.2);
+        padding-bottom: 18px;
 
-        background: rgba(255,255,255,0.055);
+        margin-bottom: 55px;
+    }
 
-        color: #cfd3df;
+    .classification {
+        font-family: "DM Mono", monospace;
 
-        font-size: 11px;
-
-        font-weight: 700;
+        font-size: 10px;
 
         letter-spacing: 3px;
 
+        color: var(--muted);
+    }
+
+    .document-number {
+        font-family: "DM Mono", monospace;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+
+        color: var(--muted);
+    }
+
+    /* ==============================
+       TITLE
+    ============================== */
+
+    .title-area {
+        text-align: center;
+
+        margin-bottom: 50px;
+    }
+
+    .eyebrow {
+        font-family: "DM Mono", monospace;
+
+        font-size: 11px;
+
+        letter-spacing: 4px;
+
+        color: var(--muted);
+
+        margin-bottom: 18px;
+    }
+
+    h1 {
+        font-size: clamp(52px, 12vw, 115px);
+
+        line-height: 0.85;
+
+        letter-spacing: -5px;
+
+        font-weight: 800;
+
+        color: var(--cream);
+    }
+
+    .subtitle {
+        margin-top: 22px;
+
+        font-family: "DM Mono", monospace;
+
+        font-size: 11px;
+
+        letter-spacing: 3px;
+
+        color: var(--muted);
+
         text-transform: uppercase;
+    }
+
+    /* ==============================
+       COUNTDOWN
+    ============================== */
+
+    .countdown {
+        display: grid;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        border-top: 1px solid var(--line);
+
+        border-bottom: 1px solid var(--line);
+
+        margin-bottom: 45px;
+    }
+
+    .count-box {
+        padding: 30px 10px;
+
+        text-align: center;
+
+        border-right: 1px solid var(--line-soft);
+    }
+
+    .count-box:last-child {
+        border-right: none;
+    }
+
+    .number {
+        font-family: "DM Mono", monospace;
+
+        font-size: clamp(30px, 6vw, 58px);
+
+        line-height: 1;
+
+        color: var(--cream);
+
+        font-variant-numeric: tabular-nums;
+
+        margin-bottom: 12px;
+    }
+
+    .label {
+        font-family: "DM Mono", monospace;
+
+        font-size: 9px;
+
+        letter-spacing: 3px;
+
+        color: var(--muted);
+
+        text-transform: uppercase;
+    }
+
+    /* ==============================
+       STATUS
+    ============================== */
+
+    .status {
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        gap: 10px;
+
+        font-family: "DM Mono", monospace;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+
+        color: var(--muted);
 
         margin-bottom: 30px;
     }
@@ -171,246 +312,299 @@
 
         border-radius: 50%;
 
-        background: #62ff9b;
-
-        box-shadow: 0 0 12px #62ff9b;
-
-        animation: pulse 1.8s infinite;
-    }
-
-    @keyframes pulse {
-        0%, 100% {
-            opacity: 1;
-        }
-
-        50% {
-            opacity: 0.35;
-        }
-    }
-
-    /* =========================
-       TITLE
-    ========================= */
-
-    .mission {
-        font-size: clamp(52px, 11vw, 115px);
-
-        line-height: 0.9;
-
-        font-weight: 900;
-
-        letter-spacing: -6px;
-
-        background:
-            linear-gradient(
-                100deg,
-                #ffffff,
-                #aeb8ff,
-                #ffffff,
-                #b8a9ff
-            );
-
-        background-size: 300% auto;
-
-        -webkit-background-clip: text;
-        background-clip: text;
-
-        color: transparent;
-
-        animation: titleShine 7s linear infinite;
-
-        margin-bottom: 22px;
-    }
-
-    @keyframes titleShine {
-        to {
-            background-position: 300% center;
-        }
-    }
-
-    .subtitle {
-        color: #b9bfce;
-
-        font-size: clamp(16px, 2.5vw, 22px);
-
-        line-height: 1.6;
-
-        margin-bottom: 45px;
-    }
-
-    .subtitle strong {
-        color: white;
-    }
-
-    /* =========================
-       COUNTDOWN
-    ========================= */
-
-    .countdown {
-        display: grid;
-
-        grid-template-columns:
-            repeat(4, 1fr);
-
-        gap: 14px;
-
-        margin: 0 auto 40px;
-
-        max-width: 750px;
-    }
-
-    .time {
-        padding: 25px 10px;
-
-        border-radius: 20px;
-
-        background: rgba(0,0,0,0.2);
-
-        border: 1px solid rgba(255,255,255,0.1);
+        background: #a6c19e;
 
         box-shadow:
-            inset 0 1px rgba(255,255,255,0.04);
+            0 0 10px rgba(166,193,158,0.5);
     }
 
-    .number {
-        font-size: clamp(32px, 6vw, 62px);
+    /* ==============================
+       INFORMATION BOX
+    ============================== */
 
-        font-weight: 800;
+    .information {
+        border: 1px solid var(--line-soft);
 
-        letter-spacing: -2px;
+        padding: 25px;
 
-        font-variant-numeric: tabular-nums;
+        text-align: center;
 
-        margin-bottom: 7px;
+        background: rgba(0,0,0,0.12);
     }
 
-    .label {
-        color: #777f91;
+    .information-title {
+        font-family: "DM Mono", monospace;
 
         font-size: 10px;
 
         letter-spacing: 3px;
 
-        font-weight: 700;
+        color: var(--cream);
 
-        text-transform: uppercase;
+        margin-bottom: 12px;
     }
 
-    /* =========================
-       MISSION INFO
-    ========================= */
+    .information-text {
+        color: var(--muted);
 
-    .mission-box {
-        max-width: 700px;
-
-        margin: 0 auto;
-
-        padding: 28px;
-
-        border-radius: 22px;
-
-        background: rgba(255,255,255,0.035);
-
-        border: 1px solid rgba(255,255,255,0.08);
-
-        color: #aeb4c2;
+        font-size: 14px;
 
         line-height: 1.7;
-
-        font-size: 15px;
     }
 
-    .mission-box .important {
-        color: white;
-
-        font-weight: 700;
-
-        font-size: 18px;
-
-        margin-bottom: 10px;
-    }
-
-    .mission-box .classified-text {
-        color: #737b8c;
-
-        font-size: 12px;
-
-        letter-spacing: 1px;
-
-        margin-top: 18px;
-    }
-
-    /* =========================
+    /* ==============================
        FOOTER
-    ========================= */
+    ============================== */
 
     .footer {
-        margin-top: 32px;
-
-        color: #555d6e;
-
-        font-size: 10px;
-
-        letter-spacing: 3px;
-
-        text-transform: uppercase;
-    }
-
-    /* =========================
-       BIRTHDAY REVEAL
-    ========================= */
-
-    #birthday {
-        display: none;
-    }
-
-    #birthday h2 {
-        font-size: clamp(42px, 8vw, 80px);
-
-        line-height: 1;
-
-        margin-bottom: 25px;
-    }
-
-    #birthday p {
-        color: #c5cad5;
-
-        font-size: 20px;
-
-        line-height: 1.7;
-    }
-
-    .reveal {
         margin-top: 35px;
 
-        display: inline-block;
+        display: flex;
 
-        padding: 14px 24px;
+        justify-content: space-between;
 
-        border-radius: 999px;
+        gap: 20px;
 
-        background: rgba(255,255,255,0.08);
+        font-family: "DM Mono", monospace;
 
-        border: 1px solid rgba(255,255,255,0.15);
-
-        color: white;
-
-        font-size: 12px;
+        font-size: 9px;
 
         letter-spacing: 2px;
 
-        text-transform: uppercase;
+        color: #69727a;
     }
 
-    /* =========================
+    /* ==============================
+       PASSWORD SCREEN
+    ============================== */
+
+    #passwordScreen {
+        display: none;
+
+        text-align: center;
+    }
+
+    .lock-symbol {
+        width: 60px;
+        height: 60px;
+
+        margin: 0 auto 30px;
+
+        border: 1px solid var(--line);
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+        font-size: 23px;
+    }
+
+    .password-title {
+        font-size: clamp(35px, 7vw, 60px);
+
+        letter-spacing: -2px;
+
+        margin-bottom: 15px;
+    }
+
+    .password-subtitle {
+        font-family: "DM Mono", monospace;
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+
+        color: var(--muted);
+
+        margin-bottom: 40px;
+    }
+
+    .password-form {
+        max-width: 440px;
+
+        margin: 0 auto;
+    }
+
+    .password-input {
+        width: 100%;
+
+        padding: 19px 20px;
+
+        background: rgba(0,0,0,0.25);
+
+        border: 1px solid var(--line);
+
+        color: var(--cream);
+
+        font-family: "DM Mono", monospace;
+
+        font-size: 20px;
+
+        letter-spacing: 4px;
+
+        text-align: center;
+
+        outline: none;
+
+        text-transform: uppercase;
+
+        transition:
+            border-color 0.2s,
+            box-shadow 0.2s;
+    }
+
+    .password-input:focus {
+        border-color: rgba(242,234,216,0.65);
+
+        box-shadow:
+            0 0 0 3px rgba(242,234,216,0.04);
+    }
+
+    .password-input::placeholder {
+        color: #5d656d;
+
+        letter-spacing: 3px;
+    }
+
+    .access-button {
+        width: 100%;
+
+        margin-top: 14px;
+
+        padding: 18px;
+
+        border: 1px solid var(--cream);
+
+        background: var(--cream);
+
+        color: #07111c;
+
+        font-family: "DM Mono", monospace;
+
+        font-size: 11px;
+
+        font-weight: 500;
+
+        letter-spacing: 3px;
+
+        cursor: pointer;
+
+        transition:
+            background 0.2s,
+            color 0.2s;
+    }
+
+    .access-button:hover {
+        background: transparent;
+
+        color: var(--cream);
+    }
+
+    .error {
+        min-height: 22px;
+
+        margin-top: 15px;
+
+        font-family: "DM Mono", monospace;
+
+        font-size: 10px;
+
+        letter-spacing: 2px;
+
+        color: #c99a8e;
+    }
+
+    /* ==============================
+       ACCESS GRANTED
+    ============================== */
+
+    #accessGranted {
+        display: none;
+
+        text-align: center;
+    }
+
+    .granted-title {
+        font-size: clamp(40px, 8vw, 75px);
+
+        letter-spacing: -3px;
+
+        margin-bottom: 20px;
+    }
+
+    .granted-line {
+        width: 80px;
+        height: 1px;
+
+        background: var(--line);
+
+        margin: 0 auto 25px;
+    }
+
+    .granted-text {
+        font-family: "DM Mono", monospace;
+
+        font-size: 11px;
+
+        letter-spacing: 3px;
+
+        color: var(--muted);
+    }
+
+    /* ==============================
+       ANIMATION
+    ============================== */
+
+    .fade-out {
+        animation: fadeOut 0.7s ease forwards;
+    }
+
+    .fade-in {
+        animation: fadeIn 0.7s ease forwards;
+    }
+
+    @keyframes fadeOut {
+        from {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        to {
+            opacity: 0;
+            transform: translateY(-8px);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(8px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* ==============================
        MOBILE
-    ========================= */
+    ============================== */
 
     @media (max-width: 650px) {
 
-        .card {
-            padding: 35px 20px;
-            border-radius: 24px;
+        .page {
+            width: 94%;
+        }
+
+        .document {
+            padding: 30px 20px;
+        }
+
+        .header {
+            margin-bottom: 40px;
         }
 
         .countdown {
@@ -418,16 +612,23 @@
                 repeat(2, 1fr);
         }
 
-        .mission {
+        .count-box:nth-child(2) {
+            border-right: none;
+        }
+
+        .count-box:nth-child(1),
+        .count-box:nth-child(2) {
+            border-bottom: 1px solid var(--line-soft);
+        }
+
+        h1 {
             letter-spacing: -3px;
         }
 
-        .time {
-            padding: 20px 8px;
-        }
+        .footer {
+            flex-direction: column;
 
-        .mission-box {
-            padding: 22px 18px;
+            text-align: center;
         }
     }
 </style>
@@ -435,36 +636,59 @@
 
 <body>
 
-<div class="background-grid"></div>
+<div class="page">
 
-<div class="glow one"></div>
-<div class="glow two"></div>
+    <main class="document">
 
-<div class="wrapper">
-
-    <main class="card">
-
-        <!-- COUNTDOWN SCREEN -->
+        <!-- ==================================
+             COUNTDOWN SCREEN
+        =================================== -->
 
         <section id="countdownScreen">
 
-            <div class="classified">
-                <span class="status-dot"></span>
-                CLASSIFIED MISSION
+            <header class="header">
+
+                <div class="classification">
+                    CLASSIFIED ACCESS SYSTEM
+                </div>
+
+                <div class="document-number">
+                    M61-001
+                </div>
+
+            </header>
+
+
+            <div class="title-area">
+
+                <div class="eyebrow">
+                    OPERATION
+                </div>
+
+                <h1>
+                    MISSION 61
+                </h1>
+
+                <div class="subtitle">
+                    Birthday Operation
+                </div>
+
             </div>
 
-            <h1 class="mission">
-                MISSION 61
-            </h1>
 
-            <p class="subtitle">
-                Something very special is being prepared for
-                <strong>Mum.</strong>
-            </p>
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                MISSION STATUS: STANDBY
+
+            </div>
+
 
             <div class="countdown">
 
-                <div class="time">
+                <div class="count-box">
+
                     <div
                         class="number"
                         id="days">
@@ -474,9 +698,12 @@
                     <div class="label">
                         Days
                     </div>
+
                 </div>
 
-                <div class="time">
+
+                <div class="count-box">
+
                     <div
                         class="number"
                         id="hours">
@@ -486,9 +713,12 @@
                     <div class="label">
                         Hours
                     </div>
+
                 </div>
 
-                <div class="time">
+
+                <div class="count-box">
+
                     <div
                         class="number"
                         id="minutes">
@@ -498,9 +728,12 @@
                     <div class="label">
                         Minutes
                     </div>
+
                 </div>
 
-                <div class="time">
+
+                <div class="count-box">
+
                     <div
                         class="number"
                         id="seconds">
@@ -510,58 +743,134 @@
                     <div class="label">
                         Seconds
                     </div>
+
                 </div>
 
             </div>
 
-            <div class="mission-box">
 
-                <div class="important">
-                    MISSION STATUS: ACTIVE
+            <div class="information">
+
+                <div class="information-title">
+                    ACCESS RESTRICTED
                 </div>
 
-                This website contains information
-                regarding a highly classified birthday
-                operation.
-
-                <br><br>
-
-                Further details are currently restricted.
-
-                <div class="classified-text">
-                    ACCESS WILL BE GRANTED ON 11 DECEMBER 2026
+                <div class="information-text">
+                    Mission details are currently unavailable.
+                    <br>
+                    Authorised access will be granted when
+                    the countdown reaches zero.
                 </div>
 
             </div>
 
-            <div class="footer">
-                MISSION 61 • 11.12.2026 • CONFIDENTIAL
-            </div>
+
+            <footer class="footer">
+
+                <span>
+                    RECIPIENT: MUM
+                </span>
+
+                <span>
+                    11 • 12 • 2026
+                </span>
+
+                <span>
+                    CLEARANCE: PENDING
+                </span>
+
+            </footer>
 
         </section>
 
 
-        <!-- BIRTHDAY SCREEN -->
+        <!-- ==================================
+             PASSWORD SCREEN
+        =================================== -->
 
-        <section id="birthday">
+        <section id="passwordScreen">
 
-            <div class="classified">
-                <span class="status-dot"></span>
-                MISSION COMPLETE
+            <div class="lock-symbol">
+                🔐
             </div>
 
-            <h2>
-                🎂 HAPPY 61ST! 🎉
+            <h2 class="password-title">
+                ACCESS REQUIRED
             </h2>
 
-            <p>
-                The countdown is over.
-                <br>
-                The mission can now begin.
-            </p>
+            <div class="password-subtitle">
+                MISSION 61 HAS BEEN ACTIVATED
+            </div>
 
-            <div class="reveal">
-                CLASSIFIED INFORMATION UNLOCKED
+
+            <form
+                class="password-form"
+                onsubmit="checkPassword(event)"
+            >
+
+                <input
+                    id="passwordInput"
+                    class="password-input"
+                    type="text"
+                    autocomplete="off"
+                    autocapitalize="characters"
+                    spellcheck="false"
+                    placeholder="ACCESS CODE"
+                    maxlength="9"
+                >
+
+                <button
+                    class="access-button"
+                    type="submit"
+                >
+                    AUTHENTICATE
+                </button>
+
+                <div
+                    id="error"
+                    class="error"
+                ></div>
+
+            </form>
+
+
+            <footer class="footer">
+
+                <span>
+                    CLEARANCE REQUIRED
+                </span>
+
+                <span>
+                    M61-001
+                </span>
+
+            </footer>
+
+        </section>
+
+
+        <!-- ==================================
+             ACCESS GRANTED
+        =================================== -->
+
+        <section id="accessGranted">
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                AUTHENTICATION SUCCESSFUL
+
+            </div>
+
+            <h2 class="granted-title">
+                ACCESS GRANTED
+            </h2>
+
+            <div class="granted-line"></div>
+
+            <div class="granted-text">
+                MISSION 61 ACCESS CONFIRMED
             </div>
 
         </section>
@@ -574,23 +883,29 @@
 <script>
 
     /*
-    ==========================================
-        MISSION 61 COUNTDOWN
-    ==========================================
+    ============================================
+        MISSION 61
+        COUNTDOWN
+    ============================================
 
-        Birthday:
-        11 December 2026
+        Countdown ends at midnight at the
+        beginning of 11 December 2026.
 
-        The time below is midnight at the
-        start of 11 December.
-
-        +00:00 = UK winter time.
-    ==========================================
+        UK winter time = UTC.
+    ============================================
     */
 
     const targetDate =
-        new Date("2026-12-11T00:00:00+00:00").getTime();
+        new Date(
+            "2026-12-11T00:00:00+00:00"
+        ).getTime();
 
+
+    /*
+    ============================================
+        UPDATE COUNTDOWN
+    ============================================
+    */
 
     function updateCountdown() {
 
@@ -602,27 +917,16 @@
 
 
         /*
-        If the countdown has finished,
-        reveal the birthday screen.
+        Countdown finished.
         */
 
         if (difference <= 0) {
 
-            document
-                .getElementById("countdownScreen")
-                .style.display = "none";
-
-            document
-                .getElementById("birthday")
-                .style.display = "block";
+            showPasswordScreen();
 
             return;
         }
 
-
-        /*
-        Calculate remaining time.
-        */
 
         const days =
             Math.floor(
@@ -651,10 +955,6 @@
             );
 
 
-        /*
-        Update the numbers.
-        */
-
         document
             .getElementById("days")
             .textContent =
@@ -681,8 +981,110 @@
 
 
     /*
-    Run immediately so the page
-    doesn't briefly show zeros.
+    ============================================
+        SHOW PASSWORD SCREEN
+    ============================================
+    */
+
+    function showPasswordScreen() {
+
+        const countdown =
+            document.getElementById(
+                "countdownScreen"
+            );
+
+        const password =
+            document.getElementById(
+                "passwordScreen"
+            );
+
+
+        countdown.style.display = "none";
+
+        password.style.display = "block";
+
+        password.classList.add("fade-in");
+
+        setTimeout(() => {
+
+            document
+                .getElementById("passwordInput")
+                .focus();
+
+        }, 700);
+    }
+
+
+    /*
+    ============================================
+        PASSWORD
+    ============================================
+
+        Code:
+        K7Q4-9M2X
+    ============================================
+    */
+
+    const correctPassword =
+        "K7Q4-9M2X";
+
+
+    function checkPassword(event) {
+
+        event.preventDefault();
+
+
+        const input =
+            document
+                .getElementById("passwordInput")
+                .value
+                .trim()
+                .toUpperCase();
+
+
+        const error =
+            document.getElementById("error");
+
+
+        if (input === correctPassword) {
+
+            const passwordScreen =
+                document.getElementById(
+                    "passwordScreen"
+                );
+
+            const granted =
+                document.getElementById(
+                    "accessGranted"
+                );
+
+
+            passwordScreen.style.display = "none";
+
+            granted.style.display = "block";
+
+            granted.classList.add("fade-in");
+
+            error.textContent = "";
+
+        } else {
+
+            error.textContent =
+                "ACCESS DENIED • INVALID CODE";
+
+            document
+                .getElementById("passwordInput")
+                .value = "";
+
+            document
+                .getElementById("passwordInput")
+                .focus();
+        }
+    }
+
+
+    /*
+    Start countdown.
     */
 
     updateCountdown();
