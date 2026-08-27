@@ -7,7 +7,9 @@
 <title>MISSION 61</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
+
 
 :root {
     --navy: #07111c;
@@ -18,26 +20,36 @@
     --soft: rgba(242, 234, 216, 0.09);
 }
 
+
+/* ==============================
+   RESET
+============================== */
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+
 html,
 body {
     min-height: 100%;
 }
 
+
 body {
+
     min-height: 100vh;
 
     background:
+
         radial-gradient(
             circle at 50% 0%,
             rgba(39, 64, 86, 0.35),
             transparent 50%
         ),
+
         linear-gradient(
             135deg,
             var(--navy),
@@ -47,28 +59,40 @@ body {
 
     color: var(--cream);
 
-    font-family: "Inter", Arial, sans-serif;
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
 
     display: flex;
+
     align-items: center;
+
     justify-content: center;
 
     overflow-x: hidden;
 }
 
-/* Background grid */
+
+/* ==============================
+   BACKGROUND GRID
+============================== */
 
 body::before {
+
     content: "";
 
     position: fixed;
+
     inset: 0;
 
     background-image:
+
         linear-gradient(
             rgba(242,234,216,0.025) 1px,
             transparent 1px
         ),
+
         linear-gradient(
             90deg,
             rgba(242,234,216,0.025) 1px,
@@ -83,12 +107,17 @@ body::before {
 }
 
 
-/* =========================
-   MAIN DOCUMENT
-========================= */
+/* ==============================
+   MAIN PAGE
+============================== */
 
 .page {
-    width: min(920px, 92%);
+
+    width:
+        min(
+            920px,
+            92%
+        );
 
     padding: 45px 0;
 
@@ -97,77 +126,120 @@ body::before {
     z-index: 2;
 }
 
+
 .document {
+
     position: relative;
 
-    border: 1px solid var(--line);
+    border:
+        1px solid
+        var(--line);
 
     background:
+
         linear-gradient(
             145deg,
             rgba(15, 29, 43, 0.97),
             rgba(5, 13, 21, 0.98)
         );
 
-    padding: clamp(30px, 6vw, 65px);
+    padding:
+        clamp(
+            30px,
+            6vw,
+            65px
+        );
 
     box-shadow:
-        0 35px 100px rgba(0,0,0,0.45),
-        inset 0 1px rgba(255,255,255,0.04);
+
+        0 35px 100px
+        rgba(0,0,0,0.45),
+
+        inset 0 1px
+        rgba(255,255,255,0.04);
 }
 
 
-/* Corner details */
+/* ==============================
+   CORNER MARKS
+============================== */
 
 .document::before,
 .document::after {
+
     content: "";
 
     position: absolute;
 
     width: 35px;
+
     height: 35px;
 }
 
+
 .document::before {
+
     top: 15px;
+
     left: 15px;
 
-    border-top: 1px solid var(--line);
-    border-left: 1px solid var(--line);
+    border-top:
+        1px solid
+        var(--line);
+
+    border-left:
+        1px solid
+        var(--line);
 }
+
 
 .document::after {
+
     right: 15px;
+
     bottom: 15px;
 
-    border-right: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+    border-right:
+        1px solid
+        var(--line);
+
+    border-bottom:
+        1px solid
+        var(--line);
 }
 
 
-/* =========================
+/* ==============================
    HEADER
-========================= */
+============================== */
 
 .header {
+
     display: flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
+
     align-items: center;
 
     gap: 20px;
 
-    border-bottom: 1px solid var(--soft);
+    border-bottom:
+        1px solid
+        var(--soft);
 
     padding-bottom: 18px;
 
     margin-bottom: 55px;
 }
 
+
 .classification,
 .document-number {
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 10px;
 
@@ -177,18 +249,23 @@ body::before {
 }
 
 
-/* =========================
+/* ==============================
    TITLE
-========================= */
+============================== */
 
 .title-area {
+
     text-align: center;
 
     margin-bottom: 50px;
 }
 
+
 .eyebrow {
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 11px;
 
@@ -199,8 +276,15 @@ body::before {
     margin-bottom: 18px;
 }
 
+
 h1 {
-    font-size: clamp(52px, 12vw, 115px);
+
+    font-size:
+        clamp(
+            52px,
+            12vw,
+            115px
+        );
 
     line-height: 0.85;
 
@@ -211,10 +295,14 @@ h1 {
     color: var(--cream);
 }
 
+
 .subtitle {
+
     margin-top: 22px;
 
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 11px;
 
@@ -226,50 +314,121 @@ h1 {
 }
 
 
-/* =========================
+/* ==============================
+   STATUS
+============================== */
+
+.status {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted);
+
+    margin-bottom: 30px;
+}
+
+
+.status-dot {
+
+    width: 7px;
+
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #a6c19e;
+
+    box-shadow:
+        0 0 10px
+        rgba(166,193,158,0.5);
+}
+
+
+/* ==============================
    COUNTDOWN
-========================= */
+============================== */
 
 .countdown {
+
     display: grid;
 
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns:
+        repeat(4, 1fr);
 
-    border-top: 1px solid var(--line);
+    border-top:
+        1px solid
+        var(--line);
 
-    border-bottom: 1px solid var(--line);
+    border-bottom:
+        1px solid
+        var(--line);
 
     margin-bottom: 45px;
 }
 
+
 .count-box {
-    padding: 30px 10px;
+
+    padding:
+        30px 10px;
 
     text-align: center;
 
-    border-right: 1px solid var(--soft);
+    border-right:
+        1px solid
+        var(--soft);
 }
 
+
 .count-box:last-child {
+
     border-right: none;
 }
 
-.number {
-    font-family: "DM Mono", monospace;
 
-    font-size: clamp(30px, 6vw, 58px);
+.number {
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size:
+        clamp(
+            30px,
+            6vw,
+            58px
+        );
 
     line-height: 1;
 
     color: var(--cream);
 
-    font-variant-numeric: tabular-nums;
+    font-variant-numeric:
+        tabular-nums;
 
     margin-bottom: 12px;
 }
 
+
 .label {
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 9px;
 
@@ -281,59 +440,30 @@ h1 {
 }
 
 
-/* =========================
-   STATUS
-========================= */
-
-.status {
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 10px;
-
-    font-family: "DM Mono", monospace;
-
-    font-size: 10px;
-
-    letter-spacing: 2px;
-
-    color: var(--muted);
-
-    margin-bottom: 30px;
-}
-
-.status-dot {
-    width: 7px;
-    height: 7px;
-
-    border-radius: 50%;
-
-    background: #a6c19e;
-
-    box-shadow:
-        0 0 10px rgba(166,193,158,0.5);
-}
-
-
-/* =========================
-   INFORMATION
-========================= */
+/* ==============================
+   INFORMATION BOX
+============================== */
 
 .information {
-    border: 1px solid var(--soft);
+
+    border:
+        1px solid
+        var(--soft);
 
     padding: 25px;
 
     text-align: center;
 
-    background: rgba(0,0,0,0.12);
+    background:
+        rgba(0,0,0,0.12);
 }
 
+
 .information-title {
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 10px;
 
@@ -344,7 +474,9 @@ h1 {
     margin-bottom: 12px;
 }
 
+
 .information-text {
+
     color: var(--muted);
 
     font-size: 14px;
@@ -353,20 +485,24 @@ h1 {
 }
 
 
-/* =========================
+/* ==============================
    FOOTER
-========================= */
+============================== */
 
 .footer {
+
     margin-top: 35px;
 
     display: flex;
 
-    justify-content: space-between;
+    justify-content:
+        space-between;
 
     gap: 20px;
 
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 9px;
 
@@ -376,17 +512,99 @@ h1 {
 }
 
 
-/* =========================
+/* ==============================
+   PREVIEW TRIGGER
+============================== */
+
+.preview-trigger {
+
+    cursor: default;
+
+    user-select: none;
+}
+
+
+.preview-box {
+
+    display: none;
+
+    margin-top: 15px;
+
+    text-align: center;
+}
+
+
+.preview-box input {
+
+    width: 150px;
+
+    padding:
+        10px 12px;
+
+    background:
+        rgba(0,0,0,0.3);
+
+    border:
+        1px solid
+        var(--line);
+
+    color: var(--cream);
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 16px;
+
+    letter-spacing: 4px;
+
+    text-align: center;
+
+    outline: none;
+}
+
+
+.preview-box button {
+
+    margin-left: 6px;
+
+    padding:
+        10px 14px;
+
+    background:
+        var(--cream);
+
+    color:
+        var(--navy);
+
+    border: none;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+
+/* ==============================
    PASSWORD SCREEN
-========================= */
+============================== */
 
 #passwordScreen {
+
     display: none;
 
     text-align: center;
 }
 
+
 .lock-container {
+
     height: 130px;
 
     display: flex;
@@ -399,122 +617,174 @@ h1 {
 }
 
 
-/* The actual lock */
+/* ==============================
+   LOCK
+============================== */
 
 .lock {
+
     position: relative;
 
     width: 72px;
+
     height: 65px;
 
-    background: var(--cream);
+    background:
+        var(--cream);
 
     border-radius: 7px;
 
     box-shadow:
-        0 15px 35px rgba(0,0,0,0.3);
+        0 15px 35px
+        rgba(0,0,0,0.3);
 
     transition:
         transform 0.2s ease;
 }
 
 
-/* Lock shackle */
+/* Shackle */
 
 .lock::before {
+
     content: "";
 
     position: absolute;
 
     width: 39px;
+
     height: 43px;
 
-    border: 8px solid var(--cream);
+    border:
+        8px solid
+        var(--cream);
 
     border-bottom: none;
 
-    border-radius: 22px 22px 0 0;
+    border-radius:
+        22px 22px 0 0;
 
     left: 50%;
 
     top: -34px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 
     transition:
-        transform 0.45s cubic-bezier(.2,1.6,.4,1),
-        top 0.45s cubic-bezier(.2,1.6,.4,1);
+
+        transform
+        0.45s
+        cubic-bezier(
+            .2,
+            1.6,
+            .4,
+            1
+        ),
+
+        top
+        0.45s
+        cubic-bezier(
+            .2,
+            1.6,
+            .4,
+            1
+        );
 }
 
 
 /* Keyhole */
 
 .lock::after {
+
     content: "";
 
     position: absolute;
 
     width: 9px;
+
     height: 17px;
 
-    background: var(--navy);
+    background:
+        var(--navy);
 
     border-radius: 7px;
 
     left: 50%;
+
     top: 23px;
 
-    transform: translateX(-50%);
+    transform:
+        translateX(-50%);
 }
 
 
-/* =========================
-   LOCK ANIMATIONS
-========================= */
-
-
-/* Wrong password */
+/* ==============================
+   WRONG PASSWORD
+============================== */
 
 .lock.shake {
+
     animation:
-        shakeLock 0.5s ease;
+        shakeLock
+        0.5s
+        ease;
 }
+
 
 @keyframes shakeLock {
 
     0% {
-        transform: translateX(0) rotate(0);
+        transform:
+            translateX(0)
+            rotate(0);
     }
 
     20% {
-        transform: translateX(-9px) rotate(-4deg);
+        transform:
+            translateX(-9px)
+            rotate(-4deg);
     }
 
     40% {
-        transform: translateX(8px) rotate(4deg);
+        transform:
+            translateX(8px)
+            rotate(4deg);
     }
 
     60% {
-        transform: translateX(-6px) rotate(-3deg);
+        transform:
+            translateX(-6px)
+            rotate(-3deg);
     }
 
     80% {
-        transform: translateX(5px) rotate(2deg);
+        transform:
+            translateX(5px)
+            rotate(2deg);
     }
 
     100% {
-        transform: translateX(0) rotate(0);
+        transform:
+            translateX(0)
+            rotate(0);
     }
 }
 
 
-/* Correct password */
+/* ==============================
+   UNLOCK
+============================== */
 
 .lock.unlocked {
-    transform: scale(1.08);
+
+    transform:
+        scale(1.08);
 }
 
+
 .lock.unlocked::before {
+
     transform:
         translateX(-50%)
         rotate(-32deg);
@@ -523,20 +793,31 @@ h1 {
 }
 
 
-/* =========================
-   PASSWORD CONTENT
-========================= */
+/* ==============================
+   PASSWORD TEXT
+============================== */
 
 .password-title {
-    font-size: clamp(35px, 7vw, 60px);
 
-    letter-spacing: -2px;
+    font-size:
+        clamp(
+            35px,
+            7vw,
+            60px
+        );
+
+    letter-spacing:
+        -2px;
 
     margin-bottom: 15px;
 }
 
+
 .password-subtitle {
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 10px;
 
@@ -547,24 +828,34 @@ h1 {
     margin-bottom: 40px;
 }
 
+
 .password-form {
+
     max-width: 440px;
 
     margin: 0 auto;
 }
 
+
 .password-input {
+
     width: 100%;
 
-    padding: 19px 20px;
+    padding:
+        19px 20px;
 
-    background: rgba(0,0,0,0.25);
+    background:
+        rgba(0,0,0,0.25);
 
-    border: 1px solid var(--line);
+    border:
+        1px solid
+        var(--line);
 
     color: var(--cream);
 
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 20px;
 
@@ -574,41 +865,74 @@ h1 {
 
     outline: none;
 
-    text-transform: uppercase;
+    text-transform:
+        uppercase;
 
     transition:
-        border-color 0.2s,
-        box-shadow 0.2s;
+
+        border-color
+        0.2s,
+
+        box-shadow
+        0.2s;
 }
+
 
 .password-input:focus {
-    border-color: rgba(242,234,216,0.65);
+
+    border-color:
+        rgba(
+            242,
+            234,
+            216,
+            0.65
+        );
 
     box-shadow:
-        0 0 0 3px rgba(242,234,216,0.04);
+        0 0 0 3px
+        rgba(
+            242,
+            234,
+            216,
+            0.04
+        );
 }
 
+
 .password-input::placeholder {
-    color: #5d656d;
+
+    color:
+        #5d656d;
 
     letter-spacing: 3px;
 }
 
 
+/* ==============================
+   BUTTON
+============================== */
+
 .access-button {
+
     width: 100%;
 
     margin-top: 14px;
 
     padding: 18px;
 
-    border: 1px solid var(--cream);
+    border:
+        1px solid
+        var(--cream);
 
-    background: var(--cream);
+    background:
+        var(--cream);
 
-    color: #07111c;
+    color:
+        var(--navy);
 
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 11px;
 
@@ -619,51 +943,82 @@ h1 {
     cursor: pointer;
 
     transition:
-        background 0.2s,
-        color 0.2s;
+
+        background
+        0.2s,
+
+        color
+        0.2s;
 }
+
 
 .access-button:hover {
-    background: transparent;
 
-    color: var(--cream);
+    background:
+        transparent;
+
+    color:
+        var(--cream);
 }
 
 
-/* Error */
+.access-button:disabled {
+
+    opacity: 0.5;
+
+    cursor:
+        default;
+}
+
+
+/* ==============================
+   ERROR
+============================== */
 
 .error {
+
     min-height: 22px;
 
     margin-top: 15px;
 
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 10px;
 
     letter-spacing: 2px;
 
-    color: #c99a8e;
+    color:
+        #c99a8e;
 }
 
 
-/* =========================
-   UNLOCKED
-========================= */
+/* ==============================
+   UNLOCKED MESSAGE
+============================== */
 
 .unlocked-message {
+
     display: none;
 
     margin-top: 35px;
 
     animation:
-        fadeIn 0.6s ease forwards;
+        fadeIn
+        0.6s
+        ease
+        forwards;
 }
 
+
 .unlocked-message strong {
+
     display: block;
 
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 12px;
 
@@ -672,29 +1027,40 @@ h1 {
     margin-bottom: 10px;
 }
 
+
 .unlocked-message span {
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
 
     font-size: 9px;
 
     letter-spacing: 2px;
 
-    color: var(--muted);
+    color:
+        var(--muted);
 }
 
 
-/* =========================
-   ANIMATIONS
-========================= */
+/* ==============================
+   FADE
+============================== */
 
 .fade-in {
+
     animation:
-        fadeIn 0.8s ease forwards;
+        fadeIn
+        0.8s
+        ease
+        forwards;
 }
+
 
 @keyframes fadeIn {
 
     from {
+
         opacity: 0;
 
         transform:
@@ -702,6 +1068,7 @@ h1 {
     }
 
     to {
+
         opacity: 1;
 
         transform:
@@ -710,94 +1077,149 @@ h1 {
 }
 
 
-/* =========================
+/* ==============================
    MOBILE
-========================= */
+============================== */
 
 @media (max-width: 650px) {
 
     .page {
+
         width: 94%;
     }
 
+
     .document {
-        padding: 30px 20px;
+
+        padding:
+            30px 20px;
     }
 
+
     .header {
+
         margin-bottom: 40px;
     }
 
+
     .countdown {
+
         grid-template-columns:
             repeat(2, 1fr);
     }
 
+
     .count-box:nth-child(2) {
+
         border-right: none;
     }
 
+
     .count-box:nth-child(1),
     .count-box:nth-child(2) {
+
         border-bottom:
-            1px solid var(--soft);
+            1px solid
+            var(--soft);
     }
+
 
     h1 {
-        letter-spacing: -3px;
+
+        letter-spacing:
+            -3px;
     }
+
 
     .footer {
-        flex-direction: column;
 
-        text-align: center;
+        flex-direction:
+            column;
+
+        text-align:
+            center;
+    }
+
+
+    .preview-box button {
+
+        margin-left: 0;
+
+        margin-top: 8px;
+
+        width: 150px;
     }
 }
+
 </style>
 </head>
 
 
 <body>
 
+
 <div class="page">
+
 
 <main class="document">
 
 
-<!-- ======================================
-     COUNTDOWN
-======================================= -->
+<!-- ==================================
+     COUNTDOWN SCREEN
+=================================== -->
 
-<section id="countdownScreen">
+<section
+    id="countdownScreen"
+>
+
 
 <header class="header">
 
+
 <div class="classification">
+
 CLASSIFIED ACCESS SYSTEM
+
 </div>
 
+
 <div class="document-number">
+
 M61-001
+
 </div>
+
 
 </header>
 
 
+
 <div class="title-area">
 
+
 <div class="eyebrow">
+
 OPERATION
+
 </div>
+
 
 <h1>
+
 MISSION 61
+
 </h1>
 
+
 <div class="subtitle">
+
 Birthday Operation
-</div>
 
 </div>
+
+
+</div>
+
 
 
 <div class="status">
@@ -809,75 +1231,98 @@ MISSION STATUS: STANDBY
 </div>
 
 
+
 <div class="countdown">
+
 
 <div class="count-box">
 
 <div
-class="number"
-id="days">
+    class="number"
+    id="days"
+>
 000
 </div>
 
 <div class="label">
+
 Days
+
 </div>
 
 </div>
+
 
 
 <div class="count-box">
 
 <div
-class="number"
-id="hours">
+    class="number"
+    id="hours"
+>
 00
 </div>
 
 <div class="label">
+
 Hours
+
 </div>
 
 </div>
+
 
 
 <div class="count-box">
 
 <div
-class="number"
-id="minutes">
+    class="number"
+    id="minutes"
+>
 00
 </div>
 
 <div class="label">
+
 Minutes
+
 </div>
 
 </div>
+
 
 
 <div class="count-box">
 
 <div
-class="number"
-id="seconds">
+    class="number"
+    id="seconds"
+>
 00
 </div>
 
 <div class="label">
+
 Seconds
-</div>
 
 </div>
 
 </div>
+
+
+</div>
+
 
 
 <div class="information">
 
+
 <div class="information-title">
+
 ACCESS RESTRICTED
+
 </div>
+
 
 <div class="information-text">
 
@@ -890,50 +1335,100 @@ the countdown reaches zero.
 
 </div>
 
+
 </div>
+
 
 
 <footer class="footer">
 
-<span>
+
+<span
+    id="previewTrigger"
+    class="preview-trigger"
+>
+
 RECIPIENT: MUM
+
 </span>
 
+
 <span>
+
 11 • 12 • 2026
+
 </span>
 
+
 <span>
+
 CLEARANCE: PENDING
+
 </span>
+
 
 </footer>
+
+
+<!-- Hidden developer PIN -->
+
+<div
+    id="previewBox"
+    class="preview-box"
+>
+
+
+<input
+    id="previewPin"
+    type="password"
+    inputmode="numeric"
+    maxlength="4"
+    placeholder="PIN"
+>
+
+
+<button
+    onclick="activatePreview()"
+>
+
+PREVIEW
+
+</button>
+
+
+</div>
+
 
 </section>
 
 
 
-<!-- ======================================
-     PASSWORD
-======================================= -->
+<!-- ==================================
+     PASSWORD SCREEN
+=================================== -->
 
 <section
-id="passwordScreen"
-class="fade-in"
+    id="passwordScreen"
 >
+
 
 <div class="lock-container">
 
+
 <div
-id="lock"
-class="lock">
-</div>
+    id="lock"
+    class="lock"
+></div>
+
 
 </div>
+
 
 
 <h2 class="password-title">
+
 ACCESS REQUIRED
+
 </h2>
 
 
@@ -944,71 +1439,98 @@ MISSION 61 HAS BEEN ACTIVATED
 </div>
 
 
+
 <form
-class="password-form"
-onsubmit="checkPassword(event)"
+    class="password-form"
+    onsubmit="checkPassword(event)"
 >
+
 
 <input
-id="passwordInput"
-class="password-input"
-type="text"
-autocomplete="off"
-autocapitalize="characters"
-spellcheck="false"
-placeholder="ACCESS CODE"
-maxlength="9"
+    id="passwordInput"
+    class="password-input"
+    type="text"
+    autocomplete="off"
+    autocapitalize="characters"
+    spellcheck="false"
+    placeholder="ACCESS CODE"
+    maxlength="9"
 >
 
+
 <button
-class="access-button"
-type="submit"
+    class="access-button"
+    type="submit"
 >
+
 AUTHENTICATE
+
 </button>
 
 
 <div
-id="error"
-class="error">
+    id="error"
+    class="error"
+>
 </div>
+
 
 </form>
 
 
+
 <div
-id="unlockedMessage"
-class="unlocked-message"
+    id="unlockedMessage"
+    class="unlocked-message"
 >
 
+
 <strong>
+
 LOCK STATUS: OPEN
+
 </strong>
 
+
 <span>
+
 ACCESS CONFIRMED
+
 </span>
 
+
 </div>
+
 
 
 <footer class="footer">
 
-<span>
-CLEARANCE REQUIRED
-</span>
 
 <span>
-M61-001
+
+CLEARANCE REQUIRED
+
 </span>
+
+
+<span>
+
+M61-001
+
+</span>
+
 
 </footer>
 
+
 </section>
+
 
 </main>
 
+
 </div>
+
 
 
 <script>
@@ -1023,10 +1545,20 @@ const targetDate =
     ).getTime();
 
 
+let previewActivated = false;
+
+
 function updateCountdown() {
+
+    if (previewActivated) {
+
+        return;
+    }
+
 
     const now =
         new Date().getTime();
+
 
     const difference =
         targetDate - now;
@@ -1067,47 +1599,81 @@ function updateCountdown() {
         );
 
 
-    document.getElementById("days")
+    document
+        .getElementById("days")
         .textContent =
-        String(days).padStart(3, "0");
+        String(days)
+            .padStart(3, "0");
 
 
-    document.getElementById("hours")
+    document
+        .getElementById("hours")
         .textContent =
-        String(hours).padStart(2, "0");
+        String(hours)
+            .padStart(2, "0");
 
 
-    document.getElementById("minutes")
+    document
+        .getElementById("minutes")
         .textContent =
-        String(minutes).padStart(2, "0");
+        String(minutes)
+            .padStart(2, "0");
 
 
-    document.getElementById("seconds")
+    document
+        .getElementById("seconds")
         .textContent =
-        String(seconds).padStart(2, "0");
+        String(seconds)
+            .padStart(2, "0");
 }
 
 
 /* ==========================================
-   SHOW PASSWORD
+   PASSWORD SCREEN
 ========================================== */
+
+let passwordScreenShown = false;
+
 
 function showPasswordScreen() {
 
+    if (passwordScreenShown) {
+
+        return;
+    }
+
+
+    passwordScreenShown = true;
+
+
     document
         .getElementById("countdownScreen")
-        .style.display = "none";
+        .style.display =
+        "none";
 
 
-    document
-        .getElementById("passwordScreen")
-        .style.display = "block";
+    const passwordScreen =
+        document
+            .getElementById(
+                "passwordScreen"
+            );
+
+
+    passwordScreen.style.display =
+        "block";
+
+
+    passwordScreen.classList.add(
+        "fade-in"
+    );
 
 
     setTimeout(() => {
 
         document
-            .getElementById("passwordInput")
+            .getElementById(
+                "passwordInput"
+            )
             .focus();
 
     }, 700);
@@ -1129,18 +1695,24 @@ function checkPassword(event) {
 
     const input =
         document
-            .getElementById("passwordInput")
+            .getElementById(
+                "passwordInput"
+            )
             .value
             .trim()
             .toUpperCase();
 
 
     const lock =
-        document.getElementById("lock");
+        document.getElementById(
+            "lock"
+        );
 
 
     const error =
-        document.getElementById("error");
+        document.getElementById(
+            "error"
+        );
 
 
     const unlockedMessage =
@@ -1151,29 +1723,41 @@ function checkPassword(event) {
 
     /* WRONG PASSWORD */
 
-    if (input !== correctPassword) {
+    if (
+        input !==
+        correctPassword
+    ) {
 
-        lock.classList.remove("shake");
+        lock.classList.remove(
+            "shake"
+        );
 
-        /*
-        Force the animation to restart
-        every time.
-        */
 
         void lock.offsetWidth;
 
-        lock.classList.add("shake");
+
+        lock.classList.add(
+            "shake"
+        );
+
 
         error.textContent =
             "ACCESS DENIED • INVALID CODE";
 
-        document
-            .getElementById("passwordInput")
-            .value = "";
 
         document
-            .getElementById("passwordInput")
+            .getElementById(
+                "passwordInput"
+            )
+            .value = "";
+
+
+        document
+            .getElementById(
+                "passwordInput"
+            )
             .focus();
+
 
         return;
     }
@@ -1183,25 +1767,25 @@ function checkPassword(event) {
 
     error.textContent = "";
 
-    document
-        .getElementById("passwordInput")
-        .disabled = true;
 
     document
-        .querySelector(".access-button")
+        .getElementById(
+            "passwordInput"
+        )
         .disabled = true;
 
-    /*
-    Animate lock opening.
-    */
 
-    lock.classList.add("unlocked");
+    document
+        .querySelector(
+            ".access-button"
+        )
+        .disabled = true;
 
 
-    /*
-    Show the tiny confirmation after
-    the lock animation.
-    */
+    lock.classList.add(
+        "unlocked"
+    );
+
 
     setTimeout(() => {
 
@@ -1213,10 +1797,124 @@ function checkPassword(event) {
 
 
 /* ==========================================
+   HIDDEN PREVIEW MODE
+========================================== */
+
+let recipientClicks = 0;
+
+let recipientClickTimer = null;
+
+
+const previewTrigger =
+    document.getElementById(
+        "previewTrigger"
+    );
+
+
+const previewBox =
+    document.getElementById(
+        "previewBox"
+    );
+
+
+const previewPin =
+    document.getElementById(
+        "previewPin"
+    );
+
+
+previewTrigger.addEventListener(
+    "click",
+    function() {
+
+        recipientClicks++;
+
+
+        clearTimeout(
+            recipientClickTimer
+        );
+
+
+        recipientClickTimer =
+            setTimeout(() => {
+
+                recipientClicks = 0;
+
+            }, 700);
+
+
+        if (
+            recipientClicks === 3
+        ) {
+
+            recipientClicks = 0;
+
+
+            previewBox.style.display =
+                "block";
+
+
+            previewPin.focus();
+        }
+    }
+);
+
+
+/* Enter PIN with keyboard */
+
+previewPin.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            activatePreview();
+
+        }
+    }
+);
+
+
+/* Activate developer preview */
+
+function activatePreview() {
+
+    if (
+        previewPin.value !==
+        "5071"
+    ) {
+
+        previewPin.value = "";
+
+        previewPin.placeholder =
+            "INVALID";
+
+        return;
+    }
+
+
+    previewActivated = true;
+
+
+    previewBox.style.display =
+        "none";
+
+
+    previewPin.value = "";
+
+
+    showPasswordScreen();
+}
+
+
+/* ==========================================
    START
 ========================================== */
 
 updateCountdown();
+
 
 setInterval(
     updateCountdown,
