@@ -1,16 +1,22 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MISSION 61</title>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
 
-/* =========================================================
-   GLOBAL
-========================================================= */
+:root {
+    --navy: #07111c;
+    --navy2: #0b1724;
+    --cream: #f2ead8;
+    --muted: #a9a99f;
+    --line: rgba(242, 234, 216, 0.25);
+    --soft: rgba(242, 234, 216, 0.09);
+}
 
 * {
     box-sizing: border-box;
@@ -18,2077 +24,1642 @@
     padding: 0;
 }
 
-html,
-body {
-    width: 100%;
+html, body {
     min-height: 100%;
 }
 
 body {
+    min-height: 100vh;
     background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,255,255,.05),
-            transparent 25%
-        ),
-        radial-gradient(
-            circle at 80% 80%,
-            rgba(255,255,255,.04),
-            transparent 25%
-        ),
-        #090b10;
-
-    color: #f4f4f4;
-
-    font-family:
-        Arial,
-        Helvetica,
-        sans-serif;
-
+        radial-gradient(circle at 50% 0%, rgba(39,64,86,.35), transparent 50%),
+        linear-gradient(135deg, var(--navy), var(--navy2) 55%, #050b12);
+    color: var(--cream);
+    font-family: "Inter", Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     overflow-x: hidden;
 }
 
-
-/* =========================================================
-   APP
-========================================================= */
-
-#app {
-    min-height: 100vh;
-
-    display: flex;
-    flex-direction: column;
-
-    position: relative;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-header {
-    height: 90px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    padding: 0 7vw;
-
-    border-bottom:
-        1px solid rgba(255,255,255,.08);
-
-    background:
-        rgba(8,10,15,.82);
-
-    backdrop-filter:
-        blur(12px);
-}
-
-.logo {
-    font-size: 22px;
-
-    font-weight: 900;
-
-    letter-spacing: 5px;
-}
-
-.status {
-    font-size: 11px;
-
-    letter-spacing: 3px;
-
-    color: #aaa;
-}
-
-.status span {
-    color: #65ff9a;
-}
-
-
-/* =========================================================
-   MAIN
-========================================================= */
-
-main {
-    flex: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    padding: 60px 20px;
-}
-
-.panel {
-    width: min(900px, 94vw);
-
-    text-align: center;
-}
-
-
-/* =========================================================
-   TEXT
-========================================================= */
-
-.eyebrow {
-    font-size: 11px;
-
-    letter-spacing: 5px;
-
-    color: #8d939e;
-
-    margin-bottom: 22px;
-}
-
-h1 {
-    font-size:
-        clamp(52px, 10vw, 105px);
-
-    letter-spacing: 10px;
-
-    font-weight: 900;
-
-    line-height: .95;
-}
-
-.subtitle {
-    margin-top: 24px;
-
-    color: #9ca1aa;
-
-    letter-spacing: 2px;
-
-    font-size: 14px;
-}
-
-
-/* =========================================================
-   COUNTDOWN
-========================================================= */
-
-.countdown {
-    margin: 55px auto;
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, 1fr);
-
-    gap: 14px;
-
-    max-width: 700px;
-}
-
-.time-box {
-    border:
-        1px solid rgba(255,255,255,.13);
-
-    background:
-        rgba(255,255,255,.025);
-
-    padding: 24px 10px;
-
-    border-radius: 8px;
-}
-
-.time-number {
-    font-size:
-        clamp(30px, 6vw, 55px);
-
-    font-weight: 800;
-}
-
-.time-label {
-    margin-top: 8px;
-
-    color: #777d88;
-
-    font-size: 9px;
-
-    letter-spacing: 3px;
-}
-
-
-/* =========================================================
-   RECIPIENT
-========================================================= */
-
-.recipient {
-    margin-top: 70px;
-
-    font-size: 12px;
-
-    letter-spacing: 4px;
-
-    color: #6f7580;
-
-    user-select: none;
-
-    cursor: pointer;
-}
-
-.recipient strong {
-    color: #fff;
-}
-
-
-/* =========================================================
-   PREVIEW PIN
-========================================================= */
-
-#pinBox {
-    display: none;
-
-    margin-top: 15px;
-}
-
-#pinInput {
-    width: 130px;
-
-    padding: 11px;
-
-    text-align: center;
-
-    background:
-        rgba(255,255,255,.05);
-
-    color: white;
-
-    border:
-        1px solid rgba(255,255,255,.2);
-
-    border-radius: 5px;
-
-    letter-spacing: 4px;
-
-    outline: none;
-}
-
-
-/* =========================================================
-   PASSWORD SCREEN
-========================================================= */
-
-#accessScreen {
-    display: none;
-
-    width: 100%;
-
-    text-align: center;
-}
-
-.lock {
-    width: 105px;
-    height: 105px;
-
-    margin:
-        0 auto 35px;
-
-    border:
-        2px solid rgba(255,255,255,.5);
-
-    border-radius: 50%;
-
-    display: flex;
-
-    align-items: center;
-    justify-content: center;
-
-    font-size: 45px;
-}
-
-.lock.jiggle {
-    animation:
-        jiggle .55s ease;
-}
-
-@keyframes jiggle {
-
-    0% {
-        transform:
-            translateX(0)
-            rotate(0);
-    }
-
-    20% {
-        transform:
-            translateX(-10px)
-            rotate(-6deg);
-    }
-
-    40% {
-        transform:
-            translateX(10px)
-            rotate(6deg);
-    }
-
-    60% {
-        transform:
-            translateX(-7px)
-            rotate(-4deg);
-    }
-
-    80% {
-        transform:
-            translateX(7px)
-            rotate(4deg);
-    }
-
-    100% {
-        transform:
-            translateX(0)
-            rotate(0);
-    }
-}
-
-
-/* =========================================================
-   PASSWORD INPUT
-========================================================= */
-
-.password-wrap {
-    margin:
-        30px auto 0;
-
-    display: flex;
-
-    max-width: 430px;
-
-    gap: 10px;
-}
-
-.password-wrap input {
-    flex: 1;
-
-    min-width: 0;
-
-    background:
-        rgba(255,255,255,.05);
-
-    border:
-        1px solid rgba(255,255,255,.15);
-
-    border-radius: 6px;
-
-    padding: 17px;
-
-    color: white;
-
-    outline: none;
-
-    text-align: center;
-
-    letter-spacing: 4px;
-
-    font-size: 16px;
-}
-
-.password-wrap input:focus {
-    border-color:
-        rgba(255,255,255,.5);
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-button {
-    border: 0;
-
-    background: white;
-
-    color: #090b10;
-
-    padding:
-        0 25px;
-
-    border-radius: 6px;
-
-    font-weight: 800;
-
-    cursor: pointer;
-
-    letter-spacing: 2px;
-
-    transition:
-        transform .2s ease,
-        opacity .2s ease;
-}
-
-button:hover {
-    transform:
-        translateY(-2px);
-}
-
-button:disabled {
-    cursor: not-allowed;
-
-    opacity: .5;
-
-    transform: none;
-}
-
-
-/* =========================================================
-   UNLOCK ANIMATION
-========================================================= */
-
-#unlockOverlay {
+body::before {
+    content: "";
     position: fixed;
-
     inset: 0;
-
-    background: #050609;
-
-    z-index: 1000;
-
-    display: none;
-
-    align-items: center;
-
-    justify-content: center;
+    background-image:
+        linear-gradient(rgba(242,234,216,.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(242,234,216,.025) 1px, transparent 1px);
+    background-size: 45px 45px;
+    pointer-events: none;
+    opacity: .6;
 }
 
-.unlock-content {
-    text-align: center;
+.page {
+    width: min(920px, 92%);
+    padding: 45px 0;
+    position: relative;
+    z-index: 2;
 }
 
-.big-lock {
-    font-size: 90px;
-
-    margin-bottom: 30px;
-}
-
-.unlock-text {
-    font-size: 12px;
-
-    letter-spacing: 6px;
-
-    color: #999;
-}
-
-.unlock-bar {
-    width:
-        min(500px, 80vw);
-
-    height: 2px;
-
+.document {
+    position: relative;
+    border: 1px solid var(--line);
     background:
-        rgba(255,255,255,.12);
-
-    margin-top: 30px;
-
-    overflow: hidden;
+        linear-gradient(145deg, rgba(15,29,43,.97), rgba(5,13,21,.98));
+    padding: clamp(30px, 6vw, 65px);
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.04);
 }
 
-.unlock-bar div {
-    width: 0;
-
-    height: 100%;
-
-    background: white;
+.document::before,
+.document::after {
+    content: "";
+    position: absolute;
+    width: 35px;
+    height: 35px;
 }
 
-.unlocking .unlock-bar div {
-    animation:
-        loadBar 2.4s linear forwards;
+.document::before {
+    top: 15px;
+    left: 15px;
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
 }
 
-@keyframes loadBar {
-
-    from {
-        width: 0;
-    }
-
-    to {
-        width: 100%;
-    }
+.document::after {
+    right: 15px;
+    bottom: 15px;
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 }
 
-.big-lock.unlocking-lock {
-    animation:
-        unlockLock 2.4s ease forwards;
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    border-bottom: 1px solid var(--soft);
+    padding-bottom: 18px;
+    margin-bottom: 55px;
 }
 
-@keyframes unlockLock {
-
-    0% {
-        transform:
-            scale(1)
-            rotate(0);
-    }
-
-    35% {
-        transform:
-            scale(1.12)
-            rotate(-5deg);
-    }
-
-    55% {
-        transform:
-            scale(1.12)
-            rotate(5deg);
-    }
-
-    75% {
-        transform:
-            scale(1.25)
-            rotate(-3deg);
-    }
-
-    100% {
-        transform:
-            scale(0);
-
-        opacity: 0;
-    }
+.classification,
+.document-number {
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
 }
 
-
-/* =========================================================
-   ERROR
-========================================================= */
-
-#errorScreen {
-    display: none;
-
+.title-area {
     text-align: center;
-}
-
-.error-code {
-    font-family: monospace;
-
-    font-size:
-        clamp(25px, 6vw, 55px);
-
-    letter-spacing: 2px;
-
-    color: #ff6b6b;
-}
-
-.error-small {
-    color: #777;
-
-    margin-top: 20px;
-
-    font-family: monospace;
-
-    font-size: 13px;
-}
-
-
-/* =========================================================
-   SCRATCHCARD AREA
-========================================================= */
-
-#scratchArea {
-    display: none;
-
-    width: 100%;
-}
-
-.scratch-heading {
-    text-align: center;
-
     margin-bottom: 50px;
 }
 
-.scratch-heading h2 {
-    font-size:
-        clamp(30px, 6vw, 55px);
-
-    letter-spacing: 5px;
-}
-
-.scratch-heading p {
-    margin-top: 15px;
-
-    color: #777;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================================
-   CARD GRID
-========================================================= */
-
-.cards {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(250px, 1fr));
-
-    gap: 35px;
-
-    max-width: 850px;
-
-    margin: auto;
-}
-
-.scratch-card {
-    position: relative;
-
-    height: 330px;
-
-    border:
-        1px solid rgba(255,255,255,.13);
-
-    border-radius: 12px;
-
-    overflow: hidden;
-
-    background:
-        radial-gradient(
-            circle at 20% 20%,
-            rgba(255,255,255,.07),
-            transparent 25%
-        ),
-        linear-gradient(
-            135deg,
-            #12151c,
-            #090b10
-        );
-
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-
-    justify-content: center;
-
-    padding: 30px;
-
-    transition:
-        transform .3s ease,
-        opacity .3s ease;
-}
-
-.scratch-card:hover {
-    transform:
-        translateY(-4px);
-}
-
-.card-number {
+.eyebrow {
+    font-family: "DM Mono", monospace;
     font-size: 11px;
-
     letter-spacing: 4px;
+    color: var(--muted);
+    margin-bottom: 18px;
+}
 
-    color: #7d838e;
+h1 {
+    font-size: clamp(52px, 12vw, 115px);
+    line-height: .85;
+    letter-spacing: -5px;
+    font-weight: 800;
+    color: var(--cream);
+}
 
+.subtitle {
+    margin-top: 22px;
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.countdown {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    margin-bottom: 45px;
+}
+
+.count-box {
+    padding: 30px 10px;
+    text-align: center;
+    border-right: 1px solid var(--soft);
+}
+
+.count-box:last-child {
+    border-right: none;
+}
+
+.number {
+    font-family: "DM Mono", monospace;
+    font-size: clamp(30px, 6vw, 58px);
+    line-height: 1;
+    color: var(--cream);
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 12px;
+}
+
+.label {
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-transform: uppercase;
+}
+
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #a6c19e;
+    box-shadow: 0 0 10px rgba(166,193,158,.5);
+}
+
+.information {
+    border: 1px solid var(--soft);
+    padding: 25px;
+    text-align: center;
+    background: rgba(0,0,0,.12);
+}
+
+.information-title {
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--cream);
+    margin-bottom: 12px;
+}
+
+.information-text {
+    color: var(--muted);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer {
+    margin-top: 35px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #69727a;
+}
+
+/* PASSWORD */
+
+#passwordScreen {
+    display: none;
+    text-align: center;
+}
+
+.lock-container {
+    height: 130px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-bottom: 20px;
 }
 
-.card-title {
-    font-size: 30px;
-
-    font-weight: 900;
-
-    letter-spacing: 3px;
+.lock {
+    position: relative;
+    width: 72px;
+    height: 65px;
+    background: var(--cream);
+    border-radius: 7px;
+    box-shadow: 0 15px 35px rgba(0,0,0,.3);
+    transition: transform .2s ease;
 }
 
-.card-description {
-    color: #777;
+.lock::before {
+    content: "";
+    position: absolute;
+    width: 39px;
+    height: 43px;
+    border: 8px solid var(--cream);
+    border-bottom: none;
+    border-radius: 22px 22px 0 0;
+    left: 50%;
+    top: -34px;
+    transform: translateX(-50%);
+    transition:
+        transform .45s cubic-bezier(.2,1.6,.4,1),
+        top .45s cubic-bezier(.2,1.6,.4,1);
+}
 
-    margin-top: 12px;
+.lock::after {
+    content: "";
+    position: absolute;
+    width: 9px;
+    height: 17px;
+    background: var(--navy);
+    border-radius: 7px;
+    left: 50%;
+    top: 23px;
+    transform: translateX(-50%);
+}
 
+.lock.shake {
+    animation: shakeLock .5s ease;
+}
+
+@keyframes shakeLock {
+    0% { transform: translateX(0) rotate(0); }
+    20% { transform: translateX(-9px) rotate(-4deg); }
+    40% { transform: translateX(8px) rotate(4deg); }
+    60% { transform: translateX(-6px) rotate(-3deg); }
+    80% { transform: translateX(5px) rotate(2deg); }
+    100% { transform: translateX(0) rotate(0); }
+}
+
+.lock.unlocked {
+    transform: scale(1.08);
+}
+
+.lock.unlocked::before {
+    transform: translateX(-50%) rotate(-32deg);
+    top: -48px;
+}
+
+.password-title {
+    font-size: clamp(35px, 7vw, 60px);
+    letter-spacing: -2px;
+    margin-bottom: 15px;
+}
+
+.password-subtitle {
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-bottom: 40px;
+}
+
+.password-form {
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.password-input {
+    width: 100%;
+    padding: 19px 20px;
+    background: rgba(0,0,0,.25);
+    border: 1px solid var(--line);
+    color: var(--cream);
+    font-family: "DM Mono", monospace;
+    font-size: 20px;
+    letter-spacing: 4px;
     text-align: center;
+    outline: none;
+    text-transform: uppercase;
+}
 
-    font-size: 12px;
+.password-input:focus {
+    border-color: rgba(242,234,216,.65);
+    box-shadow: 0 0 0 3px rgba(242,234,216,.04);
+}
 
+.password-input::placeholder {
+    color: #5d656d;
+}
+
+.access-button {
+    width: 100%;
+    margin-top: 14px;
+    padding: 18px;
+    border: 1px solid var(--cream);
+    background: var(--cream);
+    color: #07111c;
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.access-button:hover {
+    background: transparent;
+    color: var(--cream);
+}
+
+.error {
+    min-height: 22px;
+    margin-top: 15px;
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #c99a8e;
+}
+
+/* SECRET PREVIEW */
+
+.preview-pin {
+    display: none;
+    margin-top: 15px;
+    text-align: center;
+}
+
+.preview-pin input {
+    width: 130px;
+    padding: 10px;
+    background: rgba(0,0,0,.25);
+    border: 1px solid var(--line);
+    color: var(--cream);
+    font-family: "DM Mono", monospace;
+    text-align: center;
+    letter-spacing: 4px;
+    outline: none;
+}
+
+/* UNLOCK */
+
+#unlockOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 5000;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy);
+}
+
+.unlock-inner {
+    width: min(520px,85vw);
+    text-align: center;
+}
+
+.unlock-lock {
+    position: relative;
+    width: 72px;
+    height: 65px;
+    background: var(--cream);
+    border-radius: 7px;
+    margin: 0 auto 45px;
+    box-shadow: 0 20px 50px rgba(0,0,0,.4);
+}
+
+.unlock-lock::before {
+    content: "";
+    position: absolute;
+    width: 39px;
+    height: 43px;
+    border: 8px solid var(--cream);
+    border-bottom: none;
+    border-radius: 22px 22px 0 0;
+    left: 50%;
+    top: -34px;
+    transform: translateX(-50%);
+    transform-origin: 50% 100%;
+}
+
+.unlock-lock.opening {
+    animation: unlockBody 1.7s cubic-bezier(.2,.9,.25,1) forwards;
+}
+
+.unlock-lock.opening::before {
+    animation: unlockShackle 1.7s cubic-bezier(.2,1.4,.3,1) forwards;
+}
+
+@keyframes unlockBody {
+    0% { transform: scale(1); }
+    55% { transform: scale(1.13); }
+    75% { transform: scale(.98); }
+    100% { transform: scale(1); }
+}
+
+@keyframes unlockShackle {
+    0% {
+        transform: translateX(-50%) rotate(0);
+        top: -34px;
+    }
+    45% {
+        transform: translateX(-50%) rotate(-10deg);
+    }
+    75% {
+        transform: translateX(-50%) rotate(-38deg);
+        top: -48px;
+    }
+    100% {
+        transform: translateX(-50%) rotate(-32deg);
+        top: -48px;
+    }
+}
+
+.unlock-title {
+    font-family: "DM Mono", monospace;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--muted);
+}
+
+.unlock-line {
+    width: 100%;
+    height: 1px;
+    margin-top: 25px;
+    background: var(--soft);
+}
+
+.unlock-line span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--cream);
+}
+
+#unlockOverlay.active .unlock-line span {
+    animation: unlockProgress 2.1s linear forwards;
+}
+
+@keyframes unlockProgress {
+    to { width: 100%; }
+}
+
+/* ERROR */
+
+#missionError {
+    display: none;
+    text-align: center;
+}
+
+.mission-error-title {
+    font-family: "DM Mono", monospace;
+    font-size: clamp(15px,3vw,23px);
+    letter-spacing: 2px;
     line-height: 1.6;
 }
 
-.play-button {
-    margin-top: 30px;
-
-    height: 48px;
-
-    padding:
-        0 30px;
+.mission-error-title span {
+    color: #c99a8e;
 }
 
-.locked-card {
-    opacity: .4;
-
-    filter: grayscale(1);
-}
-
-.locked-card::after {
-    content: "LOCKED";
-
-    position: absolute;
-
-    top: 20px;
-
-    right: 20px;
-
+.mission-error-detail {
+    margin-top: 15px;
+    font-family: "DM Mono", monospace;
     font-size: 9px;
-
-    letter-spacing: 3px;
-
-    color: #aaa;
+    letter-spacing: 2px;
+    color: #69727a;
 }
 
+/* SCRATCHCARD AREA */
 
-/* =========================================================
-   SCRATCH MODAL
-========================================================= */
+#scratchArea {
+    display: none;
+}
+
+.scratch-header {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.scratch-header h2 {
+    font-size: clamp(35px,7vw,62px);
+    letter-spacing: -2px;
+    line-height: .95;
+}
+
+.scratch-header p {
+    margin-top: 18px;
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+}
+
+.scratch-grid {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 20px;
+}
+
+.scratch-choice {
+    border: 1px solid var(--line);
+    background: rgba(0,0,0,.14);
+    padding: 26px;
+    min-height: 245px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s ease, border-color .25s ease, opacity .25s ease;
+}
+
+.scratch-choice:hover {
+    transform: translateY(-3px);
+    border-color: rgba(242,234,216,.45);
+}
+
+.scratch-choice.locked {
+    opacity: .42;
+}
+
+.scratch-choice.locked:hover {
+    transform: none;
+}
+
+.choice-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: var(--muted);
+}
+
+.choice-icon {
+    font-size: 30px;
+    margin: 25px 0 8px;
+}
+
+.choice-title {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: -1px;
+}
+
+.choice-text {
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.scratch-play {
+    margin-top: 25px;
+    width: 100%;
+    padding: 15px;
+    border: 1px solid var(--cream);
+    background: var(--cream);
+    color: var(--navy);
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    cursor: pointer;
+}
+
+.scratch-play:hover {
+    background: transparent;
+    color: var(--cream);
+}
+
+.scratch-play:disabled {
+    cursor: not-allowed;
+    opacity: .5;
+}
+
+.lock-label {
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #69727a;
+}
+
+/* SCRATCH MODAL */
 
 #scratchModal {
     display: none;
-
     position: fixed;
-
     inset: 0;
-
-    z-index: 2000;
-
+    z-index: 6000;
     align-items: center;
-
     justify-content: center;
-
-    background:
-        rgba(0,0,0,.55);
-
-    backdrop-filter:
-        blur(14px);
-
-    padding: 25px;
+    padding: 24px;
+    background: rgba(3,9,15,.72);
+    backdrop-filter: blur(12px);
 }
 
-.scratch-modal-inner {
-    width:
-        min(620px, 92vw);
-
+.scratch-modal-wrap {
+    width: min(650px,94vw);
     position: relative;
-
-    perspective: 1200px;
 }
 
 .scratch-modal-card {
+    width: 100%;
+    aspect-ratio: 1.55 / 1;
     position: relative;
-
-    width: 100%;
-
-    aspect-ratio:
-        1.65 / 1;
-
-    border-radius: 18px;
-
     overflow: hidden;
-
-    background: #12151c;
-
-    border:
-        1px solid rgba(255,255,255,.2);
-
-    box-shadow:
-        0 40px 100px
-        rgba(0,0,0,.7);
-
-    transform-style:
-        preserve-3d;
+    border: 1px solid var(--line);
+    background:
+        linear-gradient(145deg,rgba(15,29,43,.99),rgba(5,13,21,.99));
+    box-shadow: 0 35px 100px rgba(0,0,0,.65);
+    transform-style: preserve-3d;
 }
 
-.scratch-content {
+.scratch-under {
     position: absolute;
-
     inset: 0;
-
     display: flex;
-
     align-items: center;
-
     justify-content: center;
-
+    padding: 30px;
     text-align: center;
-
-    padding: 35px;
 }
 
-.scratch-content h3 {
-    font-size:
-        clamp(25px, 6vw, 48px);
+.scratch-under-content {
+    position: relative;
+    z-index: 1;
+}
 
+.scratch-under-label {
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    margin-bottom: 17px;
+}
+
+.scratch-under h3 {
+    font-size: clamp(25px,6vw,48px);
+    line-height: 1;
+    letter-spacing: -2px;
+}
+
+.scratch-under p {
+    margin-top: 16px;
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
     letter-spacing: 2px;
-
-    line-height: 1.1;
+    color: var(--muted);
 }
 
-.scratch-content p {
-    margin-top: 15px;
-
-    color: #999;
-}
-
-
-/* =========================================================
-   CANVAS
-========================================================= */
-
-canvas {
+#scratchCanvas {
     position: absolute;
-
     inset: 0;
-
     width: 100%;
-
     height: 100%;
-
     touch-action: none;
-
     cursor: crosshair;
 }
 
-
-/* =========================================================
-   CLOSE BUTTON
-========================================================= */
-
 .close-scratch {
     position: absolute;
-
-    top: -55px;
-
     right: 0;
-
-    background:
-        rgba(255,255,255,.1);
-
-    color: white;
-
-    width: 40px;
-
-    height: 40px;
-
-    border-radius: 50%;
-
-    padding: 0;
-
-    font-size: 18px;
+    top: -48px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--line);
+    background: rgba(7,17,28,.9);
+    color: var(--cream);
+    font-size: 20px;
+    cursor: pointer;
 }
 
-
-/* =========================================================
-   SCRATCH INSTRUCTION
-========================================================= */
-
-.scratch-instruction {
+.scratch-help {
     text-align: center;
-
-    color: #aaa;
-
-    font-size: 11px;
-
+    margin-top: 15px;
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
     letter-spacing: 2px;
-
-    margin-top: 18px;
+    color: #69727a;
 }
 
-
-/* =========================================================
-   WIN FLIP
-========================================================= */
-
-.flip-card {
-    animation:
-        flipWinner 1.4s ease forwards;
+.scratch-modal-card.flip {
+    animation: cardFlip 1.25s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
-@keyframes flipWinner {
-
+@keyframes cardFlip {
     0% {
-        transform:
-            rotateY(0deg);
+        transform: rotateY(0deg) scale(1);
     }
-
+    45% {
+        transform: rotateY(95deg) scale(1.04);
+    }
     100% {
-        transform:
-            rotateY(180deg);
+        transform: rotateY(180deg) scale(1);
     }
 }
 
+.fade-in {
+    animation: fadeIn .8s ease forwards;
+}
 
-/* =========================================================
-   MOBILE
-========================================================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-@media(max-width: 650px) {
+@media (max-width:650px) {
 
-    header {
-        height: 70px;
-
-        padding:
-            0 20px;
+    .page {
+        width: 94%;
     }
 
-    .logo {
-        font-size: 16px;
-
-        letter-spacing: 3px;
+    .document {
+        padding: 30px 20px;
     }
 
-    .status {
-        font-size: 8px;
+    .header {
+        margin-bottom: 40px;
     }
 
     .countdown {
-        gap: 7px;
+        grid-template-columns: repeat(2,1fr);
     }
 
-    .time-box {
-        padding:
-            18px 5px;
+    .count-box:nth-child(2) {
+        border-right: none;
     }
 
-    .time-label {
-        font-size: 7px;
-
-        letter-spacing: 1px;
+    .count-box:nth-child(1),
+    .count-box:nth-child(2) {
+        border-bottom: 1px solid var(--soft);
     }
 
-    .cards {
+    h1 {
+        letter-spacing: -3px;
+    }
+
+    .footer {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .scratch-grid {
         grid-template-columns: 1fr;
     }
-
-    .scratch-card {
-        height: 290px;
-    }
-
-    .password-wrap {
-        flex-direction: column;
-    }
-
-    .password-wrap button {
-        height: 50px;
-    }
 }
-
 </style>
 </head>
 
-
 <body>
 
+<div class="page">
+<main class="document">
 
-<div id="app">
+<!-- COUNTDOWN -->
 
+<section id="countdownScreen">
 
-<!-- =======================================================
-     HEADER
-======================================================= -->
-
-<header>
-
-    <div class="logo">
-        MISSION 61
-    </div>
-
-    <div class="status">
-        SYSTEM STATUS:
-        <span>ONLINE</span>
-    </div>
-
+<header class="header">
+<div class="classification">CLASSIFIED ACCESS SYSTEM</div>
+<div class="document-number">M61-001</div>
 </header>
 
+<div class="title-area">
+<div class="eyebrow">OPERATION</div>
+<h1>MISSION 61</h1>
+<div class="subtitle">Birthday Operation</div>
+</div>
 
-<main>
+<div class="status">
+<span class="status-dot"></span>
+MISSION STATUS: STANDBY
+</div>
 
+<div class="countdown">
 
-<!-- =======================================================
-     COUNTDOWN SCREEN
-======================================================= -->
+<div class="count-box">
+<div class="number" id="days">000</div>
+<div class="label">Days</div>
+</div>
 
-<section
-    class="panel"
-    id="countdownScreen"
+<div class="count-box">
+<div class="number" id="hours">00</div>
+<div class="label">Hours</div>
+</div>
+
+<div class="count-box">
+<div class="number" id="minutes">00</div>
+<div class="label">Minutes</div>
+</div>
+
+<div class="count-box">
+<div class="number" id="seconds">00</div>
+<div class="label">Seconds</div>
+</div>
+
+</div>
+
+<div class="information">
+<div class="information-title">ACCESS RESTRICTED</div>
+
+<div class="information-text">
+Mission details are currently unavailable.
+<br>
+Authorised access will be granted when the countdown reaches zero.
+</div>
+</div>
+
+<footer class="footer">
+
+<span id="recipientTrigger">
+RECIPIENT: MUM
+</span>
+
+<span>
+11 • 12 • 2026
+</span>
+
+<span>
+CLEARANCE: PENDING
+</span>
+
+</footer>
+
+<div class="preview-pin" id="previewPin">
+<input
+id="previewPinInput"
+type="text"
+inputmode="numeric"
+maxlength="4"
+placeholder="PIN"
 >
-
-    <div class="eyebrow">
-        CLASSIFIED BIRTHDAY OPERATION
-    </div>
-
-    <h1>
-        MISSION 61
-    </h1>
-
-    <div class="subtitle">
-        YOUR MISSION WILL BEGIN WHEN
-        THE COUNTDOWN REACHES ZERO.
-    </div>
-
-
-    <div class="countdown">
-
-
-        <div class="time-box">
-
-            <div
-                class="time-number"
-                id="days"
-            >
-                00
-            </div>
-
-            <div class="time-label">
-                DAYS
-            </div>
-
-        </div>
-
-
-        <div class="time-box">
-
-            <div
-                class="time-number"
-                id="hours"
-            >
-                00
-            </div>
-
-            <div class="time-label">
-                HOURS
-            </div>
-
-        </div>
-
-
-        <div class="time-box">
-
-            <div
-                class="time-number"
-                id="minutes"
-            >
-                00
-            </div>
-
-            <div class="time-label">
-                MINUTES
-            </div>
-
-        </div>
-
-
-        <div class="time-box">
-
-            <div
-                class="time-number"
-                id="seconds"
-            >
-                00
-            </div>
-
-            <div class="time-label">
-                SECONDS
-            </div>
-
-        </div>
-
-
-    </div>
-
-
-    <!-- Triple-click this -->
-
-    <div
-        class="recipient"
-        id="recipient"
-    >
-
-        RECIPIENT:
-        <strong>MUM</strong>
-
-    </div>
-
-
-    <!-- Hidden preview PIN -->
-
-    <div id="pinBox">
-
-        <input
-            id="pinInput"
-            maxlength="4"
-            inputmode="numeric"
-            placeholder="PIN"
-        >
-
-    </div>
-
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     PASSWORD SCREEN
-======================================================= -->
+<!-- PASSWORD -->
 
-<section
-    class="panel"
-    id="accessScreen"
+<section id="passwordScreen" class="fade-in">
+
+<div class="lock-container">
+<div id="lock" class="lock"></div>
+</div>
+
+<h2 class="password-title">
+ACCESS REQUIRED
+</h2>
+
+<div class="password-subtitle">
+MISSION 61 HAS BEEN ACTIVATED
+</div>
+
+<form
+class="password-form"
+onsubmit="checkPassword(event)"
 >
 
+<input
+id="passwordInput"
+class="password-input"
+type="text"
+autocomplete="off"
+autocapitalize="characters"
+spellcheck="false"
+placeholder="ACCESS CODE"
+maxlength="9"
+>
 
-    <div
-        class="lock"
-        id="lockIcon"
-    >
-        🔒
-    </div>
+<button
+class="access-button"
+type="submit"
+>
+AUTHENTICATE
+</button>
 
+<div
+id="error"
+class="error"
+></div>
 
-    <div class="eyebrow">
-        MISSION 61 ACCESS CONTROL
-    </div>
+</form>
 
+<footer class="footer">
 
-    <h1
-        style="
-        font-size:
-        clamp(35px,7vw,65px);
-        "
-    >
-        ACCESS REQUIRED
-    </h1>
+<span>
+CLEARANCE REQUIRED
+</span>
 
+<span>
+M61-001
+</span>
 
-    <div class="subtitle">
-        ENTER THE CODE PROVIDED
-        WITH YOUR MISSION.
-    </div>
-
-
-    <div class="password-wrap">
-
-
-        <input
-            id="passwordInput"
-            type="password"
-            placeholder="PASSWORD"
-            autocomplete="off"
-        >
-
-
-        <button
-            id="unlockButton"
-        >
-            UNLOCK
-        </button>
-
-
-    </div>
-
+</footer>
 
 </section>
 
 
-<!-- =======================================================
-     ERROR SCREEN
-======================================================= -->
+<!-- MISSION ERROR -->
 
-<section
-    class="panel"
-    id="errorScreen"
->
+<section id="missionError">
 
+<div class="mission-error-title">
+ERROR - <span>MISSION CONTENT NOT FOUND</span>
+</div>
 
-    <div class="error-code">
-        ERROR - MISSION CONTENT NOT FOUND
-    </div>
-
-
-    <div class="error-small">
-        Attempting recovery...
-    </div>
-
+<div class="mission-error-detail">
+SYSTEM RESPONSE: CONTENT RECOVERY FAILED
+</div>
 
 </section>
 
 
-<!-- =======================================================
-     SCRATCHCARDS
-======================================================= -->
+<!-- SCRATCHCARDS -->
 
-<section
-    id="scratchArea"
+<section id="scratchArea">
+
+<div class="scratch-header">
+
+<div class="eyebrow">
+MISSION 61 • FINAL STAGE
+</div>
+
+<h2>
+REWARD ACCESS
+</h2>
+
+<p>
+SELECT A SCRATCHCARD TO CONTINUE
+</p>
+
+</div>
+
+
+<div class="scratch-grid">
+
+
+<!-- CARD 1 -->
+
+<div class="scratch-choice">
+
+<div>
+
+<div class="choice-top">
+<span>SCRATCHCARD 01</span>
+<span>01 / 02</span>
+</div>
+
+<div class="choice-icon">
+▧
+</div>
+
+<div class="choice-title">
+FIRST CHANCE
+</div>
+
+<div class="choice-text">
+Every mission needs a first attempt.
+Scratch the card to reveal your result.
+</div>
+
+</div>
+
+<button
+class="scratch-play"
+id="playCard1"
+>
+PLAY
+</button>
+
+</div>
+
+
+<!-- CARD 2 -->
+
+<div
+class="scratch-choice locked"
+id="choice2"
 >
 
+<div>
 
-    <div class="scratch-heading">
+<div class="choice-top">
+<span>SCRATCHCARD 02</span>
+<span>02 / 02</span>
+</div>
 
-        <div class="eyebrow">
-            MISSION 61 // FINAL STAGE
-        </div>
+<div class="choice-icon">
+◇
+</div>
 
-        <h2>
-            YOUR REWARD
-        </h2>
+<div class="choice-title">
+CLASSIFIED
+</div>
 
-        <p>
-            TWO CARDS. ONE WINNER.
-        </p>
+<div class="choice-text">
+This card remains locked until the
+first card has been completely scratched.
+</div>
 
-    </div>
+</div>
 
+<div>
 
-    <div class="cards">
+<div
+class="lock-label"
+id="card2Status"
+>
+LOCKED • COMPLETE CARD 01
+</div>
 
+<button
+class="scratch-play"
+id="playCard2"
+disabled
+>
+LOCKED
+</button>
 
-        <!-- =================================================
-             SCRATCHCARD 1
-        ================================================== -->
+</div>
 
-        <div
-            class="scratch-card"
-            id="card1"
-        >
+</div>
 
-            <div class="card-number">
-                SCRATCHCARD 01
-            </div>
-
-            <div class="card-title">
-                TRY YOUR LUCK
-            </div>
-
-            <div class="card-description">
-                Your first mission awaits.
-            </div>
-
-            <button
-                class="play-button"
-                id="playCard1"
-            >
-                PLAY
-            </button>
-
-        </div>
+</div>
 
 
-        <!-- =================================================
-             SCRATCHCARD 2
-        ================================================== -->
+<footer class="footer">
 
-        <div
-            class="
-                scratch-card
-                locked-card
-            "
-            id="card2"
-        >
+<span>
+REWARD SYSTEM: ACTIVE
+</span>
 
-            <div class="card-number">
-                SCRATCHCARD 02
-            </div>
+<span>
+M61-001
+</span>
 
-            <div class="card-title">
-                ???
-            </div>
+<span>
+CLEARANCE: FINAL
+</span>
 
-            <div class="card-description">
-                Complete Scratchcard 01
-                to unlock.
-            </div>
-
-            <button
-                class="play-button"
-                id="playCard2"
-                disabled
-            >
-                LOCKED
-            </button>
-
-        </div>
-
-
-    </div>
-
+</footer>
 
 </section>
-
 
 </main>
+</div>
 
+
+<!-- UNLOCK ANIMATION -->
+
+<div id="unlockOverlay">
+
+<div class="unlock-inner">
+
+<div
+id="unlockLock"
+class="unlock-lock"
+></div>
+
+<div
+id="unlockTitle"
+class="unlock-title"
+>
+AUTHENTICATING ACCESS
+</div>
+
+<div class="unlock-line">
+<span></span>
+</div>
+
+</div>
 
 </div>
 
 
-<!-- =======================================================
-     UNLOCK ANIMATION
-======================================================= -->
+<!-- SCRATCH MODAL -->
+
+<div id="scratchModal">
+
+<div class="scratch-modal-wrap">
+
+<button
+class="close-scratch"
+id="closeScratch"
+>
+×
+</button>
 
 <div
-    id="unlockOverlay"
+class="scratch-modal-card"
+id="scratchModalCard"
 >
 
+<div class="scratch-under">
 
-    <div class="unlock-content">
+<div class="scratch-under-content">
 
+<div
+class="scratch-under-label"
+id="scratchUnderLabel"
+>
+MISSION 61 • SCRATCHCARD 01
+</div>
 
-        <div
-            class="big-lock"
-            id="bigLock"
-        >
-            🔒
-        </div>
+<h3 id="scratchResult">
+SORRY, BETTER LUCK NEXT TIME.
+</h3>
 
-
-        <div
-            class="unlock-text"
-            id="unlockText"
-        >
-            AUTHENTICATING
-        </div>
-
-
-        <div class="unlock-bar">
-
-            <div></div>
-
-        </div>
-
-
-    </div>
-
+<p id="scratchResultSub">
+RESULT REVEALED
+</p>
 
 </div>
 
+</div>
 
-<!-- =======================================================
-     SCRATCHCARD MODAL
-======================================================= -->
+<canvas id="scratchCanvas"></canvas>
 
-<div
-    id="scratchModal"
->
+</div>
 
+<div class="scratch-help">
+SCRATCH WITH YOUR MOUSE OR FINGER
+</div>
 
-    <div
-        class="scratch-modal-inner"
-    >
-
-
-        <button
-            class="close-scratch"
-            id="closeScratch"
-        >
-            ×
-        </button>
-
-
-        <div
-            class="scratch-modal-card"
-            id="scratchCardContainer"
-        >
-
-
-            <!-- Hidden message underneath scratch layer -->
-
-            <div
-                class="scratch-content"
-                id="scratchContent"
-            >
-
-                <div>
-
-                    <h3
-                        id="scratchMessage"
-                    >
-                        SCRATCH TO REVEAL
-                    </h3>
-
-                    <p>
-                        Keep scratching...
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <!-- Actual scratch surface -->
-
-            <canvas
-                id="scratchCanvas"
-            >
-            </canvas>
-
-
-        </div>
-
-
-        <div class="scratch-instruction">
-            USE YOUR FINGER OR MOUSE TO SCRATCH
-        </div>
-
-
-    </div>
-
+</div>
 
 </div>
 
 
 <script>
 
-
-/* =========================================================
-   MISSION 61 SETTINGS
-========================================================= */
-
-
-/*
-    THIS IS THE ACTUAL PASSWORD.
-
-    It is case-sensitive.
-
-    Password:
-    K7Q4-9M2X
-*/
+/* ==========================================
+   SETTINGS
+========================================== */
 
 const ACCESS_PASSWORD = "K7Q4-9M2X";
-
-
-/*
-    REAL COUNTDOWN DATE
-*/
-
-const TARGET_DATE =
-    new Date(
-        "December 11, 2026 00:00:00"
-    );
-
-
-/*
-    PREVIEW PIN
-
-    Triple-click MUM and enter:
-
-    5071
-*/
-
 const PREVIEW_PIN = "5071";
 
+const targetDate =
+    new Date("2026-12-11T00:00:00");
 
-/* =========================================================
+
+/* ==========================================
    ELEMENTS
-========================================================= */
+========================================== */
 
 const countdownScreen =
-    document.getElementById(
-        "countdownScreen"
-    );
+    document.getElementById("countdownScreen");
 
-const accessScreen =
-    document.getElementById(
-        "accessScreen"
-    );
+const passwordScreen =
+    document.getElementById("passwordScreen");
 
-const errorScreen =
-    document.getElementById(
-        "errorScreen"
-    );
+const missionError =
+    document.getElementById("missionError");
 
 const scratchArea =
-    document.getElementById(
-        "scratchArea"
-    );
-
-const recipient =
-    document.getElementById(
-        "recipient"
-    );
-
-const pinBox =
-    document.getElementById(
-        "pinBox"
-    );
-
-const pinInput =
-    document.getElementById(
-        "pinInput"
-    );
+    document.getElementById("scratchArea");
 
 const passwordInput =
-    document.getElementById(
-        "passwordInput"
-    );
+    document.getElementById("passwordInput");
 
-const unlockButton =
-    document.getElementById(
-        "unlockButton"
-    );
+const lock =
+    document.getElementById("lock");
 
-const lockIcon =
-    document.getElementById(
-        "lockIcon"
-    );
+const error =
+    document.getElementById("error");
 
 const unlockOverlay =
-    document.getElementById(
-        "unlockOverlay"
-    );
+    document.getElementById("unlockOverlay");
 
-const bigLock =
-    document.getElementById(
-        "bigLock"
-    );
+const unlockLock =
+    document.getElementById("unlockLock");
 
-const unlockText =
-    document.getElementById(
-        "unlockText"
-    );
+const unlockTitle =
+    document.getElementById("unlockTitle");
+
+const recipientTrigger =
+    document.getElementById("recipientTrigger");
+
+const previewPin =
+    document.getElementById("previewPin");
+
+const previewPinInput =
+    document.getElementById("previewPinInput");
+
+const scratchModal =
+    document.getElementById("scratchModal");
+
+const scratchModalCard =
+    document.getElementById("scratchModalCard");
+
+const scratchCanvas =
+    document.getElementById("scratchCanvas");
+
+const scratchContext =
+    scratchCanvas.getContext("2d");
+
+const scratchResult =
+    document.getElementById("scratchResult");
+
+const scratchResultSub =
+    document.getElementById("scratchResultSub");
+
+const scratchUnderLabel =
+    document.getElementById("scratchUnderLabel");
+
+const playCard1 =
+    document.getElementById("playCard1");
+
+const playCard2 =
+    document.getElementById("playCard2");
+
+const choice2 =
+    document.getElementById("choice2");
+
+const card2Status =
+    document.getElementById("card2Status");
+
+const closeScratch =
+    document.getElementById("closeScratch");
 
 
-/* =========================================================
+/* ==========================================
    COUNTDOWN
-========================================================= */
+========================================== */
+
+let passwordShown = false;
 
 function updateCountdown() {
 
     const now =
-        new Date();
+        new Date().getTime();
 
     const difference =
-        TARGET_DATE - now;
+        targetDate.getTime() - now;
 
-
-    /*
-        Countdown finished.
-    */
 
     if (difference <= 0) {
 
-        document.getElementById(
-            "days"
-        ).textContent = "00";
+        document.getElementById("days")
+            .textContent = "000";
 
-        document.getElementById(
-            "hours"
-        ).textContent = "00";
+        document.getElementById("hours")
+            .textContent = "00";
 
-        document.getElementById(
-            "minutes"
-        ).textContent = "00";
+        document.getElementById("minutes")
+            .textContent = "00";
 
-        document.getElementById(
-            "seconds"
-        ).textContent = "00";
+        document.getElementById("seconds")
+            .textContent = "00";
 
-
-        showAccessScreen();
+        showPasswordScreen();
 
         return;
     }
 
 
-    const secondsTotal =
-        Math.floor(
-            difference / 1000
-        );
-
-
     const days =
         Math.floor(
-            secondsTotal / 86400
+            difference /
+            (1000 * 60 * 60 * 24)
         );
-
 
     const hours =
         Math.floor(
-            (secondsTotal % 86400)
-            / 3600
+            (difference /
+            (1000 * 60 * 60)) % 24
         );
-
 
     const minutes =
         Math.floor(
-            (secondsTotal % 3600)
-            / 60
+            (difference /
+            (1000 * 60)) % 60
+        );
+
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
         );
 
 
-    const seconds =
-        secondsTotal % 60;
+    document.getElementById("days")
+        .textContent =
+        String(days).padStart(3,"0");
 
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2,"0");
 
-    document.getElementById(
-        "days"
-    ).textContent =
-        String(days)
-        .padStart(2, "0");
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2,"0");
 
-
-    document.getElementById(
-        "hours"
-    ).textContent =
-        String(hours)
-        .padStart(2, "0");
-
-
-    document.getElementById(
-        "minutes"
-    ).textContent =
-        String(minutes)
-        .padStart(2, "0");
-
-
-    document.getElementById(
-        "seconds"
-    ).textContent =
-        String(seconds)
-        .padStart(2, "0");
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2,"0");
 }
 
 
-updateCountdown();
+/* ==========================================
+   PASSWORD SCREEN
+========================================== */
+
+function showPasswordScreen() {
+
+    if (passwordShown)
+        return;
+
+    passwordShown = true;
+
+    countdownScreen.style.display =
+        "none";
+
+    missionError.style.display =
+        "none";
+
+    scratchArea.style.display =
+        "none";
+
+    passwordScreen.style.display =
+        "block";
+
+    setTimeout(() => {
+        passwordInput.focus();
+    }, 500);
+}
 
 
-setInterval(
-    updateCountdown,
-    1000
-);
-
-
-/* =========================================================
+/* ==========================================
    TRIPLE CLICK PREVIEW
-========================================================= */
+========================================== */
 
 let clickCount = 0;
+let clickTimer = null;
 
-let clickTimer;
-
-
-recipient.addEventListener(
+recipientTrigger.addEventListener(
     "click",
     () => {
 
         clickCount++;
 
-
-        clearTimeout(
-            clickTimer
-        );
-
+        clearTimeout(clickTimer);
 
         clickTimer =
-            setTimeout(
-                () => {
-
-                    clickCount = 0;
-
-                },
-                650
-            );
+            setTimeout(() => {
+                clickCount = 0;
+            }, 650);
 
 
         if (clickCount === 3) {
 
             clickCount = 0;
 
-
-            pinBox.style.display =
+            previewPin.style.display =
                 "block";
 
+            previewPinInput.value = "";
 
-            pinInput.focus();
-
+            previewPinInput.focus();
         }
 
     }
 );
 
 
-/* =========================================================
-   PREVIEW PIN
-========================================================= */
-
-pinInput.addEventListener(
+previewPinInput.addEventListener(
     "input",
     () => {
 
         if (
-            pinInput.value ===
+            previewPinInput.value ===
             PREVIEW_PIN
         ) {
 
-            pinInput.value = "";
+            previewPin.style.display =
+                "none";
 
-            showAccessScreen();
-
+            showPasswordScreen();
         }
 
     }
 );
 
 
-/* =========================================================
-   SHOW ACCESS SCREEN
-========================================================= */
+/* ==========================================
+   PASSWORD CHECK
+========================================== */
 
-function showAccessScreen() {
+function checkPassword(event) {
 
-    countdownScreen.style.display =
-        "none";
-
-
-    accessScreen.style.display =
-        "block";
-
-
-    window.scrollTo(
-        0,
-        0
-    );
-
-
-    setTimeout(
-        () => {
-
-            passwordInput.focus();
-
-        },
-        100
-    );
-}
-
-
-/* =========================================================
-   PASSWORD
-========================================================= */
-
-unlockButton.addEventListener(
-    "click",
-    checkPassword
-);
-
-
-passwordInput.addEventListener(
-    "keydown",
-    event => {
-
-        if (
-            event.key ===
-            "Enter"
-        ) {
-
-            checkPassword();
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   CHECK PASSWORD
-========================================================= */
-
-function checkPassword() {
+    event.preventDefault();
 
     const entered =
-        passwordInput.value.trim();
+        passwordInput.value
+            .trim()
+            .toUpperCase();
 
 
-    /*
-        Correct password.
-    */
+    /* WRONG */
 
     if (
-        entered ===
+        entered !==
         ACCESS_PASSWORD
     ) {
 
-        startUnlockAnimation();
+        lock.classList.remove("shake");
+
+        void lock.offsetWidth;
+
+        lock.classList.add("shake");
+
+        error.textContent =
+            "ACCESS DENIED • INVALID CODE";
+
+        passwordInput.value = "";
+
+        passwordInput.focus();
 
         return;
-
     }
 
 
-    /*
-        Incorrect password.
+    /* CORRECT */
 
-        Empty the input and
-        jiggle the lock.
-    */
+    error.textContent = "";
 
-    passwordInput.value = "";
+    passwordInput.disabled = true;
 
+    document
+        .querySelector(".access-button")
+        .disabled = true;
 
-    lockIcon.classList.remove(
-        "jiggle"
-    );
+    lock.classList.add("unlocked");
 
-
-    /*
-        Force browser to restart
-        the animation.
-    */
-
-    void lockIcon.offsetWidth;
-
-
-    lockIcon.classList.add(
-        "jiggle"
+    setTimeout(
+        startUnlockAnimation,
+        650
     );
 }
 
 
-/* =========================================================
+/* ==========================================
    UNLOCK ANIMATION
-========================================================= */
+========================================== */
 
 function startUnlockAnimation() {
 
-    accessScreen.style.display =
+    passwordScreen.style.display =
         "none";
-
 
     unlockOverlay.style.display =
         "flex";
 
-
     unlockOverlay.classList.remove(
-        "unlocking"
+        "active"
     );
 
-
-    bigLock.classList.remove(
-        "unlocking-lock"
+    unlockLock.classList.remove(
+        "opening"
     );
-
-
-    /*
-        Force animations to restart.
-    */
 
     void unlockOverlay.offsetWidth;
 
-
     unlockOverlay.classList.add(
-        "unlocking"
+        "active"
     );
 
-
-    bigLock.classList.add(
-        "unlocking-lock"
+    unlockLock.classList.add(
+        "opening"
     );
 
-
-    unlockText.textContent =
+    unlockTitle.textContent =
         "ACCESS GRANTED";
 
 
-    /*
-        End animation.
-    */
+    setTimeout(() => {
 
-    setTimeout(
-        () => {
+        unlockOverlay.style.display =
+            "none";
 
-            unlockOverlay.style.display =
-                "none";
+        showMissionError();
 
-
-            unlockOverlay.classList.remove(
-                "unlocking"
-            );
-
-
-            bigLock.classList.remove(
-                "unlocking-lock"
-            );
-
-
-            showErrorThenScratchcards();
-
-        },
-        3000
-    );
+    }, 2600);
 }
 
 
-/* =========================================================
-   ERROR SCREEN
-========================================================= */
+/* ==========================================
+   ERROR → SCRATCHCARDS
+========================================== */
 
-function showErrorThenScratchcards() {
+function showMissionError() {
 
-    errorScreen.style.display =
+    missionError.style.display =
         "block";
 
 
-    /*
-        Show the fake error
-        briefly before the cards.
-    */
+    setTimeout(() => {
 
-    setTimeout(
-        () => {
+        missionError.style.display =
+            "none";
 
-            errorScreen.style.display =
-                "none";
+        scratchArea.style.display =
+            "block";
 
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
 
-            scratchArea.style.display =
-                "block";
-
-
-            window.scrollTo(
-                0,
-                0
-            );
-
-        },
-        3500
-    );
+    }, 3000);
 }
 
 
-/* =========================================================
-   SCRATCHCARD ELEMENTS
-========================================================= */
-
-const scratchModal =
-    document.getElementById(
-        "scratchModal"
-    );
-
-const scratchCanvas =
-    document.getElementById(
-        "scratchCanvas"
-    );
-
-const scratchContext =
-    scratchCanvas.getContext(
-        "2d"
-    );
-
-const scratchMessage =
-    document.getElementById(
-        "scratchMessage"
-    );
-
-const scratchCardContainer =
-    document.getElementById(
-        "scratchCardContainer"
-    );
-
-const playCard1 =
-    document.getElementById(
-        "playCard1"
-    );
-
-const playCard2 =
-    document.getElementById(
-        "playCard2"
-    );
-
-const card2 =
-    document.getElementById(
-        "card2"
-    );
-
-const closeScratch =
-    document.getElementById(
-        "closeScratch"
-    );
-
+/* ==========================================
+   SCRATCHCARD VARIABLES
+========================================== */
 
 let currentCard = 0;
 
 let scratching = false;
 
-let scratchedPixels = 0;
+let scratchMoves = 0;
 
-let completed = false;
+let scratchComplete = false;
 
-
-/* =========================================================
-   OPEN CARD 1
-========================================================= */
-
-playCard1.addEventListener(
-    "click",
-    () => {
-
-        openScratchCard(1);
-
-    }
-);
+let card1Complete = false;
 
 
-/* =========================================================
-   OPEN CARD 2
-========================================================= */
-
-playCard2.addEventListener(
-    "click",
-    () => {
-
-        if (
-            !playCard2.disabled
-        ) {
-
-            openScratchCard(2);
-
-        }
-
-    }
-);
-
-
-/* =========================================================
+/* ==========================================
    OPEN SCRATCHCARD
-========================================================= */
+========================================== */
 
-function openScratchCard(
-    cardNumber
-) {
+function openScratchCard(cardNumber) {
 
     currentCard =
         cardNumber;
 
+    scratchMoves = 0;
+
+    scratchComplete = false;
 
     scratchModal.style.display =
         "flex";
 
-
-    scratchCardContainer.classList.remove(
-        "flip-card"
+    scratchModalCard.classList.remove(
+        "flip"
     );
-
-
-    completed =
-        false;
-
-
-    scratchedPixels =
-        0;
-
 
     scratchCanvas.style.display =
         "block";
 
 
-    scratchMessage.textContent =
-        "SCRATCH TO REVEAL";
+    if (cardNumber === 1) {
+
+        scratchUnderLabel.textContent =
+            "MISSION 61 • SCRATCHCARD 01";
+
+        scratchResult.textContent =
+            "SORRY, BETTER LUCK NEXT TIME.";
+
+        scratchResultSub.textContent =
+            "RESULT REVEALED";
+
+    } else {
+
+        scratchUnderLabel.textContent =
+            "MISSION 61 • SCRATCHCARD 02";
+
+        scratchResult.textContent =
+            "WOOHOO, YOU WON";
+
+        scratchResultSub.textContent =
+            "FINAL REWARD UNLOCKED";
+    }
 
 
     setTimeout(
-        setupCanvas,
-        50
+        setupScratchCanvas,
+        40
     );
 }
 
 
-/* =========================================================
-   CLOSE SCRATCHCARD
-========================================================= */
+playCard1.addEventListener(
+    "click",
+    () => openScratchCard(1)
+);
+
+
+playCard2.addEventListener(
+    "click",
+    () => {
+
+        if (!playCard2.disabled)
+            openScratchCard(2);
+
+    }
+);
+
 
 closeScratch.addEventListener(
     "click",
@@ -2097,30 +1668,41 @@ closeScratch.addEventListener(
         scratchModal.style.display =
             "none";
 
+        scratching = false;
+
     }
 );
 
 
-/* =========================================================
-   SET UP SCRATCH CANVAS
-========================================================= */
+/* ==========================================
+   SCRATCH CANVAS
+========================================== */
 
-function setupCanvas() {
+function setupScratchCanvas() {
 
     const rect =
-        scratchCanvas.getBoundingClientRect();
-
+        scratchCanvas
+            .getBoundingClientRect();
 
     const ratio =
         window.devicePixelRatio || 1;
 
 
     scratchCanvas.width =
-        rect.width * ratio;
-
+        Math.max(
+            1,
+            Math.floor(
+                rect.width * ratio
+            )
+        );
 
     scratchCanvas.height =
-        rect.height * ratio;
+        Math.max(
+            1,
+            Math.floor(
+                rect.height * ratio
+            )
+        );
 
 
     scratchContext.setTransform(
@@ -2133,9 +1715,9 @@ function setupCanvas() {
     );
 
 
-    /*
-        Scratchcard metallic coating.
-    */
+    scratchContext.globalCompositeOperation =
+        "source-over";
+
 
     const gradient =
         scratchContext.createLinearGradient(
@@ -2145,32 +1727,24 @@ function setupCanvas() {
             rect.height
         );
 
-
     gradient.addColorStop(
         0,
-        "#b8bcc4"
+        "#c8c0ad"
     );
-
 
     gradient.addColorStop(
         .5,
-        "#777d87"
+        "#8e8a80"
     );
-
 
     gradient.addColorStop(
         1,
-        "#c5c9d0"
+        "#cfc6b2"
     );
-
-
-    scratchContext.globalCompositeOperation =
-        "source-over";
 
 
     scratchContext.fillStyle =
         gradient;
-
 
     scratchContext.fillRect(
         0,
@@ -2180,32 +1754,30 @@ function setupCanvas() {
     );
 
 
-    /*
-        Mission 61 pattern.
-    */
-
     scratchContext.fillStyle =
-        "rgba(255,255,255,.13)";
-
+        "rgba(7,17,28,.18)";
 
     scratchContext.font =
-        "900 22px Arial";
+        "500 12px 'DM Mono', monospace";
+
+    scratchContext.textAlign =
+        "center";
 
 
     for (
-        let y = 35;
-        y < rect.height;
-        y += 45
+        let y = 30;
+        y < rect.height + 30;
+        y += 38
     ) {
 
         for (
-            let x = 20;
-            x < rect.width;
-            x += 100
+            let x = 25;
+            x < rect.width + 50;
+            x += 105
         ) {
 
             scratchContext.fillText(
-                "61",
+                "MISSION 61",
                 x,
                 y
             );
@@ -2215,29 +1787,22 @@ function setupCanvas() {
     }
 
 
-    /*
-        Switch to erasing mode.
-    */
-
     scratchContext.globalCompositeOperation =
         "destination-out";
 }
 
 
-/* =========================================================
-   GET POINTER POSITION
-========================================================= */
+/* ==========================================
+   POINTER POSITION
+========================================== */
 
-function getPointerPosition(
-    event
-) {
+function pointerPosition(event) {
 
     const rect =
-        scratchCanvas.getBoundingClientRect();
-
+        scratchCanvas
+            .getBoundingClientRect();
 
     let clientX;
-
     let clientY;
 
 
@@ -2259,81 +1824,54 @@ function getPointerPosition(
 
         clientY =
             event.clientY;
-
     }
 
 
     return {
-
-        x:
-            clientX -
-            rect.left,
-
-        y:
-            clientY -
-            rect.top
-
+        x: clientX - rect.left,
+        y: clientY - rect.top
     };
 }
 
 
-/* =========================================================
+/* ==========================================
    SCRATCH
-========================================================= */
+========================================== */
 
-function scratch(
-    event
-) {
+function scratch(event) {
 
     if (
         !scratching ||
-        completed
-    ) {
-
+        scratchComplete
+    )
         return;
-
-    }
 
 
     event.preventDefault();
 
 
-    const position =
-        getPointerPosition(
-            event
-        );
+    const pos =
+        pointerPosition(event);
 
-
-    /*
-        Large enough to make
-        scratching feel natural.
-    */
 
     scratchContext.beginPath();
 
-
     scratchContext.arc(
-        position.x,
-        position.y,
+        pos.x,
+        pos.y,
         25,
         0,
         Math.PI * 2
     );
 
-
     scratchContext.fill();
 
 
-    scratchedPixels++;
+    scratchMoves++;
 
-
-    /*
-        After enough movement,
-        reveal the result.
-    */
 
     if (
-        scratchedPixels > 85
+        scratchMoves >= 75
     ) {
 
         finishScratch();
@@ -2342,9 +1880,9 @@ function scratch(
 }
 
 
-/* =========================================================
-   MOUSE SCRATCHING
-========================================================= */
+/* ==========================================
+   MOUSE
+========================================== */
 
 scratchCanvas.addEventListener(
     "mousedown",
@@ -2358,6 +1896,12 @@ scratchCanvas.addEventListener(
 );
 
 
+scratchCanvas.addEventListener(
+    "mousemove",
+    scratch
+);
+
+
 window.addEventListener(
     "mouseup",
     () => {
@@ -2368,15 +1912,9 @@ window.addEventListener(
 );
 
 
-scratchCanvas.addEventListener(
-    "mousemove",
-    scratch
-);
-
-
-/* =========================================================
-   TOUCH SCRATCHING
-========================================================= */
+/* ==========================================
+   TOUCH
+========================================== */
 
 scratchCanvas.addEventListener(
     "touchstart",
@@ -2387,18 +1925,14 @@ scratchCanvas.addEventListener(
         scratch(event);
 
     },
-    {
-        passive: false
-    }
+    { passive:false }
 );
 
 
 scratchCanvas.addEventListener(
     "touchmove",
     scratch,
-    {
-        passive: false
-    }
+    { passive:false }
 );
 
 
@@ -2412,134 +1946,97 @@ scratchCanvas.addEventListener(
 );
 
 
-/* =========================================================
+/* ==========================================
    FINISH SCRATCH
-========================================================= */
+========================================== */
 
 function finishScratch() {
 
-    if (completed) {
-
+    if (scratchComplete)
         return;
 
-    }
+
+    scratchComplete = true;
+
+    scratching = false;
 
 
-    completed =
-        true;
+    const rect =
+        scratchCanvas
+            .getBoundingClientRect();
 
-
-    scratching =
-        false;
-
-
-    /*
-        Remove the remaining
-        scratch coating.
-    */
 
     scratchContext.clearRect(
         0,
         0,
-        scratchCanvas.width,
-        scratchCanvas.height
+        rect.width,
+        rect.height
     );
 
 
-    /* =====================================================
-       CARD 1
-    ===================================================== */
+    /* CARD 1 */
 
-    if (
-        currentCard === 1
-    ) {
+    if (currentCard === 1) {
 
-        scratchMessage.textContent =
-            "SORRY, BETTER LUCK NEXT TIME.";
-
-
-        /*
-            Unlock card 2.
-        */
-
-        card2.classList.remove(
-            "locked-card"
-        );
-
+        card1Complete = true;
 
         playCard2.disabled =
             false;
 
-
         playCard2.textContent =
             "PLAY";
 
+        choice2.classList.remove(
+            "locked"
+        );
+
+        card2Status.textContent =
+            "UNLOCKED • CARD 01 COMPLETE";
 
         return;
     }
 
 
-    /* =====================================================
-       CARD 2
-    ===================================================== */
+    /* CARD 2 */
 
-    scratchMessage.textContent =
-        "WOOHOO, YOU WON!";
+    scratchResult.textContent =
+        "WOOHOO, YOU WON";
 
-
-    /*
-        Let the winner message
-        sit on screen briefly.
-    */
-
-    setTimeout(
-        () => {
+    scratchResultSub.textContent =
+        "OPENING REWARD...";
 
 
-            /*
-                3D flip.
-            */
+    setTimeout(() => {
 
-            scratchCardContainer.classList.add(
-                "flip-card"
+        scratchModalCard.classList.add(
+            "flip"
+        );
+
+
+        setTimeout(() => {
+
+            scratchModalCard.classList.remove(
+                "flip"
             );
 
+            scratchCanvas.style.display =
+                "none";
 
-            /*
-                Once the flip is complete,
-                show the temporary error.
-            */
+            scratchResult.textContent =
+                "ERROR - COULDN'T LOAD PRESENT";
 
-            setTimeout(
-                () => {
+            scratchResultSub.textContent =
+                "MISSION CONTENT TEMPORARILY UNAVAILABLE";
 
-                    scratchMessage.textContent =
-                        "ERROR - COULDN'T LOAD PRESENT";
+        }, 1250);
 
-
-                    scratchCardContainer.classList.remove(
-                        "flip-card"
-                    );
-
-
-                    scratchCanvas.style.display =
-                        "none";
-
-
-                },
-                1400
-            );
-
-
-        },
-        900
-    );
+    }, 900);
 }
 
 
-/* =========================================================
+/* ==========================================
    RESIZE
-========================================================= */
+========================================== */
 
 window.addEventListener(
     "resize",
@@ -2547,17 +2044,31 @@ window.addEventListener(
 
         if (
             scratchModal.style.display ===
-            "flex"
+            "flex" &&
+            !scratchComplete
         ) {
 
-            setupCanvas();
+            setupScratchCanvas();
 
         }
 
     }
 );
 
+
+/* ==========================================
+   START
+========================================== */
+
+updateCountdown();
+
+setInterval(
+    updateCountdown,
+    1000
+);
+
 </script>
 
 </body>
 </html>
+```
