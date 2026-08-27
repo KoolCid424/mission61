@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Project 61 🎂</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        min-height: 100vh;
+        font-family: Arial, Helvetica, sans-serif;
+        background:
+            radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 25%),
+            radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08), transparent 25%),
+            linear-gradient(135deg, #12001f, #25004a, #080014);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Floating background lights */
+    .orb {
+        position: fixed;
+        width: 250px;
+        height: 250px;
+        border-radius: 50%;
+        filter: blur(70px);
+        opacity: 0.25;
+        pointer-events: none;
+        animation: float 8s ease-in-out infinite;
+    }
+
+    .orb.one {
+        background: #ff4fd8;
+        top: -80px;
+        left: -80px;
+    }
+
+    .orb.two {
+        background: #5b5cff;
+        bottom: -100px;
+        right: -80px;
+        animation-delay: -4s;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translate(0, 0);
+        }
+        50% {
+            transform: translate(30px, -25px);
+        }
+    }
+
+    .container {
+        width: min(950px, 92%);
+        text-align: center;
+        padding: 50px 25px;
+        position: relative;
+        z-index: 2;
+    }
+
+    .top-secret {
+        display: inline-block;
+        border: 1px solid rgba(255,255,255,0.35);
+        background: rgba(255,255,255,0.08);
+        backdrop-filter: blur(10px);
+        padding: 9px 18px;
+        border-radius: 999px;
+        letter-spacing: 4px;
+        font-size: 11px;
+        color: #e7d9ff;
+        margin-bottom: 30px;
+    }
+
+    h1 {
+        font-size: clamp(55px, 11vw, 115px);
+        line-height: 0.9;
+        letter-spacing: -5px;
+        margin-bottom: 20px;
+        background: linear-gradient(90deg, #ffffff, #ffb8f3, #c5c8ff, #ffffff);
+        background-size: 300% auto;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        animation: shine 6s linear infinite;
+    }
+
+    @keyframes shine {
+        to {
+            background-position: 300% center;
+        }
+    }
+
+    .subtitle {
+        font-size: clamp(18px, 3vw, 27px);
+        color: #ded4ed;
+        margin-bottom: 45px;
+    }
+
+    .subtitle strong {
+        color: white;
+    }
+
+    .countdown {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 15px;
+        max-width: 750px;
+        margin: 0 auto 45px;
+    }
+
+    .time-box {
+        padding: 25px 10px;
+        border-radius: 20px;
+        background: rgba(255,255,255,0.09);
+        border: 1px solid rgba(255,255,255,0.15);
+        backdrop-filter: blur(15px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
+    .number {
+        font-size: clamp(35px, 7vw, 65px);
+        font-weight: 800;
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    .label {
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-size: 10px;
+        color: #bcb2ca;
+    }
+
+    .message {
+        max-width: 650px;
+        margin: auto;
+        padding: 28px;
+        border-radius: 24px;
+        background: rgba(0,0,0,0.2);
+        border: 1px solid rgba(255,255,255,0.12);
+        color: #ddd4e5;
+        font-size: 17px;
+        line-height: 1.7;
+    }
+
+    .message .secret {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+    }
+
+    .footer {
+        margin-top: 35px;
+        color: #81788d;
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+
+    .birthday {
+        display: none;
+    }
+
+    .birthday h2 {
+        font-size: clamp(40px, 8vw, 80px);
+        margin-bottom: 20px;
+    }
+
+    .birthday p {
+        font-size: 22px;
+        color: #ddd;
+    }
+
+    @media (max-width: 600px) {
+        .countdown {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        h1 {
+            letter-spacing: -3px;
+        }
+
+        .time-box {
+            padding: 20px 10px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="orb one"></div>
+<div class="orb two"></div>
+
+<div class="container">
+
+    <div class="top-secret">
+        CLASSIFIED • PROJECT 61
+    </div>
+
+    <div id="countdownScreen">
+
+        <h1>61</h1>
+
+        <div class="subtitle">
+            Something rather special is coming for <strong>Mum.</strong>
+        </div>
+
+        <div class="countdown">
+
+            <div class="time-box">
+                <div class="number" id="days">000</div>
+                <div class="label">Days</div>
+            </div>
+
+            <div class="time-box">
+                <div class="number" id="hours">00</div>
+                <div class="label">Hours</div>
+            </div>
+
+            <div class="time-box">
+                <div class="number" id="minutes">00</div>
+                <div class="label">Minutes</div>
+            </div>
+
+            <div class="time-box">
+                <div class="number" id="seconds">00</div>
+                <div class="label">Seconds</div>
+            </div>
+
+        </div>
+
+        <div class="message">
+            <div class="secret">You have discovered Project 61.</div>
+            <br>
+            There is absolutely nothing to see here yet.
+            <br><br>
+            Except this countdown.
+            <br><br>
+            And perhaps a rather spectacular birthday waiting at the end of it.
+        </div>
+
+        <div class="footer">
+            11 • 12 • 2026 &nbsp; | &nbsp; PROJECT 61
+        </div>
+
+    </div>
+
+    <div id="birthdayScreen" class="birthday">
+
+        <h2>🎂 HAPPY 61ST! 🎉</h2>
+
+        <p>
+            The countdown is over.<br>
+            Project 61 begins now.
+        </p>
+
+    </div>
+
+</div>
+
+<script>
+
+    /*
+        PROJECT 61 COUNTDOWN
+
+        Target:
+        11 December 2026
+        00:00:00 UK time
+
+        The browser automatically handles the countdown
+        using the user's local timezone.
+    */
+
+    const targetDate = new Date("2026-12-11T00:00:00+00:00").getTime();
+
+    function updateCountdown() {
+
+        const now = new Date().getTime();
+        const difference = targetDate - now;
+
+        if (difference <= 0) {
+
+            document.getElementById("countdownScreen").style.display = "none";
+            document.getElementById("birthdayScreen").style.display = "block";
+
+            return;
+        }
+
+        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const hours = Math.floor(
+            (difference / (1000 * 60 * 60)) % 24
+        );
+        const minutes = Math.floor(
+            (difference / (1000 * 60)) % 60
+        );
+        const seconds = Math.floor(
+            (difference / 1000) % 60
+        );
+
+        document.getElementById("days").textContent =
+            String(days).padStart(3, "0");
+
+        document.getElementById("hours").textContent =
+            String(hours).padStart(2, "0");
+
+        document.getElementById("minutes").textContent =
+            String(minutes).padStart(2, "0");
+
+        document.getElementById("seconds").textContent =
+            String(seconds).padStart(2, "0");
+    }
+
+    updateCountdown();
+
+    setInterval(updateCountdown, 1000);
+
+</script>
+
+</body>
+</html>
