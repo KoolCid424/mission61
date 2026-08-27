@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Project 61 🎂</title>
+
+<title>MISSION 61</title>
 
 <style>
     * {
@@ -12,98 +13,228 @@
         padding: 0;
     }
 
+    html, body {
+        width: 100%;
+        min-height: 100%;
+    }
+
     body {
         min-height: 100vh;
-        font-family: Arial, Helvetica, sans-serif;
         background:
-            radial-gradient(circle at 20% 20%, rgba(255,255,255,0.12), transparent 25%),
-            radial-gradient(circle at 80% 80%, rgba(255,255,255,0.08), transparent 25%),
-            linear-gradient(135deg, #12001f, #25004a, #080014);
-        color: white;
+            radial-gradient(circle at 50% 0%, #252b45 0%, transparent 45%),
+            linear-gradient(145deg, #05070d, #0b0f1a 55%, #030407);
+
+        color: #ffffff;
+        font-family:
+            Inter,
+            Arial,
+            Helvetica,
+            sans-serif;
+
         display: flex;
         align-items: center;
         justify-content: center;
+
         overflow-x: hidden;
-        position: relative;
     }
 
-    /* Floating background lights */
-    .orb {
+    /* =========================
+       BACKGROUND
+    ========================= */
+
+    .background-grid {
         position: fixed;
-        width: 250px;
-        height: 250px;
-        border-radius: 50%;
-        filter: blur(70px);
-        opacity: 0.25;
+        inset: 0;
+
+        background-image:
+            linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+
+        background-size: 45px 45px;
+
+        mask-image: linear-gradient(
+            to bottom,
+            black,
+            transparent
+        );
+
         pointer-events: none;
-        animation: float 8s ease-in-out infinite;
     }
 
-    .orb.one {
-        background: #ff4fd8;
-        top: -80px;
-        left: -80px;
+    .glow {
+        position: fixed;
+
+        width: 500px;
+        height: 500px;
+
+        border-radius: 50%;
+
+        background: rgba(95, 105, 255, 0.12);
+
+        filter: blur(100px);
+
+        pointer-events: none;
+
+        animation: glowMove 10s ease-in-out infinite alternate;
     }
 
-    .orb.two {
-        background: #5b5cff;
-        bottom: -100px;
-        right: -80px;
-        animation-delay: -4s;
+    .glow.one {
+        top: -250px;
+        left: -200px;
     }
 
-    @keyframes float {
-        0%, 100% {
+    .glow.two {
+        bottom: -300px;
+        right: -200px;
+
+        animation-delay: -5s;
+    }
+
+    @keyframes glowMove {
+        from {
             transform: translate(0, 0);
         }
-        50% {
-            transform: translate(30px, -25px);
+
+        to {
+            transform: translate(80px, 50px);
         }
     }
 
-    .container {
+    /* =========================
+       MAIN CARD
+    ========================= */
+
+    .wrapper {
         width: min(950px, 92%);
-        text-align: center;
-        padding: 50px 25px;
+        padding: 45px 0;
+
         position: relative;
         z-index: 2;
     }
 
-    .top-secret {
-        display: inline-block;
-        border: 1px solid rgba(255,255,255,0.35);
-        background: rgba(255,255,255,0.08);
-        backdrop-filter: blur(10px);
-        padding: 9px 18px;
+    .card {
+        padding: clamp(30px, 6vw, 70px);
+
+        border-radius: 32px;
+
+        background:
+            linear-gradient(
+                145deg,
+                rgba(255,255,255,0.095),
+                rgba(255,255,255,0.035)
+            );
+
+        border: 1px solid rgba(255,255,255,0.13);
+
+        box-shadow:
+            0 40px 100px rgba(0,0,0,0.5),
+            inset 0 1px 0 rgba(255,255,255,0.08);
+
+        backdrop-filter: blur(25px);
+
+        text-align: center;
+    }
+
+    /* =========================
+       CLASSIFIED BADGE
+    ========================= */
+
+    .classified {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+
+        padding: 9px 16px;
+
         border-radius: 999px;
-        letter-spacing: 4px;
+
+        border: 1px solid rgba(255,255,255,0.2);
+
+        background: rgba(255,255,255,0.055);
+
+        color: #cfd3df;
+
         font-size: 11px;
-        color: #e7d9ff;
+
+        font-weight: 700;
+
+        letter-spacing: 3px;
+
+        text-transform: uppercase;
+
         margin-bottom: 30px;
     }
 
-    h1 {
-        font-size: clamp(55px, 11vw, 115px);
-        line-height: 0.9;
-        letter-spacing: -5px;
-        margin-bottom: 20px;
-        background: linear-gradient(90deg, #ffffff, #ffb8f3, #c5c8ff, #ffffff);
-        background-size: 300% auto;
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-        animation: shine 6s linear infinite;
+    .status-dot {
+        width: 7px;
+        height: 7px;
+
+        border-radius: 50%;
+
+        background: #62ff9b;
+
+        box-shadow: 0 0 12px #62ff9b;
+
+        animation: pulse 1.8s infinite;
     }
 
-    @keyframes shine {
+    @keyframes pulse {
+        0%, 100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.35;
+        }
+    }
+
+    /* =========================
+       TITLE
+    ========================= */
+
+    .mission {
+        font-size: clamp(52px, 11vw, 115px);
+
+        line-height: 0.9;
+
+        font-weight: 900;
+
+        letter-spacing: -6px;
+
+        background:
+            linear-gradient(
+                100deg,
+                #ffffff,
+                #aeb8ff,
+                #ffffff,
+                #b8a9ff
+            );
+
+        background-size: 300% auto;
+
+        -webkit-background-clip: text;
+        background-clip: text;
+
+        color: transparent;
+
+        animation: titleShine 7s linear infinite;
+
+        margin-bottom: 22px;
+    }
+
+    @keyframes titleShine {
         to {
             background-position: 300% center;
         }
     }
 
     .subtitle {
-        font-size: clamp(18px, 3vw, 27px);
-        color: #ded4ed;
+        color: #b9bfce;
+
+        font-size: clamp(16px, 2.5vw, 22px);
+
+        line-height: 1.6;
+
         margin-bottom: 45px;
     }
 
@@ -111,87 +242,192 @@
         color: white;
     }
 
+    /* =========================
+       COUNTDOWN
+    ========================= */
+
     .countdown {
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 15px;
+
+        grid-template-columns:
+            repeat(4, 1fr);
+
+        gap: 14px;
+
+        margin: 0 auto 40px;
+
         max-width: 750px;
-        margin: 0 auto 45px;
     }
 
-    .time-box {
+    .time {
         padding: 25px 10px;
+
         border-radius: 20px;
-        background: rgba(255,255,255,0.09);
-        border: 1px solid rgba(255,255,255,0.15);
-        backdrop-filter: blur(15px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+
+        background: rgba(0,0,0,0.2);
+
+        border: 1px solid rgba(255,255,255,0.1);
+
+        box-shadow:
+            inset 0 1px rgba(255,255,255,0.04);
     }
 
     .number {
-        font-size: clamp(35px, 7vw, 65px);
+        font-size: clamp(32px, 6vw, 62px);
+
         font-weight: 800;
-        line-height: 1;
-        margin-bottom: 8px;
+
+        letter-spacing: -2px;
+
+        font-variant-numeric: tabular-nums;
+
+        margin-bottom: 7px;
     }
 
     .label {
-        text-transform: uppercase;
-        letter-spacing: 3px;
+        color: #777f91;
+
         font-size: 10px;
-        color: #bcb2ca;
+
+        letter-spacing: 3px;
+
+        font-weight: 700;
+
+        text-transform: uppercase;
     }
 
-    .message {
-        max-width: 650px;
-        margin: auto;
+    /* =========================
+       MISSION INFO
+    ========================= */
+
+    .mission-box {
+        max-width: 700px;
+
+        margin: 0 auto;
+
         padding: 28px;
-        border-radius: 24px;
-        background: rgba(0,0,0,0.2);
-        border: 1px solid rgba(255,255,255,0.12);
-        color: #ddd4e5;
-        font-size: 17px;
+
+        border-radius: 22px;
+
+        background: rgba(255,255,255,0.035);
+
+        border: 1px solid rgba(255,255,255,0.08);
+
+        color: #aeb4c2;
+
         line-height: 1.7;
+
+        font-size: 15px;
     }
 
-    .message .secret {
+    .mission-box .important {
         color: white;
-        font-weight: bold;
-        font-size: 20px;
+
+        font-weight: 700;
+
+        font-size: 18px;
+
+        margin-bottom: 10px;
     }
+
+    .mission-box .classified-text {
+        color: #737b8c;
+
+        font-size: 12px;
+
+        letter-spacing: 1px;
+
+        margin-top: 18px;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
 
     .footer {
-        margin-top: 35px;
-        color: #81788d;
-        font-size: 12px;
-        letter-spacing: 2px;
+        margin-top: 32px;
+
+        color: #555d6e;
+
+        font-size: 10px;
+
+        letter-spacing: 3px;
+
+        text-transform: uppercase;
     }
 
-    .birthday {
+    /* =========================
+       BIRTHDAY REVEAL
+    ========================= */
+
+    #birthday {
         display: none;
     }
 
-    .birthday h2 {
-        font-size: clamp(40px, 8vw, 80px);
-        margin-bottom: 20px;
+    #birthday h2 {
+        font-size: clamp(42px, 8vw, 80px);
+
+        line-height: 1;
+
+        margin-bottom: 25px;
     }
 
-    .birthday p {
-        font-size: 22px;
-        color: #ddd;
+    #birthday p {
+        color: #c5cad5;
+
+        font-size: 20px;
+
+        line-height: 1.7;
     }
 
-    @media (max-width: 600px) {
-        .countdown {
-            grid-template-columns: repeat(2, 1fr);
+    .reveal {
+        margin-top: 35px;
+
+        display: inline-block;
+
+        padding: 14px 24px;
+
+        border-radius: 999px;
+
+        background: rgba(255,255,255,0.08);
+
+        border: 1px solid rgba(255,255,255,0.15);
+
+        color: white;
+
+        font-size: 12px;
+
+        letter-spacing: 2px;
+
+        text-transform: uppercase;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 650px) {
+
+        .card {
+            padding: 35px 20px;
+            border-radius: 24px;
         }
 
-        h1 {
+        .countdown {
+            grid-template-columns:
+                repeat(2, 1fr);
+        }
+
+        .mission {
             letter-spacing: -3px;
         }
 
-        .time-box {
-            padding: 20px 10px;
+        .time {
+            padding: 20px 8px;
+        }
+
+        .mission-box {
+            padding: 22px 18px;
         }
     }
 </style>
@@ -199,131 +435,267 @@
 
 <body>
 
-<div class="orb one"></div>
-<div class="orb two"></div>
+<div class="background-grid"></div>
 
-<div class="container">
+<div class="glow one"></div>
+<div class="glow two"></div>
 
-    <div class="top-secret">
-        CLASSIFIED • PROJECT 61
-    </div>
+<div class="wrapper">
 
-    <div id="countdownScreen">
+    <main class="card">
 
-        <h1>61</h1>
+        <!-- COUNTDOWN SCREEN -->
 
-        <div class="subtitle">
-            Something rather special is coming for <strong>Mum.</strong>
-        </div>
+        <section id="countdownScreen">
 
-        <div class="countdown">
-
-            <div class="time-box">
-                <div class="number" id="days">000</div>
-                <div class="label">Days</div>
+            <div class="classified">
+                <span class="status-dot"></span>
+                CLASSIFIED MISSION
             </div>
 
-            <div class="time-box">
-                <div class="number" id="hours">00</div>
-                <div class="label">Hours</div>
+            <h1 class="mission">
+                MISSION 61
+            </h1>
+
+            <p class="subtitle">
+                Something very special is being prepared for
+                <strong>Mum.</strong>
+            </p>
+
+            <div class="countdown">
+
+                <div class="time">
+                    <div
+                        class="number"
+                        id="days">
+                        000
+                    </div>
+
+                    <div class="label">
+                        Days
+                    </div>
+                </div>
+
+                <div class="time">
+                    <div
+                        class="number"
+                        id="hours">
+                        00
+                    </div>
+
+                    <div class="label">
+                        Hours
+                    </div>
+                </div>
+
+                <div class="time">
+                    <div
+                        class="number"
+                        id="minutes">
+                        00
+                    </div>
+
+                    <div class="label">
+                        Minutes
+                    </div>
+                </div>
+
+                <div class="time">
+                    <div
+                        class="number"
+                        id="seconds">
+                        00
+                    </div>
+
+                    <div class="label">
+                        Seconds
+                    </div>
+                </div>
+
             </div>
 
-            <div class="time-box">
-                <div class="number" id="minutes">00</div>
-                <div class="label">Minutes</div>
+            <div class="mission-box">
+
+                <div class="important">
+                    MISSION STATUS: ACTIVE
+                </div>
+
+                This website contains information
+                regarding a highly classified birthday
+                operation.
+
+                <br><br>
+
+                Further details are currently restricted.
+
+                <div class="classified-text">
+                    ACCESS WILL BE GRANTED ON 11 DECEMBER 2026
+                </div>
+
             </div>
 
-            <div class="time-box">
-                <div class="number" id="seconds">00</div>
-                <div class="label">Seconds</div>
+            <div class="footer">
+                MISSION 61 • 11.12.2026 • CONFIDENTIAL
             </div>
 
-        </div>
+        </section>
 
-        <div class="message">
-            <div class="secret">You have discovered Project 61.</div>
-            <br>
-            There is absolutely nothing to see here yet.
-            <br><br>
-            Except this countdown.
-            <br><br>
-            And perhaps a rather spectacular birthday waiting at the end of it.
-        </div>
 
-        <div class="footer">
-            11 • 12 • 2026 &nbsp; | &nbsp; PROJECT 61
-        </div>
+        <!-- BIRTHDAY SCREEN -->
 
-    </div>
+        <section id="birthday">
 
-    <div id="birthdayScreen" class="birthday">
+            <div class="classified">
+                <span class="status-dot"></span>
+                MISSION COMPLETE
+            </div>
 
-        <h2>🎂 HAPPY 61ST! 🎉</h2>
+            <h2>
+                🎂 HAPPY 61ST! 🎉
+            </h2>
 
-        <p>
-            The countdown is over.<br>
-            Project 61 begins now.
-        </p>
+            <p>
+                The countdown is over.
+                <br>
+                The mission can now begin.
+            </p>
 
-    </div>
+            <div class="reveal">
+                CLASSIFIED INFORMATION UNLOCKED
+            </div>
+
+        </section>
+
+    </main>
 
 </div>
+
 
 <script>
 
     /*
-        PROJECT 61 COUNTDOWN
+    ==========================================
+        MISSION 61 COUNTDOWN
+    ==========================================
 
-        Target:
+        Birthday:
         11 December 2026
-        00:00:00 UK time
 
-        The browser automatically handles the countdown
-        using the user's local timezone.
+        The time below is midnight at the
+        start of 11 December.
+
+        +00:00 = UK winter time.
+    ==========================================
     */
 
-    const targetDate = new Date("2026-12-11T00:00:00+00:00").getTime();
+    const targetDate =
+        new Date("2026-12-11T00:00:00+00:00").getTime();
+
 
     function updateCountdown() {
 
-        const now = new Date().getTime();
-        const difference = targetDate - now;
+        const now =
+            new Date().getTime();
+
+        const difference =
+            targetDate - now;
+
+
+        /*
+        If the countdown has finished,
+        reveal the birthday screen.
+        */
 
         if (difference <= 0) {
 
-            document.getElementById("countdownScreen").style.display = "none";
-            document.getElementById("birthdayScreen").style.display = "block";
+            document
+                .getElementById("countdownScreen")
+                .style.display = "none";
+
+            document
+                .getElementById("birthday")
+                .style.display = "block";
 
             return;
         }
 
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-        const hours = Math.floor(
-            (difference / (1000 * 60 * 60)) % 24
-        );
-        const minutes = Math.floor(
-            (difference / (1000 * 60)) % 60
-        );
-        const seconds = Math.floor(
-            (difference / 1000) % 60
-        );
 
-        document.getElementById("days").textContent =
+        /*
+        Calculate remaining time.
+        */
+
+        const days =
+            Math.floor(
+                difference /
+                (1000 * 60 * 60 * 24)
+            );
+
+
+        const hours =
+            Math.floor(
+                (difference /
+                (1000 * 60 * 60)) % 24
+            );
+
+
+        const minutes =
+            Math.floor(
+                (difference /
+                (1000 * 60)) % 60
+            );
+
+
+        const seconds =
+            Math.floor(
+                (difference / 1000) % 60
+            );
+
+
+        /*
+        Update the numbers.
+        */
+
+        document
+            .getElementById("days")
+            .textContent =
             String(days).padStart(3, "0");
 
-        document.getElementById("hours").textContent =
+
+        document
+            .getElementById("hours")
+            .textContent =
             String(hours).padStart(2, "0");
 
-        document.getElementById("minutes").textContent =
+
+        document
+            .getElementById("minutes")
+            .textContent =
             String(minutes).padStart(2, "0");
 
-        document.getElementById("seconds").textContent =
+
+        document
+            .getElementById("seconds")
+            .textContent =
             String(seconds).padStart(2, "0");
     }
 
+
+    /*
+    Run immediately so the page
+    doesn't briefly show zeros.
+    */
+
     updateCountdown();
 
-    setInterval(updateCountdown, 1000);
+
+    /*
+    Update every second.
+    */
+
+    setInterval(
+        updateCountdown,
+        1000
+    );
 
 </script>
 
