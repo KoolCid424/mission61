@@ -10,20 +10,15 @@
 
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
 
-
 :root {
     --navy: #07111c;
     --navy2: #0b1724;
     --cream: #f2ead8;
     --muted: #a9a99f;
-    --line: rgba(242, 234, 216, 0.25);
-    --soft: rgba(242, 234, 216, 0.09);
+    --line: rgba(242,234,216,0.25);
+    --soft: rgba(242,234,216,0.09);
+    --error: #c99a8e;
 }
-
-
-/* ==============================
-   RESET
-============================== */
 
 * {
     box-sizing: border-box;
@@ -31,25 +26,20 @@
     padding: 0;
 }
 
-
 html,
 body {
     min-height: 100%;
 }
 
-
 body {
-
     min-height: 100vh;
 
     background:
-
         radial-gradient(
             circle at 50% 0%,
-            rgba(39, 64, 86, 0.35),
+            rgba(39,64,86,0.35),
             transparent 50%
         ),
-
         linear-gradient(
             135deg,
             var(--navy),
@@ -65,9 +55,7 @@ body {
         sans-serif;
 
     display: flex;
-
     align-items: center;
-
     justify-content: center;
 
     overflow-x: hidden;
@@ -79,20 +67,16 @@ body {
 ============================== */
 
 body::before {
-
     content: "";
 
     position: fixed;
-
     inset: 0;
 
     background-image:
-
         linear-gradient(
             rgba(242,234,216,0.025) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
             rgba(242,234,216,0.025) 1px,
@@ -108,16 +92,11 @@ body::before {
 
 
 /* ==============================
-   MAIN PAGE
+   PAGE
 ============================== */
 
 .page {
-
-    width:
-        min(
-            920px,
-            92%
-        );
+    width: min(920px,92%);
 
     padding: 45px 0;
 
@@ -128,19 +107,15 @@ body::before {
 
 
 .document {
-
     position: relative;
 
-    border:
-        1px solid
-        var(--line);
+    border: 1px solid var(--line);
 
     background:
-
         linear-gradient(
             145deg,
-            rgba(15, 29, 43, 0.97),
-            rgba(5, 13, 21, 0.98)
+            rgba(15,29,43,0.97),
+            rgba(5,13,21,0.98)
         );
 
     padding:
@@ -151,61 +126,41 @@ body::before {
         );
 
     box-shadow:
+        0 35px 100px rgba(0,0,0,0.45),
+        inset 0 1px rgba(255,255,255,0.04);
 
-        0 35px 100px
-        rgba(0,0,0,0.45),
-
-        inset 0 1px
-        rgba(255,255,255,0.04);
+    overflow: hidden;
 }
 
 
 /* ==============================
-   CORNER MARKS
+   CORNERS
 ============================== */
 
 .document::before,
 .document::after {
-
     content: "";
 
     position: absolute;
 
     width: 35px;
-
     height: 35px;
 }
 
-
 .document::before {
-
     top: 15px;
-
     left: 15px;
 
-    border-top:
-        1px solid
-        var(--line);
-
-    border-left:
-        1px solid
-        var(--line);
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
 }
 
-
 .document::after {
-
     right: 15px;
-
     bottom: 15px;
 
-    border-right:
-        1px solid
-        var(--line);
-
-    border-bottom:
-        1px solid
-        var(--line);
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 }
 
 
@@ -214,29 +169,22 @@ body::before {
 ============================== */
 
 .header {
-
     display: flex;
 
-    justify-content:
-        space-between;
-
+    justify-content: space-between;
     align-items: center;
 
     gap: 20px;
 
-    border-bottom:
-        1px solid
-        var(--soft);
+    border-bottom: 1px solid var(--soft);
 
     padding-bottom: 18px;
 
     margin-bottom: 55px;
 }
 
-
 .classification,
 .document-number {
-
     font-family:
         "DM Mono",
         monospace;
@@ -254,15 +202,12 @@ body::before {
 ============================== */
 
 .title-area {
-
     text-align: center;
 
     margin-bottom: 50px;
 }
 
-
 .eyebrow {
-
     font-family:
         "DM Mono",
         monospace;
@@ -276,9 +221,7 @@ body::before {
     margin-bottom: 18px;
 }
 
-
 h1 {
-
     font-size:
         clamp(
             52px,
@@ -295,9 +238,7 @@ h1 {
     color: var(--cream);
 }
 
-
 .subtitle {
-
     margin-top: 22px;
 
     font-family:
@@ -319,11 +260,9 @@ h1 {
 ============================== */
 
 .status {
-
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
     gap: 10px;
@@ -341,11 +280,8 @@ h1 {
     margin-bottom: 30px;
 }
 
-
 .status-dot {
-
     width: 7px;
-
     height: 7px;
 
     border-radius: 50%;
@@ -363,45 +299,34 @@ h1 {
 ============================== */
 
 .countdown {
-
     display: grid;
 
     grid-template-columns:
-        repeat(4, 1fr);
+        repeat(4,1fr);
 
     border-top:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     border-bottom:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     margin-bottom: 45px;
 }
 
-
 .count-box {
-
-    padding:
-        30px 10px;
+    padding: 30px 10px;
 
     text-align: center;
 
     border-right:
-        1px solid
-        var(--soft);
+        1px solid var(--soft);
 }
 
-
 .count-box:last-child {
-
     border-right: none;
 }
 
-
 .number {
-
     font-family:
         "DM Mono",
         monospace;
@@ -423,9 +348,7 @@ h1 {
     margin-bottom: 12px;
 }
 
-
 .label {
-
     font-family:
         "DM Mono",
         monospace;
@@ -441,14 +364,12 @@ h1 {
 
 
 /* ==============================
-   INFORMATION BOX
+   INFORMATION
 ============================== */
 
 .information {
-
     border:
-        1px solid
-        var(--soft);
+        1px solid var(--soft);
 
     padding: 25px;
 
@@ -458,9 +379,7 @@ h1 {
         rgba(0,0,0,0.12);
 }
 
-
 .information-title {
-
     font-family:
         "DM Mono",
         monospace;
@@ -474,9 +393,7 @@ h1 {
     margin-bottom: 12px;
 }
 
-
 .information-text {
-
     color: var(--muted);
 
     font-size: 14px;
@@ -490,7 +407,6 @@ h1 {
 ============================== */
 
 .footer {
-
     margin-top: 35px;
 
     display: flex;
@@ -511,21 +427,17 @@ h1 {
     color: #69727a;
 }
 
-
-/* ==============================
-   PREVIEW TRIGGER
-============================== */
-
 .preview-trigger {
-
     cursor: default;
-
     user-select: none;
 }
 
 
-.preview-box {
+/* ==============================
+   PREVIEW
+============================== */
 
+.preview-box {
     display: none;
 
     margin-top: 15px;
@@ -533,20 +445,16 @@ h1 {
     text-align: center;
 }
 
-
 .preview-box input {
-
     width: 150px;
 
-    padding:
-        10px 12px;
+    padding: 10px 12px;
 
     background:
         rgba(0,0,0,0.3);
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     color: var(--cream);
 
@@ -563,13 +471,10 @@ h1 {
     outline: none;
 }
 
-
 .preview-box button {
-
     margin-left: 6px;
 
-    padding:
-        10px 14px;
+    padding: 10px 14px;
 
     background:
         var(--cream);
@@ -596,24 +501,22 @@ h1 {
 ============================== */
 
 #passwordScreen {
-
     display: none;
 
     text-align: center;
 }
 
-
 .lock-container {
-
-    height: 130px;
+    height: 150px;
 
     display: flex;
 
     align-items: center;
-
     justify-content: center;
 
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+
+    position: relative;
 }
 
 
@@ -622,11 +525,9 @@ h1 {
 ============================== */
 
 .lock {
-
     position: relative;
 
     width: 72px;
-
     height: 65px;
 
     background:
@@ -639,25 +540,24 @@ h1 {
         rgba(0,0,0,0.3);
 
     transition:
-        transform 0.2s ease;
+        transform 0.25s ease;
+
+    z-index: 5;
 }
 
 
-/* Shackle */
+/* shackle */
 
 .lock::before {
-
     content: "";
 
     position: absolute;
 
     width: 39px;
-
     height: 43px;
 
     border:
-        8px solid
-        var(--cream);
+        8px solid var(--cream);
 
     border-bottom: none;
 
@@ -665,16 +565,14 @@ h1 {
         22px 22px 0 0;
 
     left: 50%;
-
     top: -34px;
 
     transform:
         translateX(-50%);
 
     transition:
-
         transform
-        0.45s
+        0.5s
         cubic-bezier(
             .2,
             1.6,
@@ -683,7 +581,7 @@ h1 {
         ),
 
         top
-        0.45s
+        0.5s
         cubic-bezier(
             .2,
             1.6,
@@ -693,16 +591,14 @@ h1 {
 }
 
 
-/* Keyhole */
+/* keyhole */
 
 .lock::after {
-
     content: "";
 
     position: absolute;
 
     width: 9px;
-
     height: 17px;
 
     background:
@@ -711,7 +607,6 @@ h1 {
     border-radius: 7px;
 
     left: 50%;
-
     top: 23px;
 
     transform:
@@ -720,17 +615,15 @@ h1 {
 
 
 /* ==============================
-   WRONG PASSWORD
+   SHAKE
 ============================== */
 
 .lock.shake {
-
     animation:
         shakeLock
         0.5s
         ease;
 }
-
 
 @keyframes shakeLock {
 
@@ -777,28 +670,148 @@ h1 {
 ============================== */
 
 .lock.unlocked {
+    animation:
+        unlockPop
+        0.55s
+        cubic-bezier(
+            .2,
+            1.5,
+            .4,
+            1
+        );
 
     transform:
-        scale(1.08);
+        scale(1.12);
 }
 
-
 .lock.unlocked::before {
-
     transform:
         translateX(-50%)
-        rotate(-32deg);
+        rotate(-35deg);
 
-    top: -48px;
+    top: -50px;
+}
+
+@keyframes unlockPop {
+
+    0% {
+        transform:
+            scale(1);
+    }
+
+    45% {
+        transform:
+            scale(1.28);
+    }
+
+    70% {
+        transform:
+            scale(0.96);
+    }
+
+    100% {
+        transform:
+            scale(1.12);
+    }
 }
 
 
 /* ==============================
-   PASSWORD TEXT
+   ENERGY BURST
+============================== */
+
+.unlock-burst {
+    position: absolute;
+
+    width: 25px;
+    height: 25px;
+
+    border:
+        1px solid
+        rgba(242,234,216,0.8);
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.unlock-burst.active {
+    animation:
+        burst
+        1.2s
+        ease-out
+        forwards;
+}
+
+@keyframes burst {
+
+    0% {
+        width: 20px;
+        height: 20px;
+
+        opacity: 0.8;
+    }
+
+    100% {
+        width: 430px;
+        height: 430px;
+
+        opacity: 0;
+    }
+}
+
+
+/* ==============================
+   ACCESS GRANTED
+============================== */
+
+.access-granted {
+    display: none;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: var(--cream);
+
+    margin-top: 15px;
+
+    animation:
+        granted
+        0.7s
+        ease
+        forwards;
+}
+
+@keyframes granted {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==============================
+   PASSWORD
 ============================== */
 
 .password-title {
-
     font-size:
         clamp(
             35px,
@@ -806,15 +819,12 @@ h1 {
             60px
         );
 
-    letter-spacing:
-        -2px;
+    letter-spacing: -2px;
 
     margin-bottom: 15px;
 }
 
-
 .password-subtitle {
-
     font-family:
         "DM Mono",
         monospace;
@@ -828,17 +838,13 @@ h1 {
     margin-bottom: 40px;
 }
 
-
 .password-form {
-
     max-width: 440px;
 
     margin: 0 auto;
 }
 
-
 .password-input {
-
     width: 100%;
 
     padding:
@@ -848,8 +854,7 @@ h1 {
         rgba(0,0,0,0.25);
 
     border:
-        1px solid
-        var(--line);
+        1px solid var(--line);
 
     color: var(--cream);
 
@@ -867,19 +872,9 @@ h1 {
 
     text-transform:
         uppercase;
-
-    transition:
-
-        border-color
-        0.2s,
-
-        box-shadow
-        0.2s;
 }
 
-
 .password-input:focus {
-
     border-color:
         rgba(
             242,
@@ -898,22 +893,13 @@ h1 {
         );
 }
 
-
 .password-input::placeholder {
-
-    color:
-        #5d656d;
+    color: #5d656d;
 
     letter-spacing: 3px;
 }
 
-
-/* ==============================
-   BUTTON
-============================== */
-
 .access-button {
-
     width: 100%;
 
     margin-top: 14px;
@@ -943,17 +929,11 @@ h1 {
     cursor: pointer;
 
     transition:
-
-        background
-        0.2s,
-
-        color
-        0.2s;
+        background 0.2s,
+        color 0.2s;
 }
 
-
 .access-button:hover {
-
     background:
         transparent;
 
@@ -961,22 +941,13 @@ h1 {
         var(--cream);
 }
 
-
 .access-button:disabled {
-
     opacity: 0.5;
 
-    cursor:
-        default;
+    cursor: default;
 }
 
-
-/* ==============================
-   ERROR
-============================== */
-
 .error {
-
     min-height: 22px;
 
     margin-top: 15px;
@@ -990,45 +961,125 @@ h1 {
     letter-spacing: 2px;
 
     color:
-        #c99a8e;
+        var(--error);
 }
 
 
 /* ==============================
-   UNLOCKED MESSAGE
+   FINAL ERROR SCREEN
 ============================== */
 
-.unlocked-message {
-
+#missionError {
     display: none;
 
-    margin-top: 35px;
+    text-align: center;
 
-    animation:
-        fadeIn
-        0.6s
-        ease
-        forwards;
+    min-height: 340px;
+
+    align-items: center;
+
+    justify-content: center;
+
+    flex-direction: column;
+
+    position: relative;
 }
 
 
-.unlocked-message strong {
+/* little system symbol */
 
-    display: block;
+.system-symbol {
+    width: 54px;
+    height: 54px;
+
+    border:
+        1px solid
+        rgba(201,154,142,0.55);
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-bottom: 28px;
 
     font-family:
         "DM Mono",
         monospace;
 
-    font-size: 12px;
+    font-size: 21px;
 
-    letter-spacing: 4px;
+    color:
+        var(--error);
 
-    margin-bottom: 10px;
+    animation:
+        errorSymbol
+        0.7s
+        ease
+        forwards;
+}
+
+@keyframes errorSymbol {
+
+    0% {
+        opacity: 0;
+
+        transform:
+            scale(0.7)
+            rotate(-8deg);
+    }
+
+    60% {
+        opacity: 1;
+
+        transform:
+            scale(1.08)
+            rotate(2deg);
+    }
+
+    100% {
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
+    }
 }
 
 
-.unlocked-message span {
+.error-main {
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size:
+        clamp(
+            20px,
+            4vw,
+            32px
+        );
+
+    letter-spacing:
+        3px;
+
+    color:
+        var(--error);
+
+    margin-bottom: 18px;
+
+    opacity: 0;
+
+    animation:
+        errorText
+        0.8s
+        0.2s
+        ease
+        forwards;
+}
+
+
+.error-sub {
 
     font-family:
         "DM Mono",
@@ -1036,15 +1087,124 @@ h1 {
 
     font-size: 9px;
 
-    letter-spacing: 2px;
+    letter-spacing: 3px;
 
     color:
-        var(--muted);
+        #69727a;
+
+    opacity: 0;
+
+    animation:
+        errorText
+        0.8s
+        0.45s
+        ease
+        forwards;
+}
+
+@keyframes errorText {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
 }
 
 
 /* ==============================
-   FADE
+   CINEMATIC TRANSITION
+============================== */
+
+#cinematicFlash {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        var(--cream);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 999;
+}
+
+#cinematicFlash.active {
+
+    animation:
+        cinematicFlash
+        0.65s
+        ease;
+}
+
+@keyframes cinematicFlash {
+
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.12;
+    }
+
+    30% {
+        opacity: 0;
+    }
+
+    65% {
+        opacity: 0.05;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* ==============================
+   FADE OUT
+============================== */
+
+.fade-away {
+
+    animation:
+        fadeAway
+        0.8s
+        ease
+        forwards;
+}
+
+@keyframes fadeAway {
+
+    from {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            scale(0.97);
+    }
+}
+
+
+/* ==============================
+   FADE IN
 ============================== */
 
 .fade-in {
@@ -1056,11 +1216,9 @@ h1 {
         forwards;
 }
 
-
 @keyframes fadeIn {
 
     from {
-
         opacity: 0;
 
         transform:
@@ -1068,7 +1226,6 @@ h1 {
     }
 
     to {
-
         opacity: 1;
 
         transform:
@@ -1081,58 +1238,42 @@ h1 {
    MOBILE
 ============================== */
 
-@media (max-width: 650px) {
+@media (max-width:650px) {
 
     .page {
-
         width: 94%;
     }
 
-
     .document {
-
         padding:
             30px 20px;
     }
 
-
     .header {
-
         margin-bottom: 40px;
     }
 
-
     .countdown {
-
         grid-template-columns:
-            repeat(2, 1fr);
+            repeat(2,1fr);
     }
 
-
     .count-box:nth-child(2) {
-
         border-right: none;
     }
 
-
     .count-box:nth-child(1),
     .count-box:nth-child(2) {
-
         border-bottom:
             1px solid
             var(--soft);
     }
 
-
     h1 {
-
-        letter-spacing:
-            -3px;
+        letter-spacing: -3px;
     }
 
-
     .footer {
-
         flex-direction:
             column;
 
@@ -1140,9 +1281,7 @@ h1 {
             center;
     }
 
-
     .preview-box button {
-
         margin-left: 0;
 
         margin-top: 8px;
@@ -1158,68 +1297,49 @@ h1 {
 <body>
 
 
-<div class="page">
+<div id="cinematicFlash"></div>
 
+
+<div class="page">
 
 <main class="document">
 
 
 <!-- ==================================
-     COUNTDOWN SCREEN
-=================================== -->
+     COUNTDOWN
+================================== -->
 
-<section
-    id="countdownScreen"
->
+<section id="countdownScreen">
 
 
 <header class="header">
 
-
 <div class="classification">
-
 CLASSIFIED ACCESS SYSTEM
-
 </div>
-
 
 <div class="document-number">
-
 M61-001
-
 </div>
-
 
 </header>
 
 
-
 <div class="title-area">
 
-
 <div class="eyebrow">
-
 OPERATION
-
 </div>
-
 
 <h1>
-
 MISSION 61
-
 </h1>
 
-
 <div class="subtitle">
-
 Birthday Operation
-
 </div>
 
-
 </div>
-
 
 
 <div class="status">
@@ -1231,98 +1351,81 @@ MISSION STATUS: STANDBY
 </div>
 
 
-
 <div class="countdown">
 
 
 <div class="count-box">
 
 <div
-    class="number"
-    id="days"
+class="number"
+id="days"
 >
 000
 </div>
 
 <div class="label">
-
 Days
-
 </div>
 
 </div>
-
 
 
 <div class="count-box">
 
 <div
-    class="number"
-    id="hours"
+class="number"
+id="hours"
 >
 00
 </div>
 
 <div class="label">
-
 Hours
-
 </div>
 
 </div>
-
 
 
 <div class="count-box">
 
 <div
-    class="number"
-    id="minutes"
+class="number"
+id="minutes"
 >
 00
 </div>
 
 <div class="label">
-
 Minutes
-
 </div>
 
 </div>
-
 
 
 <div class="count-box">
 
 <div
-    class="number"
-    id="seconds"
+class="number"
+id="seconds"
 >
 00
 </div>
 
 <div class="label">
-
 Seconds
-
 </div>
 
 </div>
 
 
 </div>
-
 
 
 <div class="information">
 
-
 <div class="information-title">
-
 ACCESS RESTRICTED
-
 </div>
-
 
 <div class="information-text">
 
@@ -1335,66 +1438,51 @@ the countdown reaches zero.
 
 </div>
 
-
 </div>
-
 
 
 <footer class="footer">
 
 
 <span
-    id="previewTrigger"
-    class="preview-trigger"
+id="previewTrigger"
+class="preview-trigger"
 >
-
 RECIPIENT: MUM
-
 </span>
 
 
 <span>
-
 11 • 12 • 2026
-
 </span>
 
 
 <span>
-
 CLEARANCE: PENDING
-
 </span>
 
 
 </footer>
 
 
-<!-- Hidden developer PIN -->
-
 <div
-    id="previewBox"
-    class="preview-box"
+id="previewBox"
+class="preview-box"
 >
-
 
 <input
-    id="previewPin"
-    type="password"
-    inputmode="numeric"
-    maxlength="4"
-    placeholder="PIN"
+id="previewPin"
+type="password"
+inputmode="numeric"
+maxlength="4"
+placeholder="PIN"
 >
-
 
 <button
-    onclick="activatePreview()"
+onclick="activatePreview()"
 >
-
 PREVIEW
-
 </button>
-
 
 </div>
 
@@ -1405,24 +1493,34 @@ PREVIEW
 
 <!-- ==================================
      PASSWORD SCREEN
-=================================== -->
+================================== -->
 
 <section
-    id="passwordScreen"
+id="passwordScreen"
 >
 
 
 <div class="lock-container">
 
-
 <div
-    id="lock"
-    class="lock"
+id="lock"
+class="lock"
 ></div>
 
+<div
+id="unlockBurst"
+class="unlock-burst"
+></div>
 
 </div>
 
+
+<div
+id="accessGranted"
+class="access-granted"
+>
+ACCESS GRANTED
+</div>
 
 
 <h2 class="password-title">
@@ -1439,86 +1537,50 @@ MISSION 61 HAS BEEN ACTIVATED
 </div>
 
 
-
 <form
-    class="password-form"
-    onsubmit="checkPassword(event)"
+class="password-form"
+onsubmit="checkPassword(event)"
 >
 
 
 <input
-    id="passwordInput"
-    class="password-input"
-    type="text"
-    autocomplete="off"
-    autocapitalize="characters"
-    spellcheck="false"
-    placeholder="ACCESS CODE"
-    maxlength="9"
+id="passwordInput"
+class="password-input"
+type="text"
+autocomplete="off"
+autocapitalize="characters"
+spellcheck="false"
+placeholder="ACCESS CODE"
+maxlength="9"
 >
 
 
 <button
-    class="access-button"
-    type="submit"
+class="access-button"
+type="submit"
 >
-
 AUTHENTICATE
-
 </button>
 
 
 <div
-    id="error"
-    class="error"
->
-</div>
+id="passwordError"
+class="error"
+></div>
 
 
 </form>
 
 
-
-<div
-    id="unlockedMessage"
-    class="unlocked-message"
->
-
-
-<strong>
-
-LOCK STATUS: OPEN
-
-</strong>
-
-
-<span>
-
-ACCESS CONFIRMED
-
-</span>
-
-
-</div>
-
-
-
 <footer class="footer">
 
-
 <span>
-
 CLEARANCE REQUIRED
-
 </span>
-
 
 <span>
-
 M61-001
-
 </span>
-
 
 </footer>
 
@@ -1526,8 +1588,35 @@ M61-001
 </section>
 
 
-</main>
 
+<!-- ==================================
+     FINAL MISSION ERROR
+================================== -->
+
+<section
+id="missionError"
+>
+
+
+<div class="system-symbol">
+!
+</div>
+
+
+<div class="error-main">
+ERROR - MISSION CONTENT NOT FOUND
+</div>
+
+
+<div class="error-sub">
+SYSTEM RESPONSE: CONTENT UNAVAILABLE
+</div>
+
+
+</section>
+
+
+</main>
 
 </div>
 
@@ -1535,8 +1624,9 @@ M61-001
 
 <script>
 
+
 /* ==========================================
-   MISSION 61 COUNTDOWN
+   COUNTDOWN
 ========================================== */
 
 const targetDate =
@@ -1545,13 +1635,19 @@ const targetDate =
     ).getTime();
 
 
+let passwordScreenShown = false;
+
 let previewActivated = false;
 
 
 function updateCountdown() {
 
     if (previewActivated) {
+        return;
+    }
 
+
+    if (passwordScreenShown) {
         return;
     }
 
@@ -1603,42 +1699,38 @@ function updateCountdown() {
         .getElementById("days")
         .textContent =
         String(days)
-            .padStart(3, "0");
+            .padStart(3,"0");
 
 
     document
         .getElementById("hours")
         .textContent =
         String(hours)
-            .padStart(2, "0");
+            .padStart(2,"0");
 
 
     document
         .getElementById("minutes")
         .textContent =
         String(minutes)
-            .padStart(2, "0");
+            .padStart(2,"0");
 
 
     document
         .getElementById("seconds")
         .textContent =
         String(seconds)
-            .padStart(2, "0");
+            .padStart(2,"0");
 }
 
 
 /* ==========================================
-   PASSWORD SCREEN
+   SHOW PASSWORD
 ========================================== */
-
-let passwordScreenShown = false;
-
 
 function showPasswordScreen() {
 
     if (passwordScreenShown) {
-
         return;
     }
 
@@ -1652,18 +1744,18 @@ function showPasswordScreen() {
         "none";
 
 
-    const passwordScreen =
+    const screen =
         document
             .getElementById(
                 "passwordScreen"
             );
 
 
-    passwordScreen.style.display =
+    screen.style.display =
         "block";
 
 
-    passwordScreen.classList.add(
+    screen.classList.add(
         "fade-in"
     );
 
@@ -1676,7 +1768,7 @@ function showPasswordScreen() {
             )
             .focus();
 
-    }, 700);
+    },700);
 }
 
 
@@ -1688,9 +1780,17 @@ const correctPassword =
     "K7Q4-9M2X";
 
 
+let alreadyUnlocked = false;
+
+
 function checkPassword(event) {
 
     event.preventDefault();
+
+
+    if (alreadyUnlocked) {
+        return;
+    }
 
 
     const input =
@@ -1711,17 +1811,11 @@ function checkPassword(event) {
 
     const error =
         document.getElementById(
-            "error"
+            "passwordError"
         );
 
 
-    const unlockedMessage =
-        document.getElementById(
-            "unlockedMessage"
-        );
-
-
-    /* WRONG PASSWORD */
+    /* WRONG */
 
     if (
         input !==
@@ -1763,7 +1857,10 @@ function checkPassword(event) {
     }
 
 
-    /* CORRECT PASSWORD */
+    /* CORRECT */
+
+    alreadyUnlocked = true;
+
 
     error.textContent = "";
 
@@ -1782,22 +1879,122 @@ function checkPassword(event) {
         .disabled = true;
 
 
+    /* Start lock animation */
+
     lock.classList.add(
         "unlocked"
     );
 
 
+    /* Start energy burst */
+
     setTimeout(() => {
 
-        unlockedMessage.style.display =
+        document
+            .getElementById(
+                "unlockBurst"
+            )
+            .classList.add(
+                "active"
+            );
+
+    },180);
+
+
+    /* Access granted */
+
+    setTimeout(() => {
+
+        document
+            .getElementById(
+                "accessGranted"
+            )
+            .style.display =
             "block";
 
-    }, 500);
+    },500);
+
+
+    /*
+       Begin cinematic transition
+    */
+
+    setTimeout(() => {
+
+        cinematicTransition();
+
+    },1800);
 }
 
 
 /* ==========================================
-   HIDDEN PREVIEW MODE
+   CINEMATIC TRANSITION
+========================================== */
+
+function cinematicTransition() {
+
+    const passwordScreen =
+        document.getElementById(
+            "passwordScreen"
+        );
+
+
+    const flash =
+        document.getElementById(
+            "cinematicFlash"
+        );
+
+
+    /* Flash */
+
+    flash.classList.add(
+        "active"
+    );
+
+
+    /* Fade old interface */
+
+    passwordScreen.classList.add(
+        "fade-away"
+    );
+
+
+    setTimeout(() => {
+
+        passwordScreen.style.display =
+            "none";
+
+
+        showMissionError();
+
+    },750);
+}
+
+
+/* ==========================================
+   FINAL ERROR
+========================================== */
+
+function showMissionError() {
+
+    const errorScreen =
+        document.getElementById(
+            "missionError"
+        );
+
+
+    errorScreen.style.display =
+        "flex";
+
+
+    errorScreen.classList.add(
+        "fade-in"
+    );
+}
+
+
+/* ==========================================
+   HIDDEN PREVIEW
 ========================================== */
 
 let recipientClicks = 0;
@@ -1840,7 +2037,7 @@ previewTrigger.addEventListener(
 
                 recipientClicks = 0;
 
-            }, 700);
+            },700);
 
 
         if (
@@ -1860,7 +2057,7 @@ previewTrigger.addEventListener(
 );
 
 
-/* Enter PIN with keyboard */
+/* Preview PIN */
 
 previewPin.addEventListener(
     "keydown",
@@ -1877,7 +2074,7 @@ previewPin.addEventListener(
 );
 
 
-/* Activate developer preview */
+/* Activate preview */
 
 function activatePreview() {
 
