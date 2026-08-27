@@ -7,1097 +7,1221 @@
 <title>MISSION 61</title>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
 
-    :root {
-        --navy: #07111c;
-        --navy2: #0b1724;
-        --cream: #f2ead8;
-        --muted: #a9a99f;
-        --line: rgba(242, 234, 216, 0.25);
-        --line-soft: rgba(242, 234, 216, 0.09);
+:root {
+    --navy: #07111c;
+    --navy2: #0b1724;
+    --cream: #f2ead8;
+    --muted: #a9a99f;
+    --line: rgba(242, 234, 216, 0.25);
+    --soft: rgba(242, 234, 216, 0.09);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(39, 64, 86, 0.35),
+            transparent 50%
+        ),
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--navy2) 55%,
+            #050b12
+        );
+
+    color: var(--cream);
+
+    font-family: "Inter", Arial, sans-serif;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow-x: hidden;
+}
+
+/* Background grid */
+
+body::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background-image:
+        linear-gradient(
+            rgba(242,234,216,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(242,234,216,0.025) 1px,
+            transparent 1px
+        );
+
+    background-size: 45px 45px;
+
+    pointer-events: none;
+
+    opacity: 0.6;
+}
+
+
+/* =========================
+   MAIN DOCUMENT
+========================= */
+
+.page {
+    width: min(920px, 92%);
+
+    padding: 45px 0;
+
+    position: relative;
+
+    z-index: 2;
+}
+
+.document {
+    position: relative;
+
+    border: 1px solid var(--line);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(15, 29, 43, 0.97),
+            rgba(5, 13, 21, 0.98)
+        );
+
+    padding: clamp(30px, 6vw, 65px);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,0.45),
+        inset 0 1px rgba(255,255,255,0.04);
+}
+
+
+/* Corner details */
+
+.document::before,
+.document::after {
+    content: "";
+
+    position: absolute;
+
+    width: 35px;
+    height: 35px;
+}
+
+.document::before {
+    top: 15px;
+    left: 15px;
+
+    border-top: 1px solid var(--line);
+    border-left: 1px solid var(--line);
+}
+
+.document::after {
+    right: 15px;
+    bottom: 15px;
+
+    border-right: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+
+    gap: 20px;
+
+    border-bottom: 1px solid var(--soft);
+
+    padding-bottom: 18px;
+
+    margin-bottom: 55px;
+}
+
+.classification,
+.document-number {
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   TITLE
+========================= */
+
+.title-area {
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.eyebrow {
+    font-family: "DM Mono", monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 4px;
+
+    color: var(--muted);
+
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: clamp(52px, 12vw, 115px);
+
+    line-height: 0.85;
+
+    letter-spacing: -5px;
+
+    font-weight: 800;
+
+    color: var(--cream);
+}
+
+.subtitle {
+    margin-top: 22px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 3px;
+
+    color: var(--muted);
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   COUNTDOWN
+========================= */
+
+.countdown {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    border-top: 1px solid var(--line);
+
+    border-bottom: 1px solid var(--line);
+
+    margin-bottom: 45px;
+}
+
+.count-box {
+    padding: 30px 10px;
+
+    text-align: center;
+
+    border-right: 1px solid var(--soft);
+}
+
+.count-box:last-child {
+    border-right: none;
+}
+
+.number {
+    font-family: "DM Mono", monospace;
+
+    font-size: clamp(30px, 6vw, 58px);
+
+    line-height: 1;
+
+    color: var(--cream);
+
+    font-variant-numeric: tabular-nums;
+
+    margin-bottom: 12px;
+}
+
+.label {
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color: var(--muted);
+
+    text-transform: uppercase;
+}
+
+
+/* =========================
+   STATUS
+========================= */
+
+.status {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 10px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted);
+
+    margin-bottom: 30px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #a6c19e;
+
+    box-shadow:
+        0 0 10px rgba(166,193,158,0.5);
+}
+
+
+/* =========================
+   INFORMATION
+========================= */
+
+.information {
+    border: 1px solid var(--soft);
+
+    padding: 25px;
+
+    text-align: center;
+
+    background: rgba(0,0,0,0.12);
+}
+
+.information-title {
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: var(--cream);
+
+    margin-bottom: 12px;
+}
+
+.information-text {
+    color: var(--muted);
+
+    font-size: 14px;
+
+    line-height: 1.7;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+    margin-top: 35px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: #69727a;
+}
+
+
+/* =========================
+   PASSWORD SCREEN
+========================= */
+
+#passwordScreen {
+    display: none;
+
+    text-align: center;
+}
+
+.lock-container {
+    height: 130px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 20px;
+}
+
+
+/* The actual lock */
+
+.lock {
+    position: relative;
+
+    width: 72px;
+    height: 65px;
+
+    background: var(--cream);
+
+    border-radius: 7px;
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,0.3);
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+/* Lock shackle */
+
+.lock::before {
+    content: "";
+
+    position: absolute;
+
+    width: 39px;
+    height: 43px;
+
+    border: 8px solid var(--cream);
+
+    border-bottom: none;
+
+    border-radius: 22px 22px 0 0;
+
+    left: 50%;
+
+    top: -34px;
+
+    transform: translateX(-50%);
+
+    transition:
+        transform 0.45s cubic-bezier(.2,1.6,.4,1),
+        top 0.45s cubic-bezier(.2,1.6,.4,1);
+}
+
+
+/* Keyhole */
+
+.lock::after {
+    content: "";
+
+    position: absolute;
+
+    width: 9px;
+    height: 17px;
+
+    background: var(--navy);
+
+    border-radius: 7px;
+
+    left: 50%;
+    top: 23px;
+
+    transform: translateX(-50%);
+}
+
+
+/* =========================
+   LOCK ANIMATIONS
+========================= */
+
+
+/* Wrong password */
+
+.lock.shake {
+    animation:
+        shakeLock 0.5s ease;
+}
+
+@keyframes shakeLock {
+
+    0% {
+        transform: translateX(0) rotate(0);
     }
 
-    * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
+    20% {
+        transform: translateX(-9px) rotate(-4deg);
     }
 
-    html,
-    body {
-        width: 100%;
-        min-height: 100%;
+    40% {
+        transform: translateX(8px) rotate(4deg);
     }
 
-    body {
-        min-height: 100vh;
-        background:
-            radial-gradient(
-                circle at 50% 0%,
-                rgba(39, 64, 86, 0.35),
-                transparent 50%
-            ),
-            linear-gradient(
-                135deg,
-                var(--navy),
-                var(--navy2) 55%,
-                #050b12
-            );
-
-        color: var(--cream);
-
-        font-family: "Inter", Arial, sans-serif;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        overflow-x: hidden;
+    60% {
+        transform: translateX(-6px) rotate(-3deg);
     }
 
-    /* ==============================
-       BACKGROUND
-    ============================== */
-
-    body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-
-        background-image:
-            linear-gradient(
-                rgba(242,234,216,0.025) 1px,
-                transparent 1px
-            ),
-            linear-gradient(
-                90deg,
-                rgba(242,234,216,0.025) 1px,
-                transparent 1px
-            );
-
-        background-size: 45px 45px;
-
-        pointer-events: none;
-        opacity: 0.6;
+    80% {
+        transform: translateX(5px) rotate(2deg);
     }
 
-    /* ==============================
-       MAIN
-    ============================== */
+    100% {
+        transform: translateX(0) rotate(0);
+    }
+}
+
+
+/* Correct password */
+
+.lock.unlocked {
+    transform: scale(1.08);
+}
+
+.lock.unlocked::before {
+    transform:
+        translateX(-50%)
+        rotate(-32deg);
+
+    top: -48px;
+}
+
+
+/* =========================
+   PASSWORD CONTENT
+========================= */
+
+.password-title {
+    font-size: clamp(35px, 7vw, 60px);
+
+    letter-spacing: -2px;
+
+    margin-bottom: 15px;
+}
+
+.password-subtitle {
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+
+    color: var(--muted);
+
+    margin-bottom: 40px;
+}
+
+.password-form {
+    max-width: 440px;
+
+    margin: 0 auto;
+}
+
+.password-input {
+    width: 100%;
+
+    padding: 19px 20px;
+
+    background: rgba(0,0,0,0.25);
+
+    border: 1px solid var(--line);
+
+    color: var(--cream);
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 20px;
+
+    letter-spacing: 4px;
+
+    text-align: center;
+
+    outline: none;
+
+    text-transform: uppercase;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+.password-input:focus {
+    border-color: rgba(242,234,216,0.65);
+
+    box-shadow:
+        0 0 0 3px rgba(242,234,216,0.04);
+}
+
+.password-input::placeholder {
+    color: #5d656d;
+
+    letter-spacing: 3px;
+}
+
+
+.access-button {
+    width: 100%;
+
+    margin-top: 14px;
+
+    padding: 18px;
+
+    border: 1px solid var(--cream);
+
+    background: var(--cream);
+
+    color: #07111c;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 11px;
+
+    font-weight: 500;
+
+    letter-spacing: 3px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.access-button:hover {
+    background: transparent;
+
+    color: var(--cream);
+}
+
+
+/* Error */
+
+.error {
+    min-height: 22px;
+
+    margin-top: 15px;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: #c99a8e;
+}
+
+
+/* =========================
+   UNLOCKED
+========================= */
+
+.unlocked-message {
+    display: none;
+
+    margin-top: 35px;
+
+    animation:
+        fadeIn 0.6s ease forwards;
+}
+
+.unlocked-message strong {
+    display: block;
+
+    font-family: "DM Mono", monospace;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 10px;
+}
+
+.unlocked-message span {
+    font-family: "DM Mono", monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted);
+}
+
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+.fade-in {
+    animation:
+        fadeIn 0.8s ease forwards;
+}
+
+@keyframes fadeIn {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
 
     .page {
-        width: min(920px, 92%);
-        padding: 45px 0;
-        position: relative;
-        z-index: 2;
+        width: 94%;
     }
 
     .document {
-        position: relative;
-
-        border: 1px solid var(--line);
-
-        background:
-            linear-gradient(
-                145deg,
-                rgba(15, 29, 43, 0.97),
-                rgba(5, 13, 21, 0.98)
-            );
-
-        padding: clamp(30px, 6vw, 65px);
-
-        box-shadow:
-            0 35px 100px rgba(0,0,0,0.45),
-            inset 0 1px rgba(255,255,255,0.04);
+        padding: 30px 20px;
     }
-
-    /* Technical corner marks */
-
-    .document::before,
-    .document::after {
-        content: "";
-        position: absolute;
-
-        width: 35px;
-        height: 35px;
-
-        pointer-events: none;
-    }
-
-    .document::before {
-        top: 15px;
-        left: 15px;
-
-        border-top: 1px solid var(--line);
-        border-left: 1px solid var(--line);
-    }
-
-    .document::after {
-        right: 15px;
-        bottom: 15px;
-
-        border-right: 1px solid var(--line);
-        border-bottom: 1px solid var(--line);
-    }
-
-    /* ==============================
-       HEADER
-    ============================== */
 
     .header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        gap: 20px;
-
-        border-bottom: 1px solid var(--line-soft);
-
-        padding-bottom: 18px;
-
-        margin-bottom: 55px;
-    }
-
-    .classification {
-        font-family: "DM Mono", monospace;
-
-        font-size: 10px;
-
-        letter-spacing: 3px;
-
-        color: var(--muted);
-    }
-
-    .document-number {
-        font-family: "DM Mono", monospace;
-
-        font-size: 10px;
-
-        letter-spacing: 2px;
-
-        color: var(--muted);
-    }
-
-    /* ==============================
-       TITLE
-    ============================== */
-
-    .title-area {
-        text-align: center;
-
-        margin-bottom: 50px;
-    }
-
-    .eyebrow {
-        font-family: "DM Mono", monospace;
-
-        font-size: 11px;
-
-        letter-spacing: 4px;
-
-        color: var(--muted);
-
-        margin-bottom: 18px;
-    }
-
-    h1 {
-        font-size: clamp(52px, 12vw, 115px);
-
-        line-height: 0.85;
-
-        letter-spacing: -5px;
-
-        font-weight: 800;
-
-        color: var(--cream);
-    }
-
-    .subtitle {
-        margin-top: 22px;
-
-        font-family: "DM Mono", monospace;
-
-        font-size: 11px;
-
-        letter-spacing: 3px;
-
-        color: var(--muted);
-
-        text-transform: uppercase;
-    }
-
-    /* ==============================
-       COUNTDOWN
-    ============================== */
-
-    .countdown {
-        display: grid;
-
-        grid-template-columns:
-            repeat(4, 1fr);
-
-        border-top: 1px solid var(--line);
-
-        border-bottom: 1px solid var(--line);
-
-        margin-bottom: 45px;
-    }
-
-    .count-box {
-        padding: 30px 10px;
-
-        text-align: center;
-
-        border-right: 1px solid var(--line-soft);
-    }
-
-    .count-box:last-child {
-        border-right: none;
-    }
-
-    .number {
-        font-family: "DM Mono", monospace;
-
-        font-size: clamp(30px, 6vw, 58px);
-
-        line-height: 1;
-
-        color: var(--cream);
-
-        font-variant-numeric: tabular-nums;
-
-        margin-bottom: 12px;
-    }
-
-    .label {
-        font-family: "DM Mono", monospace;
-
-        font-size: 9px;
-
-        letter-spacing: 3px;
-
-        color: var(--muted);
-
-        text-transform: uppercase;
-    }
-
-    /* ==============================
-       STATUS
-    ============================== */
-
-    .status {
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        gap: 10px;
-
-        font-family: "DM Mono", monospace;
-
-        font-size: 10px;
-
-        letter-spacing: 2px;
-
-        color: var(--muted);
-
-        margin-bottom: 30px;
-    }
-
-    .status-dot {
-        width: 7px;
-        height: 7px;
-
-        border-radius: 50%;
-
-        background: #a6c19e;
-
-        box-shadow:
-            0 0 10px rgba(166,193,158,0.5);
-    }
-
-    /* ==============================
-       INFORMATION BOX
-    ============================== */
-
-    .information {
-        border: 1px solid var(--line-soft);
-
-        padding: 25px;
-
-        text-align: center;
-
-        background: rgba(0,0,0,0.12);
-    }
-
-    .information-title {
-        font-family: "DM Mono", monospace;
-
-        font-size: 10px;
-
-        letter-spacing: 3px;
-
-        color: var(--cream);
-
-        margin-bottom: 12px;
-    }
-
-    .information-text {
-        color: var(--muted);
-
-        font-size: 14px;
-
-        line-height: 1.7;
-    }
-
-    /* ==============================
-       FOOTER
-    ============================== */
-
-    .footer {
-        margin-top: 35px;
-
-        display: flex;
-
-        justify-content: space-between;
-
-        gap: 20px;
-
-        font-family: "DM Mono", monospace;
-
-        font-size: 9px;
-
-        letter-spacing: 2px;
-
-        color: #69727a;
-    }
-
-    /* ==============================
-       PASSWORD SCREEN
-    ============================== */
-
-    #passwordScreen {
-        display: none;
-
-        text-align: center;
-    }
-
-    .lock-symbol {
-        width: 60px;
-        height: 60px;
-
-        margin: 0 auto 30px;
-
-        border: 1px solid var(--line);
-
-        display: flex;
-
-        align-items: center;
-
-        justify-content: center;
-
-        font-size: 23px;
-    }
-
-    .password-title {
-        font-size: clamp(35px, 7vw, 60px);
-
-        letter-spacing: -2px;
-
-        margin-bottom: 15px;
-    }
-
-    .password-subtitle {
-        font-family: "DM Mono", monospace;
-
-        font-size: 10px;
-
-        letter-spacing: 3px;
-
-        color: var(--muted);
-
         margin-bottom: 40px;
     }
 
-    .password-form {
-        max-width: 440px;
-
-        margin: 0 auto;
+    .countdown {
+        grid-template-columns:
+            repeat(2, 1fr);
     }
 
-    .password-input {
-        width: 100%;
-
-        padding: 19px 20px;
-
-        background: rgba(0,0,0,0.25);
-
-        border: 1px solid var(--line);
-
-        color: var(--cream);
-
-        font-family: "DM Mono", monospace;
-
-        font-size: 20px;
-
-        letter-spacing: 4px;
-
-        text-align: center;
-
-        outline: none;
-
-        text-transform: uppercase;
-
-        transition:
-            border-color 0.2s,
-            box-shadow 0.2s;
+    .count-box:nth-child(2) {
+        border-right: none;
     }
 
-    .password-input:focus {
-        border-color: rgba(242,234,216,0.65);
-
-        box-shadow:
-            0 0 0 3px rgba(242,234,216,0.04);
+    .count-box:nth-child(1),
+    .count-box:nth-child(2) {
+        border-bottom:
+            1px solid var(--soft);
     }
 
-    .password-input::placeholder {
-        color: #5d656d;
-
-        letter-spacing: 3px;
-    }
-
-    .access-button {
-        width: 100%;
-
-        margin-top: 14px;
-
-        padding: 18px;
-
-        border: 1px solid var(--cream);
-
-        background: var(--cream);
-
-        color: #07111c;
-
-        font-family: "DM Mono", monospace;
-
-        font-size: 11px;
-
-        font-weight: 500;
-
-        letter-spacing: 3px;
-
-        cursor: pointer;
-
-        transition:
-            background 0.2s,
-            color 0.2s;
-    }
-
-    .access-button:hover {
-        background: transparent;
-
-        color: var(--cream);
-    }
-
-    .error {
-        min-height: 22px;
-
-        margin-top: 15px;
-
-        font-family: "DM Mono", monospace;
-
-        font-size: 10px;
-
-        letter-spacing: 2px;
-
-        color: #c99a8e;
-    }
-
-    /* ==============================
-       ACCESS GRANTED
-    ============================== */
-
-    #accessGranted {
-        display: none;
-
-        text-align: center;
-    }
-
-    .granted-title {
-        font-size: clamp(40px, 8vw, 75px);
-
+    h1 {
         letter-spacing: -3px;
-
-        margin-bottom: 20px;
     }
 
-    .granted-line {
-        width: 80px;
-        height: 1px;
+    .footer {
+        flex-direction: column;
 
-        background: var(--line);
-
-        margin: 0 auto 25px;
+        text-align: center;
     }
-
-    .granted-text {
-        font-family: "DM Mono", monospace;
-
-        font-size: 11px;
-
-        letter-spacing: 3px;
-
-        color: var(--muted);
-    }
-
-    /* ==============================
-       ANIMATION
-    ============================== */
-
-    .fade-out {
-        animation: fadeOut 0.7s ease forwards;
-    }
-
-    .fade-in {
-        animation: fadeIn 0.7s ease forwards;
-    }
-
-    @keyframes fadeOut {
-        from {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        to {
-            opacity: 0;
-            transform: translateY(-8px);
-        }
-    }
-
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(8px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    /* ==============================
-       MOBILE
-    ============================== */
-
-    @media (max-width: 650px) {
-
-        .page {
-            width: 94%;
-        }
-
-        .document {
-            padding: 30px 20px;
-        }
-
-        .header {
-            margin-bottom: 40px;
-        }
-
-        .countdown {
-            grid-template-columns:
-                repeat(2, 1fr);
-        }
-
-        .count-box:nth-child(2) {
-            border-right: none;
-        }
-
-        .count-box:nth-child(1),
-        .count-box:nth-child(2) {
-            border-bottom: 1px solid var(--line-soft);
-        }
-
-        h1 {
-            letter-spacing: -3px;
-        }
-
-        .footer {
-            flex-direction: column;
-
-            text-align: center;
-        }
-    }
+}
 </style>
 </head>
+
 
 <body>
 
 <div class="page">
 
-    <main class="document">
+<main class="document">
 
-        <!-- ==================================
-             COUNTDOWN SCREEN
-        =================================== -->
 
-        <section id="countdownScreen">
+<!-- ======================================
+     COUNTDOWN
+======================================= -->
 
-            <header class="header">
+<section id="countdownScreen">
 
-                <div class="classification">
-                    CLASSIFIED ACCESS SYSTEM
-                </div>
+<header class="header">
 
-                <div class="document-number">
-                    M61-001
-                </div>
+<div class="classification">
+CLASSIFIED ACCESS SYSTEM
+</div>
 
-            </header>
+<div class="document-number">
+M61-001
+</div>
 
+</header>
 
-            <div class="title-area">
 
-                <div class="eyebrow">
-                    OPERATION
-                </div>
+<div class="title-area">
 
-                <h1>
-                    MISSION 61
-                </h1>
+<div class="eyebrow">
+OPERATION
+</div>
 
-                <div class="subtitle">
-                    Birthday Operation
-                </div>
+<h1>
+MISSION 61
+</h1>
 
-            </div>
+<div class="subtitle">
+Birthday Operation
+</div>
 
+</div>
 
-            <div class="status">
 
-                <span class="status-dot"></span>
+<div class="status">
 
-                MISSION STATUS: STANDBY
+<span class="status-dot"></span>
 
-            </div>
+MISSION STATUS: STANDBY
 
+</div>
 
-            <div class="countdown">
 
-                <div class="count-box">
+<div class="countdown">
 
-                    <div
-                        class="number"
-                        id="days">
-                        000
-                    </div>
+<div class="count-box">
 
-                    <div class="label">
-                        Days
-                    </div>
+<div
+class="number"
+id="days">
+000
+</div>
 
-                </div>
+<div class="label">
+Days
+</div>
 
+</div>
 
-                <div class="count-box">
 
-                    <div
-                        class="number"
-                        id="hours">
-                        00
-                    </div>
+<div class="count-box">
 
-                    <div class="label">
-                        Hours
-                    </div>
+<div
+class="number"
+id="hours">
+00
+</div>
 
-                </div>
+<div class="label">
+Hours
+</div>
 
+</div>
 
-                <div class="count-box">
 
-                    <div
-                        class="number"
-                        id="minutes">
-                        00
-                    </div>
+<div class="count-box">
 
-                    <div class="label">
-                        Minutes
-                    </div>
+<div
+class="number"
+id="minutes">
+00
+</div>
 
-                </div>
+<div class="label">
+Minutes
+</div>
 
+</div>
 
-                <div class="count-box">
 
-                    <div
-                        class="number"
-                        id="seconds">
-                        00
-                    </div>
+<div class="count-box">
 
-                    <div class="label">
-                        Seconds
-                    </div>
+<div
+class="number"
+id="seconds">
+00
+</div>
 
-                </div>
+<div class="label">
+Seconds
+</div>
 
-            </div>
+</div>
 
+</div>
 
-            <div class="information">
 
-                <div class="information-title">
-                    ACCESS RESTRICTED
-                </div>
+<div class="information">
 
-                <div class="information-text">
-                    Mission details are currently unavailable.
-                    <br>
-                    Authorised access will be granted when
-                    the countdown reaches zero.
-                </div>
+<div class="information-title">
+ACCESS RESTRICTED
+</div>
 
-            </div>
+<div class="information-text">
 
+Mission details are currently unavailable.
 
-            <footer class="footer">
+<br>
 
-                <span>
-                    RECIPIENT: MUM
-                </span>
+Authorised access will be granted when
+the countdown reaches zero.
 
-                <span>
-                    11 • 12 • 2026
-                </span>
+</div>
 
-                <span>
-                    CLEARANCE: PENDING
-                </span>
+</div>
 
-            </footer>
 
-        </section>
+<footer class="footer">
 
+<span>
+RECIPIENT: MUM
+</span>
 
-        <!-- ==================================
-             PASSWORD SCREEN
-        =================================== -->
+<span>
+11 • 12 • 2026
+</span>
 
-        <section id="passwordScreen">
+<span>
+CLEARANCE: PENDING
+</span>
 
-            <div class="lock-symbol">
-                🔐
-            </div>
+</footer>
 
-            <h2 class="password-title">
-                ACCESS REQUIRED
-            </h2>
+</section>
 
-            <div class="password-subtitle">
-                MISSION 61 HAS BEEN ACTIVATED
-            </div>
 
 
-            <form
-                class="password-form"
-                onsubmit="checkPassword(event)"
-            >
+<!-- ======================================
+     PASSWORD
+======================================= -->
 
-                <input
-                    id="passwordInput"
-                    class="password-input"
-                    type="text"
-                    autocomplete="off"
-                    autocapitalize="characters"
-                    spellcheck="false"
-                    placeholder="ACCESS CODE"
-                    maxlength="9"
-                >
+<section
+id="passwordScreen"
+class="fade-in"
+>
 
-                <button
-                    class="access-button"
-                    type="submit"
-                >
-                    AUTHENTICATE
-                </button>
+<div class="lock-container">
 
-                <div
-                    id="error"
-                    class="error"
-                ></div>
+<div
+id="lock"
+class="lock">
+</div>
 
-            </form>
+</div>
 
 
-            <footer class="footer">
+<h2 class="password-title">
+ACCESS REQUIRED
+</h2>
 
-                <span>
-                    CLEARANCE REQUIRED
-                </span>
 
-                <span>
-                    M61-001
-                </span>
+<div class="password-subtitle">
 
-            </footer>
+MISSION 61 HAS BEEN ACTIVATED
 
-        </section>
+</div>
 
 
-        <!-- ==================================
-             ACCESS GRANTED
-        =================================== -->
+<form
+class="password-form"
+onsubmit="checkPassword(event)"
+>
 
-        <section id="accessGranted">
+<input
+id="passwordInput"
+class="password-input"
+type="text"
+autocomplete="off"
+autocapitalize="characters"
+spellcheck="false"
+placeholder="ACCESS CODE"
+maxlength="9"
+>
 
-            <div class="status">
+<button
+class="access-button"
+type="submit"
+>
+AUTHENTICATE
+</button>
 
-                <span class="status-dot"></span>
 
-                AUTHENTICATION SUCCESSFUL
+<div
+id="error"
+class="error">
+</div>
 
-            </div>
+</form>
 
-            <h2 class="granted-title">
-                ACCESS GRANTED
-            </h2>
 
-            <div class="granted-line"></div>
+<div
+id="unlockedMessage"
+class="unlocked-message"
+>
 
-            <div class="granted-text">
-                MISSION 61 ACCESS CONFIRMED
-            </div>
+<strong>
+LOCK STATUS: OPEN
+</strong>
 
-        </section>
+<span>
+ACCESS CONFIRMED
+</span>
 
-    </main>
+</div>
+
+
+<footer class="footer">
+
+<span>
+CLEARANCE REQUIRED
+</span>
+
+<span>
+M61-001
+</span>
+
+</footer>
+
+</section>
+
+</main>
 
 </div>
 
 
 <script>
 
-    /*
-    ============================================
-        MISSION 61
-        COUNTDOWN
-    ============================================
+/* ==========================================
+   MISSION 61 COUNTDOWN
+========================================== */
 
-        Countdown ends at midnight at the
-        beginning of 11 December 2026.
-
-        UK winter time = UTC.
-    ============================================
-    */
-
-    const targetDate =
-        new Date(
-            "2026-12-11T00:00:00+00:00"
-        ).getTime();
+const targetDate =
+    new Date(
+        "2026-12-11T00:00:00+00:00"
+    ).getTime();
 
 
-    /*
-    ============================================
-        UPDATE COUNTDOWN
-    ============================================
-    */
+function updateCountdown() {
 
-    function updateCountdown() {
+    const now =
+        new Date().getTime();
 
-        const now =
-            new Date().getTime();
+    const difference =
+        targetDate - now;
 
-        const difference =
-            targetDate - now;
 
+    if (difference <= 0) {
+
+        showPasswordScreen();
+
+        return;
+    }
+
+
+    const days =
+        Math.floor(
+            difference /
+            (1000 * 60 * 60 * 24)
+        );
+
+
+    const hours =
+        Math.floor(
+            (difference /
+            (1000 * 60 * 60)) % 24
+        );
+
+
+    const minutes =
+        Math.floor(
+            (difference /
+            (1000 * 60)) % 60
+        );
+
+
+    const seconds =
+        Math.floor(
+            (difference / 1000) % 60
+        );
+
+
+    document.getElementById("days")
+        .textContent =
+        String(days).padStart(3, "0");
+
+
+    document.getElementById("hours")
+        .textContent =
+        String(hours).padStart(2, "0");
+
+
+    document.getElementById("minutes")
+        .textContent =
+        String(minutes).padStart(2, "0");
+
+
+    document.getElementById("seconds")
+        .textContent =
+        String(seconds).padStart(2, "0");
+}
+
+
+/* ==========================================
+   SHOW PASSWORD
+========================================== */
+
+function showPasswordScreen() {
+
+    document
+        .getElementById("countdownScreen")
+        .style.display = "none";
+
+
+    document
+        .getElementById("passwordScreen")
+        .style.display = "block";
+
+
+    setTimeout(() => {
+
+        document
+            .getElementById("passwordInput")
+            .focus();
+
+    }, 700);
+}
+
+
+/* ==========================================
+   PASSWORD
+========================================== */
+
+const correctPassword =
+    "K7Q4-9M2X";
+
+
+function checkPassword(event) {
+
+    event.preventDefault();
+
+
+    const input =
+        document
+            .getElementById("passwordInput")
+            .value
+            .trim()
+            .toUpperCase();
+
+
+    const lock =
+        document.getElementById("lock");
+
+
+    const error =
+        document.getElementById("error");
+
+
+    const unlockedMessage =
+        document.getElementById(
+            "unlockedMessage"
+        );
+
+
+    /* WRONG PASSWORD */
+
+    if (input !== correctPassword) {
+
+        lock.classList.remove("shake");
 
         /*
-        Countdown finished.
+        Force the animation to restart
+        every time.
         */
 
-        if (difference <= 0) {
+        void lock.offsetWidth;
 
-            showPasswordScreen();
+        lock.classList.add("shake");
 
-            return;
-        }
-
-
-        const days =
-            Math.floor(
-                difference /
-                (1000 * 60 * 60 * 24)
-            );
-
-
-        const hours =
-            Math.floor(
-                (difference /
-                (1000 * 60 * 60)) % 24
-            );
-
-
-        const minutes =
-            Math.floor(
-                (difference /
-                (1000 * 60)) % 60
-            );
-
-
-        const seconds =
-            Math.floor(
-                (difference / 1000) % 60
-            );
-
+        error.textContent =
+            "ACCESS DENIED • INVALID CODE";
 
         document
-            .getElementById("days")
-            .textContent =
-            String(days).padStart(3, "0");
-
+            .getElementById("passwordInput")
+            .value = "";
 
         document
-            .getElementById("hours")
-            .textContent =
-            String(hours).padStart(2, "0");
+            .getElementById("passwordInput")
+            .focus();
 
-
-        document
-            .getElementById("minutes")
-            .textContent =
-            String(minutes).padStart(2, "0");
-
-
-        document
-            .getElementById("seconds")
-            .textContent =
-            String(seconds).padStart(2, "0");
+        return;
     }
 
 
+    /* CORRECT PASSWORD */
+
+    error.textContent = "";
+
+    document
+        .getElementById("passwordInput")
+        .disabled = true;
+
+    document
+        .querySelector(".access-button")
+        .disabled = true;
+
     /*
-    ============================================
-        SHOW PASSWORD SCREEN
-    ============================================
+    Animate lock opening.
     */
 
-    function showPasswordScreen() {
-
-        const countdown =
-            document.getElementById(
-                "countdownScreen"
-            );
-
-        const password =
-            document.getElementById(
-                "passwordScreen"
-            );
-
-
-        countdown.style.display = "none";
-
-        password.style.display = "block";
-
-        password.classList.add("fade-in");
-
-        setTimeout(() => {
-
-            document
-                .getElementById("passwordInput")
-                .focus();
-
-        }, 700);
-    }
+    lock.classList.add("unlocked");
 
 
     /*
-    ============================================
-        PASSWORD
-    ============================================
-
-        Code:
-        K7Q4-9M2X
-    ============================================
+    Show the tiny confirmation after
+    the lock animation.
     */
 
-    const correctPassword =
-        "K7Q4-9M2X";
+    setTimeout(() => {
+
+        unlockedMessage.style.display =
+            "block";
+
+    }, 500);
+}
 
 
-    function checkPassword(event) {
+/* ==========================================
+   START
+========================================== */
 
-        event.preventDefault();
+updateCountdown();
 
-
-        const input =
-            document
-                .getElementById("passwordInput")
-                .value
-                .trim()
-                .toUpperCase();
-
-
-        const error =
-            document.getElementById("error");
-
-
-        if (input === correctPassword) {
-
-            const passwordScreen =
-                document.getElementById(
-                    "passwordScreen"
-                );
-
-            const granted =
-                document.getElementById(
-                    "accessGranted"
-                );
-
-
-            passwordScreen.style.display = "none";
-
-            granted.style.display = "block";
-
-            granted.classList.add("fade-in");
-
-            error.textContent = "";
-
-        } else {
-
-            error.textContent =
-                "ACCESS DENIED • INVALID CODE";
-
-            document
-                .getElementById("passwordInput")
-                .value = "";
-
-            document
-                .getElementById("passwordInput")
-                .focus();
-        }
-    }
-
-
-    /*
-    Start countdown.
-    */
-
-    updateCountdown();
-
-
-    /*
-    Update every second.
-    */
-
-    setInterval(
-        updateCountdown,
-        1000
-    );
+setInterval(
+    updateCountdown,
+    1000
+);
 
 </script>
 
