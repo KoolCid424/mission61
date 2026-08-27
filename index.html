@@ -1,12 +1,13 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>MISSION 61</title>
 
 <style>
+
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap');
 
 :root {
@@ -14,8 +15,9 @@
     --navy2: #0b1724;
     --cream: #f2ead8;
     --muted: #a9a99f;
-    --line: rgba(242, 234, 216, 0.25);
-    --soft: rgba(242, 234, 216, 0.09);
+    --line: rgba(242,234,216,0.25);
+    --soft: rgba(242,234,216,0.09);
+    --error: #c99a8e;
 }
 
 * {
@@ -24,57 +26,123 @@
     padding: 0;
 }
 
-html, body {
+html,
+body {
     min-height: 100%;
 }
 
 body {
     min-height: 100vh;
+
     background:
-        radial-gradient(circle at 50% 0%, rgba(39,64,86,.35), transparent 50%),
-        linear-gradient(135deg, var(--navy), var(--navy2) 55%, #050b12);
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(39,64,86,0.35),
+            transparent 50%
+        ),
+        linear-gradient(
+            135deg,
+            var(--navy),
+            var(--navy2) 55%,
+            #050b12
+        );
+
     color: var(--cream);
-    font-family: "Inter", Arial, sans-serif;
+
+    font-family:
+        "Inter",
+        Arial,
+        sans-serif;
+
     display: flex;
     align-items: center;
     justify-content: center;
+
     overflow-x: hidden;
 }
 
+
+/* ==============================
+   BACKGROUND GRID
+============================== */
+
 body::before {
     content: "";
+
     position: fixed;
     inset: 0;
+
     background-image:
-        linear-gradient(rgba(242,234,216,.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(242,234,216,.025) 1px, transparent 1px);
+        linear-gradient(
+            rgba(242,234,216,0.025) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            90deg,
+            rgba(242,234,216,0.025) 1px,
+            transparent 1px
+        );
+
     background-size: 45px 45px;
+
     pointer-events: none;
-    opacity: .6;
+
+    opacity: 0.6;
 }
 
+
+/* ==============================
+   PAGE
+============================== */
+
 .page {
-    width: min(920px, 92%);
+    width: min(920px,92%);
+
     padding: 45px 0;
+
     position: relative;
+
     z-index: 2;
 }
 
+
 .document {
     position: relative;
+
     border: 1px solid var(--line);
+
     background:
-        linear-gradient(145deg, rgba(15,29,43,.97), rgba(5,13,21,.98));
-    padding: clamp(30px, 6vw, 65px);
+        linear-gradient(
+            145deg,
+            rgba(15,29,43,0.97),
+            rgba(5,13,21,0.98)
+        );
+
+    padding:
+        clamp(
+            30px,
+            6vw,
+            65px
+        );
+
     box-shadow:
-        0 35px 100px rgba(0,0,0,.45),
-        inset 0 1px rgba(255,255,255,.04);
+        0 35px 100px rgba(0,0,0,0.45),
+        inset 0 1px rgba(255,255,255,0.04);
+
+    overflow: hidden;
 }
+
+
+/* ==============================
+   CORNERS
+============================== */
 
 .document::before,
 .document::after {
     content: "";
+
     position: absolute;
+
     width: 35px;
     height: 35px;
 }
@@ -82,6 +150,7 @@ body::before {
 .document::before {
     top: 15px;
     left: 15px;
+
     border-top: 1px solid var(--line);
     border-left: 1px solid var(--line);
 }
@@ -89,70 +158,168 @@ body::before {
 .document::after {
     right: 15px;
     bottom: 15px;
+
     border-right: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
 }
 
+
+/* ==============================
+   HEADER
+============================== */
+
 .header {
     display: flex;
+
     justify-content: space-between;
     align-items: center;
+
     gap: 20px;
+
     border-bottom: 1px solid var(--soft);
+
     padding-bottom: 18px;
+
     margin-bottom: 55px;
 }
 
 .classification,
 .document-number {
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 10px;
+
     letter-spacing: 3px;
+
     color: var(--muted);
 }
 
+
+/* ==============================
+   TITLE
+============================== */
+
 .title-area {
     text-align: center;
+
     margin-bottom: 50px;
 }
 
 .eyebrow {
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 11px;
+
     letter-spacing: 4px;
+
     color: var(--muted);
+
     margin-bottom: 18px;
 }
 
 h1 {
-    font-size: clamp(52px, 12vw, 115px);
-    line-height: .85;
+    font-size:
+        clamp(
+            52px,
+            12vw,
+            115px
+        );
+
+    line-height: 0.85;
+
     letter-spacing: -5px;
+
     font-weight: 800;
+
     color: var(--cream);
 }
 
 .subtitle {
     margin-top: 22px;
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 11px;
+
     letter-spacing: 3px;
+
     color: var(--muted);
+
     text-transform: uppercase;
 }
 
+
+/* ==============================
+   STATUS
+============================== */
+
+.status {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+
+    color: var(--muted);
+
+    margin-bottom: 30px;
+}
+
+.status-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background: #a6c19e;
+
+    box-shadow:
+        0 0 10px
+        rgba(166,193,158,0.5);
+}
+
+
+/* ==============================
+   COUNTDOWN
+============================== */
+
 .countdown {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    border-top:
+        1px solid var(--line);
+
+    border-bottom:
+        1px solid var(--line);
+
     margin-bottom: 45px;
 }
 
 .count-box {
     padding: 30px 10px;
+
     text-align: center;
-    border-right: 1px solid var(--soft);
+
+    border-right:
+        1px solid var(--soft);
 }
 
 .count-box:last-child {
@@ -160,612 +327,916 @@ h1 {
 }
 
 .number {
-    font-family: "DM Mono", monospace;
-    font-size: clamp(30px, 6vw, 58px);
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size:
+        clamp(
+            30px,
+            6vw,
+            58px
+        );
+
     line-height: 1;
+
     color: var(--cream);
-    font-variant-numeric: tabular-nums;
+
+    font-variant-numeric:
+        tabular-nums;
+
     margin-bottom: 12px;
 }
 
 .label {
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 9px;
+
     letter-spacing: 3px;
+
     color: var(--muted);
+
     text-transform: uppercase;
 }
 
-.status {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    font-family: "DM Mono", monospace;
-    font-size: 10px;
-    letter-spacing: 2px;
-    color: var(--muted);
-    margin-bottom: 30px;
-}
 
-.status-dot {
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: #a6c19e;
-    box-shadow: 0 0 10px rgba(166,193,158,.5);
-}
+/* ==============================
+   INFORMATION
+============================== */
 
 .information {
-    border: 1px solid var(--soft);
+    border:
+        1px solid var(--soft);
+
     padding: 25px;
+
     text-align: center;
-    background: rgba(0,0,0,.12);
+
+    background:
+        rgba(0,0,0,0.12);
 }
 
 .information-title {
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 10px;
+
     letter-spacing: 3px;
+
     color: var(--cream);
+
     margin-bottom: 12px;
 }
 
 .information-text {
     color: var(--muted);
+
     font-size: 14px;
+
     line-height: 1.7;
 }
 
+
+/* ==============================
+   FOOTER
+============================== */
+
 .footer {
     margin-top: 35px;
+
     display: flex;
-    justify-content: space-between;
+
+    justify-content:
+        space-between;
+
     gap: 20px;
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 9px;
+
     letter-spacing: 2px;
+
     color: #69727a;
 }
 
-/* PASSWORD */
+.preview-trigger {
+    cursor: default;
+    user-select: none;
+}
+
+
+/* ==============================
+   PREVIEW
+============================== */
+
+.preview-box {
+    display: none;
+
+    margin-top: 15px;
+
+    text-align: center;
+}
+
+.preview-box input {
+    width: 150px;
+
+    padding: 10px 12px;
+
+    background:
+        rgba(0,0,0,0.3);
+
+    border:
+        1px solid var(--line);
+
+    color: var(--cream);
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 16px;
+
+    letter-spacing: 4px;
+
+    text-align: center;
+
+    outline: none;
+}
+
+.preview-box button {
+    margin-left: 6px;
+
+    padding: 10px 14px;
+
+    background:
+        var(--cream);
+
+    color:
+        var(--navy);
+
+    border: none;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+}
+
+
+/* ==============================
+   PASSWORD SCREEN
+============================== */
 
 #passwordScreen {
     display: none;
+
     text-align: center;
 }
 
 .lock-container {
-    height: 130px;
+    height: 150px;
+
     display: flex;
+
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+
+    margin-bottom: 15px;
+
+    position: relative;
 }
+
+
+/* ==============================
+   LOCK
+============================== */
 
 .lock {
     position: relative;
+
     width: 72px;
     height: 65px;
-    background: var(--cream);
+
+    background:
+        var(--cream);
+
     border-radius: 7px;
-    box-shadow: 0 15px 35px rgba(0,0,0,.3);
-    transition: transform .2s ease;
+
+    box-shadow:
+        0 15px 35px
+        rgba(0,0,0,0.3);
+
+    transition:
+        transform 0.25s ease;
+
+    z-index: 5;
 }
+
+
+/* shackle */
 
 .lock::before {
     content: "";
+
     position: absolute;
+
     width: 39px;
     height: 43px;
-    border: 8px solid var(--cream);
+
+    border:
+        8px solid var(--cream);
+
     border-bottom: none;
-    border-radius: 22px 22px 0 0;
+
+    border-radius:
+        22px 22px 0 0;
+
     left: 50%;
     top: -34px;
-    transform: translateX(-50%);
+
+    transform:
+        translateX(-50%);
+
     transition:
-        transform .45s cubic-bezier(.2,1.6,.4,1),
-        top .45s cubic-bezier(.2,1.6,.4,1);
+        transform
+        0.5s
+        cubic-bezier(
+            .2,
+            1.6,
+            .4,
+            1
+        ),
+
+        top
+        0.5s
+        cubic-bezier(
+            .2,
+            1.6,
+            .4,
+            1
+        );
 }
+
+
+/* keyhole */
 
 .lock::after {
     content: "";
+
     position: absolute;
+
     width: 9px;
     height: 17px;
-    background: var(--navy);
+
+    background:
+        var(--navy);
+
     border-radius: 7px;
+
     left: 50%;
     top: 23px;
-    transform: translateX(-50%);
+
+    transform:
+        translateX(-50%);
 }
 
+
+/* ==============================
+   SHAKE
+============================== */
+
 .lock.shake {
-    animation: shakeLock .5s ease;
+    animation:
+        shakeLock
+        0.5s
+        ease;
 }
 
 @keyframes shakeLock {
-    0% { transform: translateX(0) rotate(0); }
-    20% { transform: translateX(-9px) rotate(-4deg); }
-    40% { transform: translateX(8px) rotate(4deg); }
-    60% { transform: translateX(-6px) rotate(-3deg); }
-    80% { transform: translateX(5px) rotate(2deg); }
-    100% { transform: translateX(0) rotate(0); }
+
+    0% {
+        transform:
+            translateX(0)
+            rotate(0);
+    }
+
+    20% {
+        transform:
+            translateX(-9px)
+            rotate(-4deg);
+    }
+
+    40% {
+        transform:
+            translateX(8px)
+            rotate(4deg);
+    }
+
+    60% {
+        transform:
+            translateX(-6px)
+            rotate(-3deg);
+    }
+
+    80% {
+        transform:
+            translateX(5px)
+            rotate(2deg);
+    }
+
+    100% {
+        transform:
+            translateX(0)
+            rotate(0);
+    }
 }
 
+
+/* ==============================
+   UNLOCK
+============================== */
+
 .lock.unlocked {
-    transform: scale(1.08);
+    animation:
+        unlockPop
+        0.55s
+        cubic-bezier(
+            .2,
+            1.5,
+            .4,
+            1
+        );
+
+    transform:
+        scale(1.12);
 }
 
 .lock.unlocked::before {
-    transform: translateX(-50%) rotate(-32deg);
-    top: -48px;
+    transform:
+        translateX(-50%)
+        rotate(-35deg);
+
+    top: -50px;
 }
 
+@keyframes unlockPop {
+
+    0% {
+        transform:
+            scale(1);
+    }
+
+    45% {
+        transform:
+            scale(1.28);
+    }
+
+    70% {
+        transform:
+            scale(0.96);
+    }
+
+    100% {
+        transform:
+            scale(1.12);
+    }
+}
+
+
+/* ==============================
+   ENERGY BURST
+============================== */
+
+.unlock-burst {
+    position: absolute;
+
+    width: 25px;
+    height: 25px;
+
+    border:
+        1px solid
+        rgba(242,234,216,0.8);
+
+    border-radius: 50%;
+
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+.unlock-burst.active {
+    animation:
+        burst
+        1.2s
+        ease-out
+        forwards;
+}
+
+@keyframes burst {
+
+    0% {
+        width: 20px;
+        height: 20px;
+
+        opacity: 0.8;
+    }
+
+    100% {
+        width: 430px;
+        height: 430px;
+
+        opacity: 0;
+    }
+}
+
+
+/* ==============================
+   ACCESS GRANTED
+============================== */
+
+.access-granted {
+    display: none;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 11px;
+
+    letter-spacing: 5px;
+
+    color: var(--cream);
+
+    margin-top: 15px;
+
+    animation:
+        granted
+        0.7s
+        ease
+        forwards;
+}
+
+@keyframes granted {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==============================
+   PASSWORD
+============================== */
+
 .password-title {
-    font-size: clamp(35px, 7vw, 60px);
+    font-size:
+        clamp(
+            35px,
+            7vw,
+            60px
+        );
+
     letter-spacing: -2px;
+
     margin-bottom: 15px;
 }
 
 .password-subtitle {
-    font-family: "DM Mono", monospace;
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 10px;
+
     letter-spacing: 3px;
+
     color: var(--muted);
+
     margin-bottom: 40px;
 }
 
 .password-form {
     max-width: 440px;
+
     margin: 0 auto;
 }
 
 .password-input {
     width: 100%;
-    padding: 19px 20px;
-    background: rgba(0,0,0,.25);
-    border: 1px solid var(--line);
+
+    padding:
+        19px 20px;
+
+    background:
+        rgba(0,0,0,0.25);
+
+    border:
+        1px solid var(--line);
+
     color: var(--cream);
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 20px;
+
     letter-spacing: 4px;
+
     text-align: center;
+
     outline: none;
-    text-transform: uppercase;
+
+    text-transform:
+        uppercase;
 }
 
 .password-input:focus {
-    border-color: rgba(242,234,216,.65);
-    box-shadow: 0 0 0 3px rgba(242,234,216,.04);
+    border-color:
+        rgba(
+            242,
+            234,
+            216,
+            0.65
+        );
+
+    box-shadow:
+        0 0 0 3px
+        rgba(
+            242,
+            234,
+            216,
+            0.04
+        );
 }
 
 .password-input::placeholder {
     color: #5d656d;
+
+    letter-spacing: 3px;
 }
 
 .access-button {
     width: 100%;
+
     margin-top: 14px;
+
     padding: 18px;
-    border: 1px solid var(--cream);
-    background: var(--cream);
-    color: #07111c;
-    font-family: "DM Mono", monospace;
+
+    border:
+        1px solid
+        var(--cream);
+
+    background:
+        var(--cream);
+
+    color:
+        var(--navy);
+
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 11px;
+
     font-weight: 500;
+
     letter-spacing: 3px;
+
     cursor: pointer;
+
+    transition:
+        background 0.2s,
+        color 0.2s;
 }
 
 .access-button:hover {
-    background: transparent;
-    color: var(--cream);
+    background:
+        transparent;
+
+    color:
+        var(--cream);
+}
+
+.access-button:disabled {
+    opacity: 0.5;
+
+    cursor: default;
 }
 
 .error {
     min-height: 22px;
+
     margin-top: 15px;
-    font-family: "DM Mono", monospace;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
     font-size: 10px;
+
     letter-spacing: 2px;
-    color: #c99a8e;
+
+    color:
+        var(--error);
 }
 
-/* SECRET PREVIEW */
 
-.preview-pin {
-    display: none;
-    margin-top: 15px;
-    text-align: center;
-}
-
-.preview-pin input {
-    width: 130px;
-    padding: 10px;
-    background: rgba(0,0,0,.25);
-    border: 1px solid var(--line);
-    color: var(--cream);
-    font-family: "DM Mono", monospace;
-    text-align: center;
-    letter-spacing: 4px;
-    outline: none;
-}
-
-/* UNLOCK */
-
-#unlockOverlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 5000;
-    align-items: center;
-    justify-content: center;
-    background: var(--navy);
-}
-
-.unlock-inner {
-    width: min(520px,85vw);
-    text-align: center;
-}
-
-.unlock-lock {
-    position: relative;
-    width: 72px;
-    height: 65px;
-    background: var(--cream);
-    border-radius: 7px;
-    margin: 0 auto 45px;
-    box-shadow: 0 20px 50px rgba(0,0,0,.4);
-}
-
-.unlock-lock::before {
-    content: "";
-    position: absolute;
-    width: 39px;
-    height: 43px;
-    border: 8px solid var(--cream);
-    border-bottom: none;
-    border-radius: 22px 22px 0 0;
-    left: 50%;
-    top: -34px;
-    transform: translateX(-50%);
-    transform-origin: 50% 100%;
-}
-
-.unlock-lock.opening {
-    animation: unlockBody 1.7s cubic-bezier(.2,.9,.25,1) forwards;
-}
-
-.unlock-lock.opening::before {
-    animation: unlockShackle 1.7s cubic-bezier(.2,1.4,.3,1) forwards;
-}
-
-@keyframes unlockBody {
-    0% { transform: scale(1); }
-    55% { transform: scale(1.13); }
-    75% { transform: scale(.98); }
-    100% { transform: scale(1); }
-}
-
-@keyframes unlockShackle {
-    0% {
-        transform: translateX(-50%) rotate(0);
-        top: -34px;
-    }
-    45% {
-        transform: translateX(-50%) rotate(-10deg);
-    }
-    75% {
-        transform: translateX(-50%) rotate(-38deg);
-        top: -48px;
-    }
-    100% {
-        transform: translateX(-50%) rotate(-32deg);
-        top: -48px;
-    }
-}
-
-.unlock-title {
-    font-family: "DM Mono", monospace;
-    font-size: 11px;
-    letter-spacing: 4px;
-    color: var(--muted);
-}
-
-.unlock-line {
-    width: 100%;
-    height: 1px;
-    margin-top: 25px;
-    background: var(--soft);
-}
-
-.unlock-line span {
-    display: block;
-    width: 0;
-    height: 100%;
-    background: var(--cream);
-}
-
-#unlockOverlay.active .unlock-line span {
-    animation: unlockProgress 2.1s linear forwards;
-}
-
-@keyframes unlockProgress {
-    to { width: 100%; }
-}
-
-/* ERROR */
+/* ==============================
+   FINAL ERROR SCREEN
+============================== */
 
 #missionError {
     display: none;
+
     text-align: center;
-}
 
-.mission-error-title {
-    font-family: "DM Mono", monospace;
-    font-size: clamp(15px,3vw,23px);
-    letter-spacing: 2px;
-    line-height: 1.6;
-}
+    min-height: 340px;
 
-.mission-error-title span {
-    color: #c99a8e;
-}
+    align-items: center;
 
-.mission-error-detail {
-    margin-top: 15px;
-    font-family: "DM Mono", monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #69727a;
-}
+    justify-content: center;
 
-/* SCRATCHCARD AREA */
-
-#scratchArea {
-    display: none;
-}
-
-.scratch-header {
-    text-align: center;
-    margin-bottom: 42px;
-}
-
-.scratch-header h2 {
-    font-size: clamp(35px,7vw,62px);
-    letter-spacing: -2px;
-    line-height: .95;
-}
-
-.scratch-header p {
-    margin-top: 18px;
-    font-family: "DM Mono", monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    color: var(--muted);
-}
-
-.scratch-grid {
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    gap: 20px;
-}
-
-.scratch-choice {
-    border: 1px solid var(--line);
-    background: rgba(0,0,0,.14);
-    padding: 26px;
-    min-height: 245px;
-    display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
     position: relative;
-    overflow: hidden;
-    transition: transform .25s ease, border-color .25s ease, opacity .25s ease;
 }
 
-.scratch-choice:hover {
-    transform: translateY(-3px);
-    border-color: rgba(242,234,216,.45);
-}
 
-.scratch-choice.locked {
-    opacity: .42;
-}
+/* little system symbol */
 
-.scratch-choice.locked:hover {
-    transform: none;
-}
+.system-symbol {
+    width: 54px;
+    height: 54px;
 
-.choice-top {
+    border:
+        1px solid
+        rgba(201,154,142,0.55);
+
     display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    font-family: "DM Mono", monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: var(--muted);
-}
 
-.choice-icon {
-    font-size: 30px;
-    margin: 25px 0 8px;
-}
-
-.choice-title {
-    font-size: 23px;
-    font-weight: 700;
-    letter-spacing: -1px;
-}
-
-.choice-text {
-    margin-top: 8px;
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.6;
-}
-
-.scratch-play {
-    margin-top: 25px;
-    width: 100%;
-    padding: 15px;
-    border: 1px solid var(--cream);
-    background: var(--cream);
-    color: var(--navy);
-    font-family: "DM Mono", monospace;
-    font-size: 10px;
-    letter-spacing: 3px;
-    cursor: pointer;
-}
-
-.scratch-play:hover {
-    background: transparent;
-    color: var(--cream);
-}
-
-.scratch-play:disabled {
-    cursor: not-allowed;
-    opacity: .5;
-}
-
-.lock-label {
-    font-family: "DM Mono", monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #69727a;
-}
-
-/* SCRATCH MODAL */
-
-#scratchModal {
-    display: none;
-    position: fixed;
-    inset: 0;
-    z-index: 6000;
     align-items: center;
     justify-content: center;
-    padding: 24px;
-    background: rgba(3,9,15,.72);
-    backdrop-filter: blur(12px);
+
+    margin-bottom: 28px;
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 21px;
+
+    color:
+        var(--error);
+
+    animation:
+        errorSymbol
+        0.7s
+        ease
+        forwards;
 }
 
-.scratch-modal-wrap {
-    width: min(650px,94vw);
-    position: relative;
-}
+@keyframes errorSymbol {
 
-.scratch-modal-card {
-    width: 100%;
-    aspect-ratio: 1.55 / 1;
-    position: relative;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    background:
-        linear-gradient(145deg,rgba(15,29,43,.99),rgba(5,13,21,.99));
-    box-shadow: 0 35px 100px rgba(0,0,0,.65);
-    transform-style: preserve-3d;
-}
-
-.scratch-under {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 30px;
-    text-align: center;
-}
-
-.scratch-under-content {
-    position: relative;
-    z-index: 1;
-}
-
-.scratch-under-label {
-    font-family: "DM Mono", monospace;
-    font-size: 9px;
-    letter-spacing: 3px;
-    color: var(--muted);
-    margin-bottom: 17px;
-}
-
-.scratch-under h3 {
-    font-size: clamp(25px,6vw,48px);
-    line-height: 1;
-    letter-spacing: -2px;
-}
-
-.scratch-under p {
-    margin-top: 16px;
-    font-family: "DM Mono", monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: var(--muted);
-}
-
-#scratchCanvas {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    touch-action: none;
-    cursor: crosshair;
-}
-
-.close-scratch {
-    position: absolute;
-    right: 0;
-    top: -48px;
-    width: 36px;
-    height: 36px;
-    border: 1px solid var(--line);
-    background: rgba(7,17,28,.9);
-    color: var(--cream);
-    font-size: 20px;
-    cursor: pointer;
-}
-
-.scratch-help {
-    text-align: center;
-    margin-top: 15px;
-    font-family: "DM Mono", monospace;
-    font-size: 9px;
-    letter-spacing: 2px;
-    color: #69727a;
-}
-
-.scratch-modal-card.flip {
-    animation: cardFlip 1.25s cubic-bezier(.2,.8,.2,1) forwards;
-}
-
-@keyframes cardFlip {
     0% {
-        transform: rotateY(0deg) scale(1);
+        opacity: 0;
+
+        transform:
+            scale(0.7)
+            rotate(-8deg);
     }
-    45% {
-        transform: rotateY(95deg) scale(1.04);
+
+    60% {
+        opacity: 1;
+
+        transform:
+            scale(1.08)
+            rotate(2deg);
     }
+
     100% {
-        transform: rotateY(180deg) scale(1);
+        opacity: 1;
+
+        transform:
+            scale(1)
+            rotate(0);
     }
 }
+
+
+.error-main {
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size:
+        clamp(
+            20px,
+            4vw,
+            32px
+        );
+
+    letter-spacing:
+        3px;
+
+    color:
+        var(--error);
+
+    margin-bottom: 18px;
+
+    opacity: 0;
+
+    animation:
+        errorText
+        0.8s
+        0.2s
+        ease
+        forwards;
+}
+
+
+.error-sub {
+
+    font-family:
+        "DM Mono",
+        monospace;
+
+    font-size: 9px;
+
+    letter-spacing: 3px;
+
+    color:
+        #69727a;
+
+    opacity: 0;
+
+    animation:
+        errorText
+        0.8s
+        0.45s
+        ease
+        forwards;
+}
+
+@keyframes errorText {
+
+    from {
+        opacity: 0;
+
+        transform:
+            translateY(12px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform:
+            translateY(0);
+    }
+}
+
+
+/* ==============================
+   CINEMATIC TRANSITION
+============================== */
+
+#cinematicFlash {
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        var(--cream);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    z-index: 999;
+}
+
+#cinematicFlash.active {
+
+    animation:
+        cinematicFlash
+        0.65s
+        ease;
+}
+
+@keyframes cinematicFlash {
+
+    0% {
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 0.12;
+    }
+
+    30% {
+        opacity: 0;
+    }
+
+    65% {
+        opacity: 0.05;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+/* ==============================
+   FADE OUT
+============================== */
+
+.fade-away {
+
+    animation:
+        fadeAway
+        0.8s
+        ease
+        forwards;
+}
+
+@keyframes fadeAway {
+
+    from {
+        opacity: 1;
+
+        transform:
+            scale(1);
+    }
+
+    to {
+        opacity: 0;
+
+        transform:
+            scale(0.97);
+    }
+}
+
+
+/* ==============================
+   FADE IN
+============================== */
 
 .fade-in {
-    animation: fadeIn .8s ease forwards;
+
+    animation:
+        fadeIn
+        0.8s
+        ease
+        forwards;
 }
 
 @keyframes fadeIn {
+
     from {
         opacity: 0;
-        transform: translateY(15px);
+
+        transform:
+            translateY(15px);
     }
+
     to {
         opacity: 1;
-        transform: translateY(0);
+
+        transform:
+            translateY(0);
     }
 }
+
+
+/* ==============================
+   MOBILE
+============================== */
 
 @media (max-width:650px) {
 
@@ -774,7 +1245,8 @@ h1 {
     }
 
     .document {
-        padding: 30px 20px;
+        padding:
+            30px 20px;
     }
 
     .header {
@@ -782,7 +1254,8 @@ h1 {
     }
 
     .countdown {
-        grid-template-columns: repeat(2,1fr);
+        grid-template-columns:
+            repeat(2,1fr);
     }
 
     .count-box:nth-child(2) {
@@ -791,7 +1264,9 @@ h1 {
 
     .count-box:nth-child(1),
     .count-box:nth-child(2) {
-        border-bottom: 1px solid var(--soft);
+        border-bottom:
+            1px solid
+            var(--soft);
     }
 
     h1 {
@@ -799,125 +1274,274 @@ h1 {
     }
 
     .footer {
-        flex-direction: column;
-        text-align: center;
+        flex-direction:
+            column;
+
+        text-align:
+            center;
     }
 
-    .scratch-grid {
-        grid-template-columns: 1fr;
+    .preview-box button {
+        margin-left: 0;
+
+        margin-top: 8px;
+
+        width: 150px;
     }
 }
+
 </style>
 </head>
 
+
 <body>
 
+
+<div id="cinematicFlash"></div>
+
+
 <div class="page">
+
 <main class="document">
 
-<!-- COUNTDOWN -->
+
+<!-- ==================================
+     COUNTDOWN
+================================== -->
 
 <section id="countdownScreen">
 
+
 <header class="header">
-<div class="classification">CLASSIFIED ACCESS SYSTEM</div>
-<div class="document-number">M61-001</div>
+
+<div class="classification">
+CLASSIFIED ACCESS SYSTEM
+</div>
+
+<div class="document-number">
+M61-001
+</div>
+
 </header>
 
+
 <div class="title-area">
-<div class="eyebrow">OPERATION</div>
-<h1>MISSION 61</h1>
-<div class="subtitle">Birthday Operation</div>
+
+<div class="eyebrow">
+OPERATION
 </div>
 
-<div class="status">
-<span class="status-dot"></span>
-MISSION STATUS: STANDBY
+<h1>
+MISSION 61
+</h1>
+
+<div class="subtitle">
+Birthday Operation
 </div>
+
+</div>
+
+
+<div class="status">
+
+<span class="status-dot"></span>
+
+MISSION STATUS: STANDBY
+
+</div>
+
 
 <div class="countdown">
 
-<div class="count-box">
-<div class="number" id="days">000</div>
-<div class="label">Days</div>
-</div>
 
 <div class="count-box">
-<div class="number" id="hours">00</div>
-<div class="label">Hours</div>
+
+<div
+class="number"
+id="days"
+>
+000
 </div>
 
-<div class="count-box">
-<div class="number" id="minutes">00</div>
-<div class="label">Minutes</div>
-</div>
-
-<div class="count-box">
-<div class="number" id="seconds">00</div>
-<div class="label">Seconds</div>
+<div class="label">
+Days
 </div>
 
 </div>
+
+
+<div class="count-box">
+
+<div
+class="number"
+id="hours"
+>
+00
+</div>
+
+<div class="label">
+Hours
+</div>
+
+</div>
+
+
+<div class="count-box">
+
+<div
+class="number"
+id="minutes"
+>
+00
+</div>
+
+<div class="label">
+Minutes
+</div>
+
+</div>
+
+
+<div class="count-box">
+
+<div
+class="number"
+id="seconds"
+>
+00
+</div>
+
+<div class="label">
+Seconds
+</div>
+
+</div>
+
+
+</div>
+
 
 <div class="information">
-<div class="information-title">ACCESS RESTRICTED</div>
+
+<div class="information-title">
+ACCESS RESTRICTED
+</div>
 
 <div class="information-text">
+
 Mission details are currently unavailable.
+
 <br>
-Authorised access will be granted when the countdown reaches zero.
+
+Authorised access will be granted when
+the countdown reaches zero.
+
 </div>
+
 </div>
+
 
 <footer class="footer">
 
-<span id="recipientTrigger">
+
+<span
+id="previewTrigger"
+class="preview-trigger"
+>
 RECIPIENT: MUM
 </span>
+
 
 <span>
 11 • 12 • 2026
 </span>
 
+
 <span>
 CLEARANCE: PENDING
 </span>
 
+
 </footer>
 
-<div class="preview-pin" id="previewPin">
+
+<div
+id="previewBox"
+class="preview-box"
+>
+
 <input
-id="previewPinInput"
-type="text"
+id="previewPin"
+type="password"
 inputmode="numeric"
 maxlength="4"
 placeholder="PIN"
 >
+
+<button
+onclick="activatePreview()"
+>
+PREVIEW
+</button>
+
 </div>
+
 
 </section>
 
 
-<!-- PASSWORD -->
 
-<section id="passwordScreen" class="fade-in">
+<!-- ==================================
+     PASSWORD SCREEN
+================================== -->
+
+<section
+id="passwordScreen"
+>
+
 
 <div class="lock-container">
-<div id="lock" class="lock"></div>
+
+<div
+id="lock"
+class="lock"
+></div>
+
+<div
+id="unlockBurst"
+class="unlock-burst"
+></div>
+
 </div>
+
+
+<div
+id="accessGranted"
+class="access-granted"
+>
+ACCESS GRANTED
+</div>
+
 
 <h2 class="password-title">
+
 ACCESS REQUIRED
+
 </h2>
 
+
 <div class="password-subtitle">
+
 MISSION 61 HAS BEEN ACTIVATED
+
 </div>
+
 
 <form
 class="password-form"
 onsubmit="checkPassword(event)"
 >
+
 
 <input
 id="passwordInput"
@@ -930,6 +1554,7 @@ placeholder="ACCESS CODE"
 maxlength="9"
 >
 
+
 <button
 class="access-button"
 type="submit"
@@ -937,12 +1562,15 @@ type="submit"
 AUTHENTICATE
 </button>
 
+
 <div
-id="error"
+id="passwordError"
 class="error"
 ></div>
 
+
 </form>
+
 
 <footer class="footer">
 
@@ -956,361 +1584,83 @@ M61-001
 
 </footer>
 
-</section>
-
-
-<!-- MISSION ERROR -->
-
-<section id="missionError">
-
-<div class="mission-error-title">
-ERROR - <span>MISSION CONTENT NOT FOUND</span>
-</div>
-
-<div class="mission-error-detail">
-SYSTEM RESPONSE: CONTENT RECOVERY FAILED
-</div>
 
 </section>
 
 
-<!-- SCRATCHCARDS -->
 
-<section id="scratchArea">
+<!-- ==================================
+     FINAL MISSION ERROR
+================================== -->
 
-<div class="scratch-header">
-
-<div class="eyebrow">
-MISSION 61 • FINAL STAGE
-</div>
-
-<h2>
-REWARD ACCESS
-</h2>
-
-<p>
-SELECT A SCRATCHCARD TO CONTINUE
-</p>
-
-</div>
-
-
-<div class="scratch-grid">
-
-
-<!-- CARD 1 -->
-
-<div class="scratch-choice">
-
-<div>
-
-<div class="choice-top">
-<span>SCRATCHCARD 01</span>
-<span>01 / 02</span>
-</div>
-
-<div class="choice-icon">
-▧
-</div>
-
-<div class="choice-title">
-FIRST CHANCE
-</div>
-
-<div class="choice-text">
-Every mission needs a first attempt.
-Scratch the card to reveal your result.
-</div>
-
-</div>
-
-<button
-class="scratch-play"
-id="playCard1"
->
-PLAY
-</button>
-
-</div>
-
-
-<!-- CARD 2 -->
-
-<div
-class="scratch-choice locked"
-id="choice2"
+<section
+id="missionError"
 >
 
-<div>
 
-<div class="choice-top">
-<span>SCRATCHCARD 02</span>
-<span>02 / 02</span>
-</div>
-
-<div class="choice-icon">
-◇
-</div>
-
-<div class="choice-title">
-CLASSIFIED
-</div>
-
-<div class="choice-text">
-This card remains locked until the
-first card has been completely scratched.
-</div>
-
-</div>
-
-<div>
-
-<div
-class="lock-label"
-id="card2Status"
->
-LOCKED • COMPLETE CARD 01
-</div>
-
-<button
-class="scratch-play"
-id="playCard2"
-disabled
->
-LOCKED
-</button>
-
-</div>
-
-</div>
-
+<div class="system-symbol">
+!
 </div>
 
 
-<footer class="footer">
+<div class="error-main">
+ERROR - MISSION CONTENT NOT FOUND
+</div>
 
-<span>
-REWARD SYSTEM: ACTIVE
-</span>
 
-<span>
-M61-001
-</span>
+<div class="error-sub">
+SYSTEM RESPONSE: CONTENT UNAVAILABLE
+</div>
 
-<span>
-CLEARANCE: FINAL
-</span>
-
-</footer>
 
 </section>
+
 
 </main>
-</div>
-
-
-<!-- UNLOCK ANIMATION -->
-
-<div id="unlockOverlay">
-
-<div class="unlock-inner">
-
-<div
-id="unlockLock"
-class="unlock-lock"
-></div>
-
-<div
-id="unlockTitle"
-class="unlock-title"
->
-AUTHENTICATING ACCESS
-</div>
-
-<div class="unlock-line">
-<span></span>
-</div>
 
 </div>
 
-</div>
-
-
-<!-- SCRATCH MODAL -->
-
-<div id="scratchModal">
-
-<div class="scratch-modal-wrap">
-
-<button
-class="close-scratch"
-id="closeScratch"
->
-×
-</button>
-
-<div
-class="scratch-modal-card"
-id="scratchModalCard"
->
-
-<div class="scratch-under">
-
-<div class="scratch-under-content">
-
-<div
-class="scratch-under-label"
-id="scratchUnderLabel"
->
-MISSION 61 • SCRATCHCARD 01
-</div>
-
-<h3 id="scratchResult">
-SORRY, BETTER LUCK NEXT TIME.
-</h3>
-
-<p id="scratchResultSub">
-RESULT REVEALED
-</p>
-
-</div>
-
-</div>
-
-<canvas id="scratchCanvas"></canvas>
-
-</div>
-
-<div class="scratch-help">
-SCRATCH WITH YOUR MOUSE OR FINGER
-</div>
-
-</div>
-
-</div>
 
 
 <script>
-
-/* ==========================================
-   SETTINGS
-========================================== */
-
-const ACCESS_PASSWORD = "K7Q4-9M2X";
-const PREVIEW_PIN = "5071";
-
-const targetDate =
-    new Date("2026-12-11T00:00:00");
-
-
-/* ==========================================
-   ELEMENTS
-========================================== */
-
-const countdownScreen =
-    document.getElementById("countdownScreen");
-
-const passwordScreen =
-    document.getElementById("passwordScreen");
-
-const missionError =
-    document.getElementById("missionError");
-
-const scratchArea =
-    document.getElementById("scratchArea");
-
-const passwordInput =
-    document.getElementById("passwordInput");
-
-const lock =
-    document.getElementById("lock");
-
-const error =
-    document.getElementById("error");
-
-const unlockOverlay =
-    document.getElementById("unlockOverlay");
-
-const unlockLock =
-    document.getElementById("unlockLock");
-
-const unlockTitle =
-    document.getElementById("unlockTitle");
-
-const recipientTrigger =
-    document.getElementById("recipientTrigger");
-
-const previewPin =
-    document.getElementById("previewPin");
-
-const previewPinInput =
-    document.getElementById("previewPinInput");
-
-const scratchModal =
-    document.getElementById("scratchModal");
-
-const scratchModalCard =
-    document.getElementById("scratchModalCard");
-
-const scratchCanvas =
-    document.getElementById("scratchCanvas");
-
-const scratchContext =
-    scratchCanvas.getContext("2d");
-
-const scratchResult =
-    document.getElementById("scratchResult");
-
-const scratchResultSub =
-    document.getElementById("scratchResultSub");
-
-const scratchUnderLabel =
-    document.getElementById("scratchUnderLabel");
-
-const playCard1 =
-    document.getElementById("playCard1");
-
-const playCard2 =
-    document.getElementById("playCard2");
-
-const choice2 =
-    document.getElementById("choice2");
-
-const card2Status =
-    document.getElementById("card2Status");
-
-const closeScratch =
-    document.getElementById("closeScratch");
 
 
 /* ==========================================
    COUNTDOWN
 ========================================== */
 
-let passwordShown = false;
+const targetDate =
+    new Date(
+        "2026-12-11T00:00:00+00:00"
+    ).getTime();
+
+
+let passwordScreenShown = false;
+
+let previewActivated = false;
+
 
 function updateCountdown() {
+
+    if (previewActivated) {
+        return;
+    }
+
+
+    if (passwordScreenShown) {
+        return;
+    }
+
 
     const now =
         new Date().getTime();
 
+
     const difference =
-        targetDate.getTime() - now;
+        targetDate - now;
 
 
     if (difference <= 0) {
-
-        document.getElementById("days")
-            .textContent = "000";
-
-        document.getElementById("hours")
-            .textContent = "00";
-
-        document.getElementById("minutes")
-            .textContent = "00";
-
-        document.getElementById("seconds")
-            .textContent = "00";
 
         showPasswordScreen();
 
@@ -1324,11 +1674,13 @@ function updateCountdown() {
             (1000 * 60 * 60 * 24)
         );
 
+
     const hours =
         Math.floor(
             (difference /
             (1000 * 60 * 60)) % 24
         );
+
 
     const minutes =
         Math.floor(
@@ -1336,148 +1688,170 @@ function updateCountdown() {
             (1000 * 60)) % 60
         );
 
+
     const seconds =
         Math.floor(
             (difference / 1000) % 60
         );
 
 
-    document.getElementById("days")
+    document
+        .getElementById("days")
         .textContent =
-        String(days).padStart(3,"0");
+        String(days)
+            .padStart(3,"0");
 
-    document.getElementById("hours")
-        .textContent =
-        String(hours).padStart(2,"0");
 
-    document.getElementById("minutes")
+    document
+        .getElementById("hours")
         .textContent =
-        String(minutes).padStart(2,"0");
+        String(hours)
+            .padStart(2,"0");
 
-    document.getElementById("seconds")
+
+    document
+        .getElementById("minutes")
         .textContent =
-        String(seconds).padStart(2,"0");
+        String(minutes)
+            .padStart(2,"0");
+
+
+    document
+        .getElementById("seconds")
+        .textContent =
+        String(seconds)
+            .padStart(2,"0");
 }
 
 
 /* ==========================================
-   PASSWORD SCREEN
+   SHOW PASSWORD
 ========================================== */
 
 function showPasswordScreen() {
 
-    if (passwordShown)
+    if (passwordScreenShown) {
         return;
+    }
 
-    passwordShown = true;
 
-    countdownScreen.style.display =
+    passwordScreenShown = true;
+
+
+    document
+        .getElementById("countdownScreen")
+        .style.display =
         "none";
 
-    missionError.style.display =
-        "none";
 
-    scratchArea.style.display =
-        "none";
+    const screen =
+        document
+            .getElementById(
+                "passwordScreen"
+            );
 
-    passwordScreen.style.display =
+
+    screen.style.display =
         "block";
 
+
+    screen.classList.add(
+        "fade-in"
+    );
+
+
     setTimeout(() => {
-        passwordInput.focus();
-    }, 500);
+
+        document
+            .getElementById(
+                "passwordInput"
+            )
+            .focus();
+
+    },700);
 }
 
 
 /* ==========================================
-   TRIPLE CLICK PREVIEW
+   PASSWORD
 ========================================== */
 
-let clickCount = 0;
-let clickTimer = null;
-
-recipientTrigger.addEventListener(
-    "click",
-    () => {
-
-        clickCount++;
-
-        clearTimeout(clickTimer);
-
-        clickTimer =
-            setTimeout(() => {
-                clickCount = 0;
-            }, 650);
+const correctPassword =
+    "K7Q4-9M2X";
 
 
-        if (clickCount === 3) {
+let alreadyUnlocked = false;
 
-            clickCount = 0;
-
-            previewPin.style.display =
-                "block";
-
-            previewPinInput.value = "";
-
-            previewPinInput.focus();
-        }
-
-    }
-);
-
-
-previewPinInput.addEventListener(
-    "input",
-    () => {
-
-        if (
-            previewPinInput.value ===
-            PREVIEW_PIN
-        ) {
-
-            previewPin.style.display =
-                "none";
-
-            showPasswordScreen();
-        }
-
-    }
-);
-
-
-/* ==========================================
-   PASSWORD CHECK
-========================================== */
 
 function checkPassword(event) {
 
     event.preventDefault();
 
-    const entered =
-        passwordInput.value
+
+    if (alreadyUnlocked) {
+        return;
+    }
+
+
+    const input =
+        document
+            .getElementById(
+                "passwordInput"
+            )
+            .value
             .trim()
             .toUpperCase();
+
+
+    const lock =
+        document.getElementById(
+            "lock"
+        );
+
+
+    const error =
+        document.getElementById(
+            "passwordError"
+        );
 
 
     /* WRONG */
 
     if (
-        entered !==
-        ACCESS_PASSWORD
+        input !==
+        correctPassword
     ) {
 
-        lock.classList.remove("shake");
+        lock.classList.remove(
+            "shake"
+        );
+
 
         void lock.offsetWidth;
 
-        lock.classList.add("shake");
+
+        lock.classList.add(
+            "shake"
+        );
+
 
         error.textContent =
             "ACCESS DENIED • INVALID CODE";
 
-        passwordInput.value = "";
 
-        passwordInput.focus();
+        document
+            .getElementById(
+                "passwordInput"
+            )
+            .value = "";
+
+
+        document
+            .getElementById(
+                "passwordInput"
+            )
+            .focus();
+
 
         return;
     }
@@ -1485,575 +1859,251 @@ function checkPassword(event) {
 
     /* CORRECT */
 
+    alreadyUnlocked = true;
+
+
     error.textContent = "";
 
-    passwordInput.disabled = true;
 
     document
-        .querySelector(".access-button")
+        .getElementById(
+            "passwordInput"
+        )
         .disabled = true;
 
-    lock.classList.add("unlocked");
 
-    setTimeout(
-        startUnlockAnimation,
-        650
+    document
+        .querySelector(
+            ".access-button"
+        )
+        .disabled = true;
+
+
+    /* Start lock animation */
+
+    lock.classList.add(
+        "unlocked"
     );
+
+
+    /* Start energy burst */
+
+    setTimeout(() => {
+
+        document
+            .getElementById(
+                "unlockBurst"
+            )
+            .classList.add(
+                "active"
+            );
+
+    },180);
+
+
+    /* Access granted */
+
+    setTimeout(() => {
+
+        document
+            .getElementById(
+                "accessGranted"
+            )
+            .style.display =
+            "block";
+
+    },500);
+
+
+    /*
+       Begin cinematic transition
+    */
+
+    setTimeout(() => {
+
+        cinematicTransition();
+
+    },1800);
 }
 
 
 /* ==========================================
-   UNLOCK ANIMATION
+   CINEMATIC TRANSITION
 ========================================== */
 
-function startUnlockAnimation() {
+function cinematicTransition() {
 
-    passwordScreen.style.display =
-        "none";
+    const passwordScreen =
+        document.getElementById(
+            "passwordScreen"
+        );
 
-    unlockOverlay.style.display =
-        "flex";
 
-    unlockOverlay.classList.remove(
+    const flash =
+        document.getElementById(
+            "cinematicFlash"
+        );
+
+
+    /* Flash */
+
+    flash.classList.add(
         "active"
     );
 
-    unlockLock.classList.remove(
-        "opening"
+
+    /* Fade old interface */
+
+    passwordScreen.classList.add(
+        "fade-away"
     );
-
-    void unlockOverlay.offsetWidth;
-
-    unlockOverlay.classList.add(
-        "active"
-    );
-
-    unlockLock.classList.add(
-        "opening"
-    );
-
-    unlockTitle.textContent =
-        "ACCESS GRANTED";
 
 
     setTimeout(() => {
 
-        unlockOverlay.style.display =
+        passwordScreen.style.display =
             "none";
+
 
         showMissionError();
 
-    }, 2600);
+    },750);
 }
 
 
 /* ==========================================
-   ERROR → SCRATCHCARDS
+   FINAL ERROR
 ========================================== */
 
 function showMissionError() {
 
-    missionError.style.display =
-        "block";
+    const errorScreen =
+        document.getElementById(
+            "missionError"
+        );
 
 
-    setTimeout(() => {
-
-        missionError.style.display =
-            "none";
-
-        scratchArea.style.display =
-            "block";
-
-        window.scrollTo({
-            top: 0,
-            behavior: "smooth"
-        });
-
-    }, 3000);
-}
-
-
-/* ==========================================
-   SCRATCHCARD VARIABLES
-========================================== */
-
-let currentCard = 0;
-
-let scratching = false;
-
-let scratchMoves = 0;
-
-let scratchComplete = false;
-
-let card1Complete = false;
-
-
-/* ==========================================
-   OPEN SCRATCHCARD
-========================================== */
-
-function openScratchCard(cardNumber) {
-
-    currentCard =
-        cardNumber;
-
-    scratchMoves = 0;
-
-    scratchComplete = false;
-
-    scratchModal.style.display =
+    errorScreen.style.display =
         "flex";
 
-    scratchModalCard.classList.remove(
-        "flip"
-    );
 
-    scratchCanvas.style.display =
-        "block";
-
-
-    if (cardNumber === 1) {
-
-        scratchUnderLabel.textContent =
-            "MISSION 61 • SCRATCHCARD 01";
-
-        scratchResult.textContent =
-            "SORRY, BETTER LUCK NEXT TIME.";
-
-        scratchResultSub.textContent =
-            "RESULT REVEALED";
-
-    } else {
-
-        scratchUnderLabel.textContent =
-            "MISSION 61 • SCRATCHCARD 02";
-
-        scratchResult.textContent =
-            "WOOHOO, YOU WON";
-
-        scratchResultSub.textContent =
-            "FINAL REWARD UNLOCKED";
-    }
-
-
-    setTimeout(
-        setupScratchCanvas,
-        40
+    errorScreen.classList.add(
+        "fade-in"
     );
 }
 
 
-playCard1.addEventListener(
+/* ==========================================
+   HIDDEN PREVIEW
+========================================== */
+
+let recipientClicks = 0;
+
+let recipientClickTimer = null;
+
+
+const previewTrigger =
+    document.getElementById(
+        "previewTrigger"
+    );
+
+
+const previewBox =
+    document.getElementById(
+        "previewBox"
+    );
+
+
+const previewPin =
+    document.getElementById(
+        "previewPin"
+    );
+
+
+previewTrigger.addEventListener(
     "click",
-    () => openScratchCard(1)
-);
+    function() {
+
+        recipientClicks++;
 
 
-playCard2.addEventListener(
-    "click",
-    () => {
-
-        if (!playCard2.disabled)
-            openScratchCard(2);
-
-    }
-);
-
-
-closeScratch.addEventListener(
-    "click",
-    () => {
-
-        scratchModal.style.display =
-            "none";
-
-        scratching = false;
-
-    }
-);
-
-
-/* ==========================================
-   SCRATCH CANVAS
-========================================== */
-
-function setupScratchCanvas() {
-
-    const rect =
-        scratchCanvas
-            .getBoundingClientRect();
-
-    const ratio =
-        window.devicePixelRatio || 1;
-
-
-    scratchCanvas.width =
-        Math.max(
-            1,
-            Math.floor(
-                rect.width * ratio
-            )
-        );
-
-    scratchCanvas.height =
-        Math.max(
-            1,
-            Math.floor(
-                rect.height * ratio
-            )
+        clearTimeout(
+            recipientClickTimer
         );
 
 
-    scratchContext.setTransform(
-        ratio,
-        0,
-        0,
-        ratio,
-        0,
-        0
-    );
+        recipientClickTimer =
+            setTimeout(() => {
 
+                recipientClicks = 0;
 
-    scratchContext.globalCompositeOperation =
-        "source-over";
+            },700);
 
-
-    const gradient =
-        scratchContext.createLinearGradient(
-            0,
-            0,
-            rect.width,
-            rect.height
-        );
-
-    gradient.addColorStop(
-        0,
-        "#c8c0ad"
-    );
-
-    gradient.addColorStop(
-        .5,
-        "#8e8a80"
-    );
-
-    gradient.addColorStop(
-        1,
-        "#cfc6b2"
-    );
-
-
-    scratchContext.fillStyle =
-        gradient;
-
-    scratchContext.fillRect(
-        0,
-        0,
-        rect.width,
-        rect.height
-    );
-
-
-    scratchContext.fillStyle =
-        "rgba(7,17,28,.18)";
-
-    scratchContext.font =
-        "500 12px 'DM Mono', monospace";
-
-    scratchContext.textAlign =
-        "center";
-
-
-    for (
-        let y = 30;
-        y < rect.height + 30;
-        y += 38
-    ) {
-
-        for (
-            let x = 25;
-            x < rect.width + 50;
-            x += 105
-        ) {
-
-            scratchContext.fillText(
-                "MISSION 61",
-                x,
-                y
-            );
-
-        }
-
-    }
-
-
-    scratchContext.globalCompositeOperation =
-        "destination-out";
-}
-
-
-/* ==========================================
-   POINTER POSITION
-========================================== */
-
-function pointerPosition(event) {
-
-    const rect =
-        scratchCanvas
-            .getBoundingClientRect();
-
-    let clientX;
-    let clientY;
-
-
-    if (
-        event.touches &&
-        event.touches.length
-    ) {
-
-        clientX =
-            event.touches[0].clientX;
-
-        clientY =
-            event.touches[0].clientY;
-
-    } else {
-
-        clientX =
-            event.clientX;
-
-        clientY =
-            event.clientY;
-    }
-
-
-    return {
-        x: clientX - rect.left,
-        y: clientY - rect.top
-    };
-}
-
-
-/* ==========================================
-   SCRATCH
-========================================== */
-
-function scratch(event) {
-
-    if (
-        !scratching ||
-        scratchComplete
-    )
-        return;
-
-
-    event.preventDefault();
-
-
-    const pos =
-        pointerPosition(event);
-
-
-    scratchContext.beginPath();
-
-    scratchContext.arc(
-        pos.x,
-        pos.y,
-        25,
-        0,
-        Math.PI * 2
-    );
-
-    scratchContext.fill();
-
-
-    scratchMoves++;
-
-
-    if (
-        scratchMoves >= 75
-    ) {
-
-        finishScratch();
-
-    }
-}
-
-
-/* ==========================================
-   MOUSE
-========================================== */
-
-scratchCanvas.addEventListener(
-    "mousedown",
-    event => {
-
-        scratching = true;
-
-        scratch(event);
-
-    }
-);
-
-
-scratchCanvas.addEventListener(
-    "mousemove",
-    scratch
-);
-
-
-window.addEventListener(
-    "mouseup",
-    () => {
-
-        scratching = false;
-
-    }
-);
-
-
-/* ==========================================
-   TOUCH
-========================================== */
-
-scratchCanvas.addEventListener(
-    "touchstart",
-    event => {
-
-        scratching = true;
-
-        scratch(event);
-
-    },
-    { passive:false }
-);
-
-
-scratchCanvas.addEventListener(
-    "touchmove",
-    scratch,
-    { passive:false }
-);
-
-
-scratchCanvas.addEventListener(
-    "touchend",
-    () => {
-
-        scratching = false;
-
-    }
-);
-
-
-/* ==========================================
-   FINISH SCRATCH
-========================================== */
-
-function finishScratch() {
-
-    if (scratchComplete)
-        return;
-
-
-    scratchComplete = true;
-
-    scratching = false;
-
-
-    const rect =
-        scratchCanvas
-            .getBoundingClientRect();
-
-
-    scratchContext.clearRect(
-        0,
-        0,
-        rect.width,
-        rect.height
-    );
-
-
-    /* CARD 1 */
-
-    if (currentCard === 1) {
-
-        card1Complete = true;
-
-        playCard2.disabled =
-            false;
-
-        playCard2.textContent =
-            "PLAY";
-
-        choice2.classList.remove(
-            "locked"
-        );
-
-        card2Status.textContent =
-            "UNLOCKED • CARD 01 COMPLETE";
-
-        return;
-    }
-
-
-    /* CARD 2 */
-
-    scratchResult.textContent =
-        "WOOHOO, YOU WON";
-
-    scratchResultSub.textContent =
-        "OPENING REWARD...";
-
-
-    setTimeout(() => {
-
-        scratchModalCard.classList.add(
-            "flip"
-        );
-
-
-        setTimeout(() => {
-
-            scratchModalCard.classList.remove(
-                "flip"
-            );
-
-            scratchCanvas.style.display =
-                "none";
-
-            scratchResult.textContent =
-                "ERROR - COULDN'T LOAD PRESENT";
-
-            scratchResultSub.textContent =
-                "MISSION CONTENT TEMPORARILY UNAVAILABLE";
-
-        }, 1250);
-
-    }, 900);
-}
-
-
-/* ==========================================
-   RESIZE
-========================================== */
-
-window.addEventListener(
-    "resize",
-    () => {
 
         if (
-            scratchModal.style.display ===
-            "flex" &&
-            !scratchComplete
+            recipientClicks === 3
         ) {
 
-            setupScratchCanvas();
+            recipientClicks = 0;
 
+
+            previewBox.style.display =
+                "block";
+
+
+            previewPin.focus();
         }
-
     }
 );
+
+
+/* Preview PIN */
+
+previewPin.addEventListener(
+    "keydown",
+    function(event) {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            activatePreview();
+
+        }
+    }
+);
+
+
+/* Activate preview */
+
+function activatePreview() {
+
+    if (
+        previewPin.value !==
+        "5071"
+    ) {
+
+        previewPin.value = "";
+
+        previewPin.placeholder =
+            "INVALID";
+
+        return;
+    }
+
+
+    previewActivated = true;
+
+
+    previewBox.style.display =
+        "none";
+
+
+    previewPin.value = "";
+
+
+    showPasswordScreen();
+}
 
 
 /* ==========================================
@@ -2061,6 +2111,7 @@ window.addEventListener(
 ========================================== */
 
 updateCountdown();
+
 
 setInterval(
     updateCountdown,
@@ -2071,4 +2122,3 @@ setInterval(
 
 </body>
 </html>
-```
