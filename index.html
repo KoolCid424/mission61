@@ -1234,6 +1234,321 @@ h1 {
 }
 
 
+
+/* ==============================
+   SCRATCHCARD SYSTEM
+============================== */
+
+#scratchcardsScreen {
+    display: none;
+    text-align: center;
+}
+
+.scratch-intro {
+    margin-bottom: 35px;
+}
+
+.scratch-intro .eyebrow {
+    margin-bottom: 12px;
+}
+
+.scratch-title {
+    font-size: clamp(35px,7vw,62px);
+    letter-spacing: -3px;
+    margin-bottom: 12px;
+}
+
+.scratch-subtitle {
+    font-family: "DM Mono", monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--muted);
+}
+
+.scratch-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 22px;
+}
+
+.scratch-card {
+    position: relative;
+    min-height: 280px;
+    border: 1px solid var(--line);
+    background: linear-gradient(145deg, rgba(242,234,216,0.06), rgba(0,0,0,0.16));
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.scratch-card::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(242,234,216,0.07);
+    pointer-events: none;
+}
+
+.scratch-card.locked {
+    opacity: .42;
+}
+
+.card-number {
+    position: relative;
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: var(--muted);
+    text-align: left;
+}
+
+.card-art {
+    position: relative;
+    margin: 20px auto;
+    width: 130px;
+    height: 130px;
+    border: 1px solid var(--line);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "DM Mono", monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.card-art.one::after {
+    content: "61";
+    font-size: 48px;
+    font-weight: 800;
+    letter-spacing: -4px;
+}
+
+.card-art.two::after {
+    content: "★";
+    font-size: 52px;
+}
+
+.card-name {
+    position: relative;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+}
+
+.card-desc {
+    position: relative;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.6;
+    margin-bottom: 18px;
+}
+
+.card-button {
+    position: relative;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--cream);
+    background: var(--cream);
+    color: var(--navy);
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.card-button:hover {
+    background: transparent;
+    color: var(--cream);
+}
+
+.card-button:disabled {
+    opacity: .45;
+    cursor: default;
+}
+
+#scratchOverlay {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: rgba(2,7,12,.78);
+    backdrop-filter: blur(13px);
+    -webkit-backdrop-filter: blur(13px);
+}
+
+#scratchOverlay.active {
+    display: flex;
+    animation: overlayIn .35s ease forwards;
+}
+
+@keyframes overlayIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.scratch-modal {
+    width: min(560px, 94vw);
+    text-align: center;
+    transform: scale(.94) translateY(12px);
+    animation: modalIn .45s cubic-bezier(.2,1.3,.4,1) forwards;
+}
+
+@keyframes modalIn {
+    to { transform: scale(1) translateY(0); }
+}
+
+.modal-label {
+    font-family: "DM Mono", monospace;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 3px;
+    margin-bottom: 15px;
+}
+
+.scratch-ticket {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1.65 / 1;
+    border: 1px solid var(--line);
+    background: linear-gradient(135deg,#182b3b,#09131e);
+    box-shadow: 0 35px 90px rgba(0,0,0,.6);
+    overflow: hidden;
+    user-select: none;
+    touch-action: none;
+}
+
+.scratch-ticket::before,
+.scratch-ticket::after {
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 1px solid rgba(242,234,216,.25);
+    z-index: 3;
+    pointer-events: none;
+}
+
+.scratch-ticket::before {
+    left: 14px;
+    top: 14px;
+    border-right: 0;
+    border-bottom: 0;
+}
+
+.scratch-ticket::after {
+    right: 14px;
+    bottom: 14px;
+    border-left: 0;
+    border-top: 0;
+}
+
+.ticket-content {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    background: radial-gradient(circle, rgba(242,234,216,.08), transparent 60%);
+}
+
+.ticket-content .ticket-icon {
+    font-size: 28px;
+    margin-bottom: 15px;
+}
+
+.ticket-content strong {
+    font-family: "DM Mono", monospace;
+    font-size: clamp(16px,4vw,25px);
+    letter-spacing: 2px;
+    line-height: 1.4;
+}
+
+#scratchCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: crosshair;
+    z-index: 2;
+    touch-action: none;
+}
+
+.scratch-instruction {
+    font-family: "DM Mono", monospace;
+    color: var(--muted);
+    font-size: 9px;
+    letter-spacing: 2px;
+    margin-top: 18px;
+}
+
+.scratch-progress {
+    width: min(300px,80%);
+    height: 2px;
+    margin: 12px auto 0;
+    background: rgba(242,234,216,.1);
+    overflow: hidden;
+}
+
+.scratch-progress span {
+    display: block;
+    width: 0;
+    height: 100%;
+    background: var(--cream);
+    transition: width .15s linear;
+}
+
+#winningFlip {
+    perspective: 1000px;
+}
+
+#winningFlip.flipping .scratch-ticket {
+    animation: winningFlip 1.15s cubic-bezier(.2,.7,.25,1) forwards;
+}
+
+@keyframes winningFlip {
+    0% { transform: rotateY(0); }
+    48% { transform: rotateY(180deg); }
+    100% { transform: rotateY(360deg); }
+}
+
+.final-present-error {
+    display: none;
+    text-align: center;
+    padding: 30px 10px;
+}
+
+.final-present-error.show {
+    display: block;
+    animation: errorText .8s ease forwards;
+}
+
+.final-present-error .error-main {
+    margin-bottom: 0;
+}
+
+@media (max-width:650px) {
+    .scratch-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .scratch-card {
+        min-height: 245px;
+    }
+
+    .scratch-ticket {
+        aspect-ratio: 1.15 / 1;
+    }
+}
+
 /* ==============================
    MOBILE
 ============================== */
@@ -1590,30 +1905,95 @@ M61-001
 
 
 <!-- ==================================
-     FINAL MISSION ERROR
+     SCRATCHCARDS
 ================================== -->
 
-<section
-id="missionError"
->
+<section id="scratchcardsScreen">
 
+    <div class="scratch-intro">
+        <div class="eyebrow">MISSION REWARD PROTOCOL</div>
+        <h2 class="scratch-title">CLAIM YOUR CARDS</h2>
+        <div class="scratch-subtitle">TWO CARDS • ONE SURPRISE</div>
+    </div>
 
-<div class="system-symbol">
-!
-</div>
+    <div class="scratch-grid">
 
+        <article class="scratch-card" id="card1">
+            <div class="card-number">CARD 01 / 02</div>
 
-<div class="error-main">
-ERROR - MISSION CONTENT NOT FOUND
-</div>
+            <div class="card-art one"></div>
 
+            <div>
+                <div class="card-name">THE DECOY</div>
+                <div class="card-desc">One final test. Scratch carefully.</div>
+                <button class="card-button" onclick="openScratchCard(1)">
+                    PLAY
+                </button>
+            </div>
+        </article>
 
-<div class="error-sub">
-SYSTEM RESPONSE: CONTENT UNAVAILABLE
-</div>
+        <article class="scratch-card locked" id="card2">
+            <div class="card-number">CARD 02 / 02</div>
 
+            <div class="card-art two"></div>
+
+            <div>
+                <div class="card-name">THE PRIZE</div>
+                <div class="card-desc" id="card2Desc">Complete Card 01 to unlock.</div>
+                <button class="card-button" id="card2Button" disabled onclick="openScratchCard(2)">
+                    LOCKED
+                </button>
+            </div>
+        </article>
+
+    </div>
+
+    <footer class="footer">
+        <span>REWARD SYSTEM: ACTIVE</span>
+        <span>M61-001</span>
+        <span>ACCESS GRANTED</span>
+    </footer>
 
 </section>
+
+<!-- ==================================
+     SCRATCHCARD OVERLAY
+================================== -->
+
+<div id="scratchOverlay">
+    <div class="scratch-modal" id="winningFlip">
+
+        <div class="modal-label" id="scratchModalLabel">
+            SCRATCHCARD 01 • DECOY
+        </div>
+
+        <div class="scratch-ticket" id="scratchTicket">
+
+            <div class="ticket-content">
+                <div class="ticket-icon" id="ticketIcon">◇</div>
+                <strong id="scratchMessage">
+                    SORRY, BETTER LUCK NEXT TIME.
+                </strong>
+            </div>
+
+            <canvas id="scratchCanvas"></canvas>
+        </div>
+
+        <div class="scratch-instruction" id="scratchInstruction">
+            SCRATCH WITH MOUSE OR FINGER
+        </div>
+
+        <div class="scratch-progress">
+            <span id="scratchProgress"></span>
+        </div>
+
+        <div class="final-present-error" id="finalPresentError">
+            <div class="system-symbol">!</div>
+            <div class="error-main">ERROR - COULDN'T LOAD PRESENT</div>
+        </div>
+
+    </div>
+</div>
 
 
 </main>
@@ -1976,20 +2356,20 @@ function cinematicTransition() {
 ========================================== */
 
 function showMissionError() {
+    showScratchcards();
+}
 
-    const errorScreen =
-        document.getElementById(
-            "missionError"
-        );
+function showScratchcards() {
 
+    const passwordScreen =
+        document.getElementById("passwordScreen");
 
-    errorScreen.style.display =
-        "flex";
+    const scratchcards =
+        document.getElementById("scratchcardsScreen");
 
-
-    errorScreen.classList.add(
-        "fade-in"
-    );
+    passwordScreen.style.display = "none";
+    scratchcards.style.display = "block";
+    scratchcards.classList.add("fade-in");
 }
 
 
@@ -2105,6 +2485,226 @@ function activatePreview() {
     showPasswordScreen();
 }
 
+
+
+/* ==========================================
+   SCRATCHCARD SYSTEM
+========================================== */
+
+let currentScratchCard = 0;
+let scratchCompleted = false;
+let isScratching = false;
+let scratchLastPoint = null;
+let scratchCheckTimer = null;
+
+const scratchOverlay = document.getElementById("scratchOverlay");
+const scratchCanvas = document.getElementById("scratchCanvas");
+const scratchCtx = scratchCanvas.getContext("2d", { willReadFrequently: true });
+const scratchTicket = document.getElementById("scratchTicket");
+const scratchMessage = document.getElementById("scratchMessage");
+const scratchModalLabel = document.getElementById("scratchModalLabel");
+const scratchInstruction = document.getElementById("scratchInstruction");
+const scratchProgress = document.getElementById("scratchProgress");
+const winningFlip = document.getElementById("winningFlip");
+const finalPresentError = document.getElementById("finalPresentError");
+
+function resizeScratchCanvas() {
+    const rect = scratchTicket.getBoundingClientRect();
+    const ratio = Math.max(1, window.devicePixelRatio || 1);
+
+    scratchCanvas.width = Math.round(rect.width * ratio);
+    scratchCanvas.height = Math.round(rect.height * ratio);
+    scratchCanvas.style.width = rect.width + "px";
+    scratchCanvas.style.height = rect.height + "px";
+
+    scratchCtx.setTransform(ratio, 0, 0, ratio, 0, 0);
+
+    const gradient = scratchCtx.createLinearGradient(0, 0, rect.width, rect.height);
+    gradient.addColorStop(0, "#c8c1b0");
+    gradient.addColorStop(.5, "#8f8b82");
+    gradient.addColorStop(1, "#d8d1bf");
+
+    scratchCtx.globalCompositeOperation = "source-over";
+    scratchCtx.fillStyle = gradient;
+    scratchCtx.fillRect(0, 0, rect.width, rect.height);
+
+    scratchCtx.fillStyle = "rgba(7,17,28,.25)";
+    scratchCtx.font = '10px "DM Mono", monospace';
+    scratchCtx.textAlign = "center";
+    scratchCtx.fillText("SCRATCH TO REVEAL", rect.width / 2, rect.height / 2 - 7);
+    scratchCtx.font = '8px "DM Mono", monospace';
+    scratchCtx.fillText("M61 • CLASSIFIED", rect.width / 2, rect.height / 2 + 12);
+}
+
+function openScratchCard(cardNumber) {
+    currentScratchCard = cardNumber;
+    scratchCompleted = false;
+    isScratching = false;
+    scratchLastPoint = null;
+
+    finalPresentError.classList.remove("show");
+    winningFlip.classList.remove("flipping");
+    scratchTicket.style.display = "block";
+    scratchInstruction.style.display = "block";
+    document.querySelector(".scratch-progress").style.display = "block";
+
+    if (cardNumber === 1) {
+        scratchModalLabel.textContent = "SCRATCHCARD 01 • DECOY";
+        scratchMessage.textContent = "SORRY, BETTER LUCK NEXT TIME.";
+        document.getElementById("ticketIcon").textContent = "◇";
+    } else {
+        scratchModalLabel.textContent = "SCRATCHCARD 02 • PRIZE";
+        scratchMessage.textContent = "🎉 WOOHOO, YOU WON!";
+        document.getElementById("ticketIcon").textContent = "★";
+    }
+
+    scratchOverlay.classList.add("active");
+
+    requestAnimationFrame(() => {
+        resizeScratchCanvas();
+    });
+}
+
+function closeScratchCard() {
+    scratchOverlay.classList.remove("active");
+}
+
+function getScratchPoint(event) {
+    const rect = scratchCanvas.getBoundingClientRect();
+    const source = event.touches ? event.touches[0] : event;
+
+    return {
+        x: source.clientX - rect.left,
+        y: source.clientY - rect.top
+    };
+}
+
+function scratchAt(point) {
+    if (scratchCompleted || !point) return;
+
+    scratchCtx.globalCompositeOperation = "destination-out";
+    scratchCtx.lineCap = "round";
+    scratchCtx.lineJoin = "round";
+    scratchCtx.lineWidth = 38;
+
+    if (scratchLastPoint) {
+        scratchCtx.beginPath();
+        scratchCtx.moveTo(scratchLastPoint.x, scratchLastPoint.y);
+        scratchCtx.lineTo(point.x, point.y);
+        scratchCtx.stroke();
+    } else {
+        scratchCtx.beginPath();
+        scratchCtx.arc(point.x, point.y, 19, 0, Math.PI * 2);
+        scratchCtx.fill();
+    }
+
+    scratchLastPoint = point;
+
+    clearTimeout(scratchCheckTimer);
+    scratchCheckTimer = setTimeout(checkScratchProgress, 80);
+}
+
+function checkScratchProgress() {
+    const width = scratchCanvas.width;
+    const height = scratchCanvas.height;
+    const pixels = scratchCtx.getImageData(0, 0, width, height).data;
+
+    let transparent = 0;
+    const sampleStep = 16;
+
+    for (let i = 3; i < pixels.length; i += 4 * sampleStep) {
+        if (pixels[i] < 40) transparent++;
+    }
+
+    const totalSamples = Math.ceil(pixels.length / (4 * sampleStep));
+    const percent = Math.min(100, (transparent / totalSamples) * 100);
+
+    scratchProgress.style.width = percent.toFixed(0) + "%";
+
+    if (percent >= 55) {
+        completeScratchCard();
+    }
+}
+
+function startScratch(event) {
+    if (scratchCompleted) return;
+    isScratching = true;
+    scratchLastPoint = null;
+    scratchAt(getScratchPoint(event));
+    event.preventDefault();
+}
+
+function moveScratch(event) {
+    if (!isScratching || scratchCompleted) return;
+    scratchAt(getScratchPoint(event));
+    event.preventDefault();
+}
+
+function stopScratch() {
+    isScratching = false;
+    scratchLastPoint = null;
+}
+
+scratchCanvas.addEventListener("mousedown", startScratch);
+scratchCanvas.addEventListener("mousemove", moveScratch);
+window.addEventListener("mouseup", stopScratch);
+
+scratchCanvas.addEventListener("touchstart", startScratch, { passive: false });
+scratchCanvas.addEventListener("touchmove", moveScratch, { passive: false });
+window.addEventListener("touchend", stopScratch);
+
+window.addEventListener("resize", () => {
+    if (scratchOverlay.classList.contains("active") && !scratchCompleted) {
+        resizeScratchCanvas();
+    }
+});
+
+function completeScratchCard() {
+    if (scratchCompleted) return;
+    scratchCompleted = true;
+    isScratching = false;
+    scratchLastPoint = null;
+
+    scratchProgress.style.width = "100%";
+    scratchCtx.clearRect(0, 0, scratchCanvas.width, scratchCanvas.height);
+
+    if (currentScratchCard === 1) {
+        scratchInstruction.textContent = "CARD COMPLETE • ACCESSING NEXT CARD";
+        setTimeout(() => {
+            closeScratchCard();
+
+            const card2 = document.getElementById("card2");
+            const button = document.getElementById("card2Button");
+            const desc = document.getElementById("card2Desc");
+
+            card2.classList.remove("locked");
+            button.disabled = false;
+            button.textContent = "PLAY";
+            desc.textContent = "Card 01 complete. The prize awaits.";
+
+            card2.animate(
+                [
+                    { transform: "scale(.96)", opacity: .4 },
+                    { transform: "scale(1.03)", opacity: 1 },
+                    { transform: "scale(1)", opacity: 1 }
+                ],
+                { duration: 700, easing: "cubic-bezier(.2,1.3,.4,1)" }
+            );
+        }, 900);
+    } else {
+        scratchInstruction.style.display = "none";
+        document.querySelector(".scratch-progress").style.display = "none";
+
+        setTimeout(() => {
+            winningFlip.classList.add("flipping");
+
+            setTimeout(() => {
+                scratchTicket.style.display = "none";
+                finalPresentError.classList.add("show");
+            }, 1120);
+        }, 500);
+    }
+}
 
 /* ==========================================
    START
