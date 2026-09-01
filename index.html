@@ -433,6 +433,203 @@ h1 {
 }
 
 
+
+/* ==============================
+   CONTACT SYSTEM
+============================== */
+
+.contact-access {
+    margin-top: 28px;
+    text-align: center;
+}
+
+.contact-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-width: 210px;
+    padding: 14px 20px;
+    border: 1px solid var(--line);
+    background: rgba(242,234,216,0.045);
+    color: var(--cream);
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 3px;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.contact-button:hover {
+    background: var(--cream);
+    color: var(--navy);
+    border-color: var(--cream);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,0,0,.25);
+}
+
+.contact-button:active {
+    transform: translateY(0);
+}
+
+.contact-button .contact-icon {
+    font-size: 14px;
+    line-height: 1;
+}
+
+#contactScreen {
+    display: none;
+    text-align: center;
+}
+
+.contact-header {
+    border-bottom: 1px solid var(--soft);
+    padding-bottom: 22px;
+    margin-bottom: 34px;
+}
+
+.contact-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 28px;
+    padding: 9px 13px;
+    border: 1px solid var(--soft);
+    background: transparent;
+    color: var(--muted);
+    font-family: "DM Mono", monospace;
+    font-size: 8px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .2s ease;
+}
+
+.contact-back:hover {
+    color: var(--cream);
+    border-color: var(--line);
+    background: var(--soft);
+}
+
+.contact-title {
+    font-size: clamp(38px, 8vw, 72px);
+    line-height: .9;
+    letter-spacing: -3px;
+    margin-bottom: 15px;
+}
+
+.contact-subtitle {
+    font-family: "DM Mono", monospace;
+    color: var(--muted);
+    font-size: 10px;
+    line-height: 1.7;
+    letter-spacing: 2px;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 12px;
+    text-align: left;
+}
+
+.contact-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 145px;
+    padding: 20px;
+    border: 1px solid var(--soft);
+    background:
+        linear-gradient(145deg, rgba(242,234,216,.045), rgba(0,0,0,.12));
+    overflow: hidden;
+    transition: .25s ease;
+}
+
+.contact-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 32px;
+    height: 1px;
+    background: var(--line);
+}
+
+.contact-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(242,234,216,.32);
+    background:
+        linear-gradient(145deg, rgba(242,234,216,.075), rgba(0,0,0,.16));
+    box-shadow: 0 15px 40px rgba(0,0,0,.2);
+}
+
+.contact-code {
+    font-family: "DM Mono", monospace;
+    color: #69727a;
+    font-size: 8px;
+    letter-spacing: 2px;
+    margin-bottom: 13px;
+}
+
+.contact-purpose {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    margin-bottom: 7px;
+}
+
+.contact-description {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.55;
+    margin-bottom: 17px;
+}
+
+.contact-email {
+    align-self: flex-start;
+    color: var(--cream);
+    text-decoration: none;
+    font-family: "DM Mono", monospace;
+    font-size: 9px;
+    letter-spacing: 1px;
+    border-bottom: 1px solid rgba(242,234,216,.3);
+    padding-bottom: 3px;
+    transition: .2s ease;
+}
+
+.contact-email:hover {
+    border-color: var(--cream);
+    letter-spacing: 1.5px;
+}
+
+.contact-footer {
+    margin-top: 32px;
+}
+
+.contact-note {
+    margin-top: 18px;
+    color: #69727a;
+    font-family: "DM Mono", monospace;
+    font-size: 8px;
+    line-height: 1.7;
+    letter-spacing: 1.5px;
+}
+
+@media (max-width:650px) {
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        min-height: 130px;
+    }
+
+    .contact-button {
+        width: 100%;
+    }
+}
+
 /* ==============================
    PREVIEW
 ============================== */
@@ -1864,6 +2061,143 @@ PREVIEW
 
 </div>
 
+<div class="contact-access">
+    <button class="contact-button" type="button" onclick="showContactScreen()">
+        <span class="contact-icon">✉</span>
+        CONTACT MISSION CONTROL
+    </button>
+</div>
+
+</section>
+
+
+
+<!-- ==================================
+     CONTACT
+================================== -->
+
+<section id="contactScreen">
+
+    <div class="contact-header">
+
+        <button class="contact-back" type="button" onclick="showCountdownScreen()">
+            ← BACK TO COUNTDOWN
+        </button>
+
+        <div class="eyebrow">COMMUNICATIONS DIRECTORY</div>
+
+        <h2 class="contact-title">CONTACT</h2>
+
+        <div class="contact-subtitle">
+            SELECT A DEPARTMENT BELOW<br>
+            EACH CHANNEL HAS A DIFFERENT PURPOSE
+        </div>
+
+    </div>
+
+    <div class="contact-grid">
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C01 / GENERAL</div>
+                <div class="contact-purpose">General Enquiries</div>
+                <div class="contact-description">For questions, messages or anything that does not fit another department.</div>
+            </div>
+            <a class="contact-email" href="mailto:hello@mission61.co.uk">hello@mission61.co.uk</a>
+        </article>
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C02 / CONTROL</div>
+                <div class="contact-purpose">Mission Control</div>
+                <div class="contact-description">For official Mission 61 matters, operation updates and important communications.</div>
+            </div>
+            <a class="contact-email" href="mailto:missioncontrol@mission61.co.uk">missioncontrol@mission61.co.uk</a>
+        </article>
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C03 / PLANNING</div>
+                <div class="contact-purpose">Birthday Plans</div>
+                <div class="contact-description">For questions about the birthday itinerary, timings, plans and surprises.</div>
+            </div>
+            <a class="contact-email" href="mailto:plans@mission61.co.uk">plans@mission61.co.uk</a>
+        </article>
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C04 / TRANSIT</div>
+                <div class="contact-purpose">Travel & Transport</div>
+                <div class="contact-description">For journeys, transport arrangements, directions and travel coordination.</div>
+            </div>
+            <a class="contact-email" href="mailto:travel@mission61.co.uk">travel@mission61.co.uk</a>
+        </article>
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C05 / EVENTS</div>
+                <div class="contact-purpose">Theatre & Entertainment</div>
+                <div class="contact-description">For shows, tickets, performances, entertainment and event-related questions.</div>
+            </div>
+            <a class="contact-email" href="mailto:events@mission61.co.uk">events@mission61.co.uk</a>
+        </article>
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C06 / DINING</div>
+                <div class="contact-purpose">Dining</div>
+                <div class="contact-description">For restaurants, meals, bookings and anything food-related within the mission.</div>
+            </div>
+            <a class="contact-email" href="mailto:dining@mission61.co.uk">dining@mission61.co.uk</a>
+        </article>
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C07 / STAY</div>
+                <div class="contact-purpose">Accommodation</div>
+                <div class="contact-description">For hotels, rooms, check-in details and overnight arrangements.</div>
+            </div>
+            <a class="contact-email" href="mailto:stay@mission61.co.uk">stay@mission61.co.uk</a>
+        </article>
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C08 / REWARDS</div>
+                <div class="contact-purpose">Gifts & Surprises</div>
+                <div class="contact-description">For presents, rewards, surprise arrangements and classified gift enquiries.</div>
+            </div>
+            <a class="contact-email" href="mailto:rewards@mission61.co.uk">rewards@mission61.co.uk</a>
+        </article>
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C09 / SYSTEMS</div>
+                <div class="contact-purpose">Website Support</div>
+                <div class="contact-description">For technical problems, broken pages, access issues or website feedback.</div>
+            </div>
+            <a class="contact-email" href="mailto:support@mission61.co.uk">support@mission61.co.uk</a>
+        </article>
+
+        <article class="contact-card">
+            <div>
+                <div class="contact-code">M61-C10 / FEEDBACK</div>
+                <div class="contact-purpose">Feedback & Suggestions</div>
+                <div class="contact-description">For comments, ideas, suggestions or reports about the Mission 61 experience.</div>
+            </div>
+            <a class="contact-email" href="mailto:feedback@mission61.co.uk">feedback@mission61.co.uk</a>
+        </article>
+
+    </div>
+
+    <footer class="footer contact-footer">
+        <span>COMMUNICATIONS: AVAILABLE</span>
+        <span>M61-002</span>
+        <span>10 CHANNELS</span>
+    </footer>
+
+    <div class="contact-note">
+        MISSION 61 COMMUNICATIONS DIRECTORY • SELECT THE CHANNEL THAT BEST MATCHES YOUR MESSAGE
+    </div>
 
 </section>
 
@@ -2164,6 +2498,43 @@ function updateCountdown() {
         .textContent =
         String(seconds)
             .padStart(2,"0");
+}
+
+
+/* ==========================================
+   CONTACT NAVIGATION
+========================================== */
+
+function showContactScreen() {
+    const countdown = document.getElementById("countdownScreen");
+    const contact = document.getElementById("contactScreen");
+
+    countdown.style.display = "none";
+    contact.style.display = "block";
+    contact.classList.remove("fade-in");
+    void contact.offsetWidth;
+    contact.classList.add("fade-in");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+}
+
+function showCountdownScreen() {
+    const countdown = document.getElementById("countdownScreen");
+    const contact = document.getElementById("contactScreen");
+
+    contact.style.display = "none";
+    countdown.style.display = "block";
+    countdown.classList.remove("fade-in");
+    void countdown.offsetWidth;
+    countdown.classList.add("fade-in");
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
 }
 
 
