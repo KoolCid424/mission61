@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 | MISSION 61</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Rajdhani:wght@400;600;700&display=swap');
+
+:root {
+  --gold: #e9bd55;
+  --gold2: #ffdf8a;
+  --bg: #070b14;
+  --panel: #0c1422;
+  --text: #e9edf4;
+  --muted: #7d8ba2;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Rajdhani', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 40%, #162238 0%, #090e19 45%, #05070c 100%);
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(233,189,85,.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(233,189,85,.035) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(
+    transparent 0px,
+    transparent 3px,
+    rgba(0,0,0,.12) 4px
+  );
+  pointer-events: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 900px;
+  padding: 35px 25px;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  animation: appear 1s ease-out;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.topline {
+  font-family: Orbitron, sans-serif;
+  font-size: 11px;
+  letter-spacing: 5px;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.logo {
+  font-family: Orbitron, sans-serif;
+  font-weight: 900;
+  letter-spacing: 8px;
+  font-size: clamp(24px, 5vw, 38px);
+}
+
+.logo span { color: var(--gold); }
+
+.divider {
+  height: 1px;
+  width: 160px;
+  margin: 20px auto;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.radar {
+  position: relative;
+  width: 190px;
+  height: 190px;
+  margin: 25px auto;
+  border-radius: 50%;
+  border: 1px solid rgba(233,189,85,.35);
+  background:
+    radial-gradient(circle, transparent 25%, rgba(233,189,85,.08) 26%, transparent 27%),
+    radial-gradient(circle, transparent 49%, rgba(233,189,85,.12) 50%, transparent 51%),
+    radial-gradient(circle, transparent 74%, rgba(233,189,85,.12) 75%, transparent 76%);
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(233,189,85,.06);
+}
+
+.radar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: conic-gradient(
+    from 0deg,
+    transparent 0deg,
+    transparent 270deg,
+    rgba(233,189,85,.03) 300deg,
+    rgba(233,189,85,.55) 360deg
+  );
+  animation: radar 4s linear infinite;
+  border-radius: 50%;
+}
+
+.radar::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  background: var(--gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px var(--gold);
+}
+
+@keyframes radar {
+  to { transform: rotate(360deg); }
+}
+
+.cross {
+  position: absolute;
+  background: rgba(233,189,85,.18);
+}
+
+.cross.horizontal {
+  width: 100%;
+  height: 1px;
+  top: 50%;
+}
+
+.cross.vertical {
+  height: 100%;
+  width: 1px;
+  left: 50%;
+}
+
+.ping {
+  position: absolute;
+  top: 30%;
+  left: 65%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #ff5757;
+  box-shadow: 0 0 12px #ff5757;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .2; transform: scale(2.2); }
+}
+
+.error {
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(85px, 17vw, 150px);
+  font-weight: 900;
+  line-height: .95;
+  letter-spacing: -5px;
+  color: var(--gold);
+  text-shadow: 0 0 40px rgba(233,189,85,.2);
+  position: relative;
+}
+
+.error::after {
+  content: "404";
+  position: absolute;
+  inset: 0;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255,255,255,.08);
+  transform: translate(4px, 4px);
+  z-index: -1;
+}
+
+h2 {
+  font-family: Orbitron, sans-serif;
+  font-size: clamp(17px, 3vw, 24px);
+  letter-spacing: 4px;
+  margin: 25px 0 10px;
+}
+
+.description {
+  color: var(--muted);
+  font-size: 19px;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+}
+
+.status {
+  display: inline-flex;
+  gap: 12px;
+  align-items: center;
+  border: 1px solid rgba(233,189,85,.2);
+  background: rgba(233,189,85,.04);
+  padding: 10px 20px;
+  margin-bottom: 30px;
+  font-family: Orbitron, sans-serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: var(--gold);
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  background: #ff5757;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #ff5757;
+}
+
+.button {
+  display: inline-block;
+  padding: 16px 35px;
+  background: var(--gold);
+  color: #090c13;
+  text-decoration: none;
+  font-family: Orbitron, sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 2px;
+  border: 1px solid var(--gold);
+  transition: .3s;
+  box-shadow: 0 0 20px rgba(233,189,85,.1);
+}
+
+.button:hover {
+  background: transparent;
+  color: var(--gold);
+  box-shadow: 0 0 30px rgba(233,189,85,.2);
+  transform: translateY(-2px);
+}
+
+.footer {
+  margin-top: 45px;
+  color: #536076;
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+
+.footer span { color: var(--gold); }
+
+.corner {
+  position: fixed;
+  width: 35px;
+  height: 35px;
+  border-color: rgba(233,189,85,.35);
+  border-style: solid;
+}
+
+.tl { top: 25px; left: 25px; border-width: 1px 0 0 1px; }
+.tr { top: 25px; right: 25px; border-width: 1px 1px 0 0; }
+.bl { bottom: 25px; left: 25px; border-width: 0 0 1px 1px; }
+.br { bottom: 25px; right: 25px; border-width: 0 1px 1px 0; }
+
+@media(max-height: 750px) {
+  .radar { width: 130px; height: 130px; margin: 15px auto; }
+  .footer { margin-top: 25px; }
+  .container { padding: 20px; }
+}
+
+@media(max-width: 500px) {
+  .logo { letter-spacing: 5px; }
+  .topline { letter-spacing: 3px; }
+  .corner { width: 20px; height: 20px; }
+  .tl { top: 12px; left: 12px; }
+  .tr { top: 12px; right: 12px; }
+  .bl { bottom: 12px; left: 12px; }
+  .br { bottom: 12px; right: 12px; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="corner tl"></div>
+<div class="corner tr"></div>
+<div class="corner bl"></div>
+<div class="corner br"></div>
+
+<main class="container">
+
+  <div class="topline">CLASSIFIED // ACCESS RESTRICTED</div>
+
+  <div class="logo">MISSION <span>61</span></div>
+
+  <div class="divider"></div>
+
+  <div class="radar">
+    <div class="cross horizontal"></div>
+    <div class="cross vertical"></div>
+    <div class="ping"></div>
+  </div>
+
+  <div class="error">404</div>
+
+  <h2>MISSION NOT FOUND</h2>
+
+  <p class="description">
+    This page has gone off-grid.<br>
+    Agent, your coordinates appear to be incorrect.
+  </p>
+
+  <div class="status">
+    <div class="status-dot"></div>
+    <span>LOCATION STATUS: UNKNOWN</span>
+  </div>
+
+  <br>
+
+  <a href="/" class="button">↩ RETURN TO BASE</a>
+
+  <div class="footer">
+    MISSION <span>61</span> // OPERATION DECEMBER 11
+  </div>
+
+</main>
+
+</body>
+</html>
